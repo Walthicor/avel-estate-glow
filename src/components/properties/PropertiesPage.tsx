@@ -52,8 +52,7 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
           {results.length === 0 ? (
             <div className="hairline mx-auto max-w-[62ch] px-8 py-16 text-center">
               <p className="type-body text-bone">
-                {copy.empty.text.split(",")[0]},{" "}
-                {copy.empty.text.split(",").slice(1).join(",").trim()}{" "}
+                {copy.empty.text}{" "}
                 <a href={localePath("/contact")} className="link-draw type-body">
                   {copy.empty.link}
                 </a>
