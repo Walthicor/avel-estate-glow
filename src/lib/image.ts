@@ -43,11 +43,11 @@ export function buildSrcSet(
   opts: { height?: number; quality?: number; resize?: "cover" | "contain" } = {},
 ): string | undefined {
   if (!isTransformable(src)) return undefined;
-  const x2 = {
+  const x2: { height?: number; quality?: number; resize?: "cover" | "contain" } = {
     ...opts,
-    height: opts.height ? opts.height * 2 : undefined,
     quality: (opts.quality ?? 75) - 10,
   };
+  if (opts.height) x2.height = opts.height * 2;
   return [
     `${transformedSrc(src, width, opts)} 1x`,
     `${transformedSrc(src, width * 2, x2)} 2x`,
