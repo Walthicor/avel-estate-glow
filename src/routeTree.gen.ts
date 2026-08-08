@@ -19,6 +19,7 @@ import { Route as CollectionsIndexRouteImport } from './routes/collections.index
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
+import { Route as EsContactoRouteImport } from './routes/es/contacto'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -91,6 +92,11 @@ const EsComprarDesdeElExteriorRoute =
     path: '/es/comprar-desde-el-exterior',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EsContactoRoute = EsContactoRouteImport.update({
+  id: '/es/contacto',
+  path: '/es/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
   id: '/es/nosotros',
   path: '/es/nosotros',
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -233,6 +240,7 @@ export interface FileRoutesByTo {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -266,6 +274,7 @@ export interface FileRoutesById {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -332,6 +342,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -364,6 +375,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -397,6 +409,7 @@ export interface RootRouteChildren {
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
+  EsContactoRoute: typeof EsContactoRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -491,6 +504,13 @@ declare module '@tanstack/react-router' {
       path: '/es/comprar-desde-el-exterior'
       fullPath: '/es/comprar-desde-el-exterior'
       preLoaderRoute: typeof EsComprarDesdeElExteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/contacto': {
+      id: '/es/contacto'
+      path: '/es/contacto'
+      fullPath: '/es/contacto'
+      preLoaderRoute: typeof EsContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/nosotros': {
@@ -645,6 +665,7 @@ const rootRouteChildren: RootRouteChildren = {
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
+  EsContactoRoute: EsContactoRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,
