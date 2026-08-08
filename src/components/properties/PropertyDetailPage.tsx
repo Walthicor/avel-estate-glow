@@ -18,6 +18,7 @@ import {
   type PropertyDetail,
 } from "../../content/property-detail";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { ShortLeadForm } from "../forms/ShortLeadForm";
 import { Reveal } from "../Reveal";
 import { AvelImage } from "../AvelImage";
 import { Lightbox } from "./Lightbox";
@@ -224,6 +225,13 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
           </Reveal>
         </section>
       ) : null}
+
+      {/* REQUEST PRICE AND AVAILABILITY */}
+      <section className="hairline-t bg-deep">
+        <Reveal className="mx-auto max-w-[720px] px-6 py-16 md:py-24">
+          <ShortLeadForm tone="dark" propertyId={p.slug} />
+        </Reveal>
+      </section>
 
       {/* STICKY MOBILE BAR */}
       <div className="hairline-t fixed inset-x-0 bottom-0 z-[95] flex h-[72px] items-center justify-between gap-4 bg-deep px-5 md:hidden">
