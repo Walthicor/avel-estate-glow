@@ -26,5 +26,6 @@ export const FOOTER_COMPANY: NavItem[] = [
 export const FOOTER_LEGAL: { key: UIKey; path: string }[] = [
   { key: "footer.privacy", path: "/legal/privacy" },
   { key: "footer.terms", path: "/legal/terms" },
-  { key: "nav.legal", path: "/legal" },
+  { key: "footer.cookies", path: "/legal/cookies" },
+  { key: "footer.habeasData", path: "/legal/habeas-data" },
 ];

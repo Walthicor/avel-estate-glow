@@ -805,3 +805,17 @@
     transition: none;
   }
 }
+
+/* Cookie bar — slides up, never blocks the page as a modal. */
+.avel-cookiebar {
+  transform: translateY(110%);
+  transition: transform 480ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.avel-cookiebar.is-in {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .avel-cookiebar {
+    transition: none;
+  }
+}
