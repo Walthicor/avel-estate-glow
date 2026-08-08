@@ -1,14 +1,9 @@
 import { SITE } from "../config/site";
 import { getPropertyDetail } from "../content/property-detail";
+import { sendTemplateEmail } from "./email-templates/send-email";
 import type { LeadPayload } from "./lead-schema";
 import { EMAIL_RE } from "./lead-schema";
 
-const esc = (value: string) =>
-  value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 
 export function validateLead(input: LeadPayload) {
   const errors: Record<string, string> = {};
