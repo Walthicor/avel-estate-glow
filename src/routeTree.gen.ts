@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
@@ -56,6 +57,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const CitiesSlugRoute = CitiesSlugRouteImport.update({
   id: '/cities/$slug',
   path: '/cities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
@@ -189,6 +196,7 @@ export interface FileRoutesByTo {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections': typeof CollectionsIndexRoute
   '/es': typeof EsIndexRoute
   '/properties': typeof PropertiesIndexRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
@@ -215,6 +223,7 @@ export interface FileRoutesById {
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
@@ -242,6 +251,7 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections/'
     | '/es/'
     | '/properties/'
     | '/es/ciudades/$slug'
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections'
     | '/es'
     | '/properties'
     | '/es/ciudades/$slug'
@@ -292,6 +303,7 @@ export interface FileRouteTypes {
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections/'
     | '/es/'
     | '/properties/'
     | '/es/ciudades/$slug'
@@ -318,6 +330,7 @@ export interface RootRouteChildren {
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalTermsRoute: typeof LegalTermsRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
   EsIndexRoute: typeof EsIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
   EsCiudadesSlugRoute: typeof EsCiudadesSlugRoute
@@ -365,6 +378,13 @@ declare module '@tanstack/react-router' {
       path: '/cities/$slug'
       fullPath: '/cities/$slug'
       preLoaderRoute: typeof CitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/collections/$slug': {
@@ -510,6 +530,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalTermsRoute: LegalTermsRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
   EsIndexRoute: EsIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
   EsCiudadesSlugRoute: EsCiudadesSlugRoute,
