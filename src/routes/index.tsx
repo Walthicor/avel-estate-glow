@@ -2,40 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { seoHead } from "../components/Seo";
 import { SITE } from "../config/site";
-import { useLocale } from "../i18n/LocaleProvider";
+import { HomePage } from "../components/home/HomePage";
 
 export const Route = createFileRoute("/")({
   head: () =>
     seoHead({
       locale: "en",
       path: "/",
-      title: `${SITE.name} — Luxury Colombian Real Estate`,
+      title: `${SITE.name} — Buy Property in Colombia from Abroad`,
       description:
-        "Curated luxury homes and investment property in Colombia for international buyers.",
+        "Luxury homes and investment property in Medellín, Cartagena, Santa Marta and Bogotá — title verification, funding and management handled for remote buyers.",
     }),
-  component: Index,
+  component: HomePage,
 });
-
-function Index() {
-  const { t, localePath } = useLocale();
-
-  return (
-    <section className="min-h-screen bg-background px-6 pt-[140px] pb-24">
-      <div className="mx-auto max-w-3xl">
-        <h1 className="font-display text-5xl text-bone">{SITE.name}</h1>
-        <p className="mt-4 text-sage">{t("footer.tagline")}</p>
-        <nav className="mt-10 flex flex-wrap gap-4 text-sm">
-          <a href={localePath("/properties")} className="text-gold hover:text-gold-deep">
-            {t("nav.properties")}
-          </a>
-          <a href={localePath("/contact")} className="text-gold hover:text-gold-deep">
-            {t("nav.contact")}
-          </a>
-          <a href="/es" className="text-sage hover:text-bone">
-            {t("locale.switchToSpanish")}
-          </a>
-        </nav>
-      </div>
-    </section>
-  );
-}

@@ -621,3 +621,92 @@
     scroll-behavior: auto;
   }
 }
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero gold rule: 0 → 120px on load */
+@keyframes gold-rule-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 120px;
+  }
+}
+
+.gold-rule {
+  display: block;
+  height: 1px;
+  width: 120px;
+  background-color: var(--color-gold);
+  animation: gold-rule-grow 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Text link with a gold underline that draws left to right */
+@utility link-draw {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-gold);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  &:hover::after,
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Step panel: 300ms height transition via grid rows */
+.step-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-panel[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+
+.step-panel > div {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .gold-rule,
+  .step-panel {
+    animation: none;
+    transition: none;
+  }
+}
