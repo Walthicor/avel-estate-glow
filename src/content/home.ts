@@ -175,12 +175,12 @@ const en: HomeContent = {
   collections: {
     heading: "Find it by why you're buying.",
     items: [
-      { label: "Rental income", blurb: "Short and long-stay yield.", href: "/collections" },
-      { label: "Relocation", blurb: "Living here full time.", href: "/collections" },
-      { label: "Pre-construction", blurb: "Buy early, pay in stages.", href: "/collections" },
-      { label: "Retirement", blurb: "Slow living, warm climate.", href: "/collections" },
-      { label: "Second home", blurb: "Coast and country escapes.", href: "/collections" },
-      { label: "Diversification", blurb: "Hard assets outside your currency.", href: "/collections" },
+      { label: "Rental income", blurb: "Short and long-stay yield.", href: "/collections/short-term-rental-approved" },
+      { label: "Relocation", blurb: "Living here full time.", href: "/collections/pre-construction" },
+      { label: "Pre-construction", blurb: "Buy early, pay in stages.", href: "/collections/poblado-and-envigado" },
+      { label: "Retirement", blurb: "Slow living, warm climate.", href: "/collections/beachfront-caribbean" },
+      { label: "Second home", blurb: "Coast and country escapes.", href: "/collections/ready-to-move" },
+      { label: "Diversification", blurb: "Hard assets outside your currency.", href: "/collections/land-and-lots" },
     ],
   },
   why: {
@@ -327,12 +327,12 @@ const es: HomeContent = {
   collections: {
     heading: "Encuéntrala por el motivo de tu compra.",
     items: [
-      { label: "Renta", blurb: "Rentabilidad corta y larga estadía.", href: "/collections" },
-      { label: "Mudanza", blurb: "Para vivir aquí todo el año.", href: "/collections" },
-      { label: "Sobre planos", blurb: "Compra temprano, paga por etapas.", href: "/collections" },
-      { label: "Retiro", blurb: "Vida tranquila, clima cálido.", href: "/collections" },
-      { label: "Segunda vivienda", blurb: "Escapadas de costa y campo.", href: "/collections" },
-      { label: "Diversificación", blurb: "Activos reales fuera de tu moneda.", href: "/collections" },
+      { label: "Renta", blurb: "Rentabilidad corta y larga estadía.", href: "/collections/short-term-rental-approved" },
+      { label: "Mudanza", blurb: "Para vivir aquí todo el año.", href: "/collections/pre-construction" },
+      { label: "Sobre planos", blurb: "Compra temprano, paga por etapas.", href: "/collections/poblado-and-envigado" },
+      { label: "Retiro", blurb: "Vida tranquila, clima cálido.", href: "/collections/beachfront-caribbean" },
+      { label: "Segunda vivienda", blurb: "Escapadas de costa y campo.", href: "/collections/ready-to-move" },
+      { label: "Diversificación", blurb: "Activos reales fuera de tu moneda.", href: "/collections/land-and-lots" },
     ],
   },
   why: {
