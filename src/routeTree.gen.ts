@@ -10,17 +10,32 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
+import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
+import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
+import { Route as LegalHabeasDataRouteImport } from './routes/legal.habeas-data'
+import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
+import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as EsLegalCookiesRouteImport } from './routes/es/legal.cookies'
+import { Route as EsLegalHabeasDataRouteImport } from './routes/es/legal.habeas-data'
+import { Route as EsLegalPrivacyRouteImport } from './routes/es/legal.privacy'
+import { Route as EsLegalTermsRouteImport } from './routes/es/legal.terms'
 import { Route as EsPropiedadesIndexRouteImport } from './routes/es/propiedades.index'
 import { Route as EsPropiedadesSlugRouteImport } from './routes/es/propiedades.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
@@ -39,6 +54,31 @@ const EsComprarDesdeElExteriorRoute =
     path: '/es/comprar-desde-el-exterior',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EsNosotrosRoute = EsNosotrosRouteImport.update({
+  id: '/es/nosotros',
+  path: '/es/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalCookiesRoute = LegalCookiesRouteImport.update({
+  id: '/legal/cookies',
+  path: '/legal/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalHabeasDataRoute = LegalHabeasDataRouteImport.update({
+  id: '/legal/habeas-data',
+  path: '/legal/habeas-data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalPrivacyRoute = LegalPrivacyRouteImport.update({
+  id: '/legal/privacy',
+  path: '/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalTermsRoute = LegalTermsRouteImport.update({
+  id: '/legal/terms',
+  path: '/legal/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
   id: '/properties/',
   path: '/properties/',
@@ -47,6 +87,26 @@ const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
 const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   id: '/properties/$slug',
   path: '/properties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsLegalCookiesRoute = EsLegalCookiesRouteImport.update({
+  id: '/es/legal/cookies',
+  path: '/es/legal/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsLegalHabeasDataRoute = EsLegalHabeasDataRouteImport.update({
+  id: '/es/legal/habeas-data',
+  path: '/es/legal/habeas-data',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsLegalPrivacyRoute = EsLegalPrivacyRouteImport.update({
+  id: '/es/legal/privacy',
+  path: '/es/legal/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsLegalTermsRoute = EsLegalTermsRouteImport.update({
+  id: '/es/legal/terms',
+  path: '/es/legal/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsPropiedadesIndexRoute = EsPropiedadesIndexRouteImport.update({
@@ -62,32 +122,62 @@ const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/habeas-data': typeof LegalHabeasDataRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/legal/cookies': typeof EsLegalCookiesRoute
+  '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
+  '/es/legal/privacy': typeof EsLegalPrivacyRoute
+  '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/habeas-data': typeof LegalHabeasDataRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es': typeof EsIndexRoute
   '/properties': typeof PropertiesIndexRoute
+  '/es/legal/cookies': typeof EsLegalCookiesRoute
+  '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
+  '/es/legal/privacy': typeof EsLegalPrivacyRoute
+  '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/propiedades': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/nosotros': typeof EsNosotrosRoute
+  '/legal/cookies': typeof LegalCookiesRoute
+  '/legal/habeas-data': typeof LegalHabeasDataRoute
+  '/legal/privacy': typeof LegalPrivacyRoute
+  '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/legal/cookies': typeof EsLegalCookiesRoute
+  '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
+  '/es/legal/privacy': typeof EsLegalPrivacyRoute
+  '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
@@ -95,42 +185,82 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/buying-from-abroad'
     | '/es/comprar-desde-el-exterior'
+    | '/es/nosotros'
+    | '/legal/cookies'
+    | '/legal/habeas-data'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
+    | '/es/legal/cookies'
+    | '/es/legal/habeas-data'
+    | '/es/legal/privacy'
+    | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/propiedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/buying-from-abroad'
     | '/es/comprar-desde-el-exterior'
+    | '/es/nosotros'
+    | '/legal/cookies'
+    | '/legal/habeas-data'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/properties/$slug'
     | '/es'
     | '/properties'
+    | '/es/legal/cookies'
+    | '/es/legal/habeas-data'
+    | '/es/legal/privacy'
+    | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/propiedades'
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/buying-from-abroad'
     | '/es/comprar-desde-el-exterior'
+    | '/es/nosotros'
+    | '/legal/cookies'
+    | '/legal/habeas-data'
+    | '/legal/privacy'
+    | '/legal/terms'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
+    | '/es/legal/cookies'
+    | '/es/legal/habeas-data'
+    | '/es/legal/privacy'
+    | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/propiedades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
+  EsNosotrosRoute: typeof EsNosotrosRoute
+  LegalCookiesRoute: typeof LegalCookiesRoute
+  LegalHabeasDataRoute: typeof LegalHabeasDataRoute
+  LegalPrivacyRoute: typeof LegalPrivacyRoute
+  LegalTermsRoute: typeof LegalTermsRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   EsIndexRoute: typeof EsIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
+  EsLegalCookiesRoute: typeof EsLegalCookiesRoute
+  EsLegalHabeasDataRoute: typeof EsLegalHabeasDataRoute
+  EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
+  EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
 }
@@ -142,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buying-from-abroad': {
@@ -165,6 +302,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsComprarDesdeElExteriorRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/nosotros': {
+      id: '/es/nosotros'
+      path: '/es/nosotros'
+      fullPath: '/es/nosotros'
+      preLoaderRoute: typeof EsNosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/cookies': {
+      id: '/legal/cookies'
+      path: '/legal/cookies'
+      fullPath: '/legal/cookies'
+      preLoaderRoute: typeof LegalCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/habeas-data': {
+      id: '/legal/habeas-data'
+      path: '/legal/habeas-data'
+      fullPath: '/legal/habeas-data'
+      preLoaderRoute: typeof LegalHabeasDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/privacy': {
+      id: '/legal/privacy'
+      path: '/legal/privacy'
+      fullPath: '/legal/privacy'
+      preLoaderRoute: typeof LegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/terms': {
+      id: '/legal/terms'
+      path: '/legal/terms'
+      fullPath: '/legal/terms'
+      preLoaderRoute: typeof LegalTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/properties/': {
       id: '/properties/'
       path: '/properties'
@@ -177,6 +349,34 @@ declare module '@tanstack/react-router' {
       path: '/properties/$slug'
       fullPath: '/properties/$slug'
       preLoaderRoute: typeof PropertiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/legal/cookies': {
+      id: '/es/legal/cookies'
+      path: '/es/legal/cookies'
+      fullPath: '/es/legal/cookies'
+      preLoaderRoute: typeof EsLegalCookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/legal/habeas-data': {
+      id: '/es/legal/habeas-data'
+      path: '/es/legal/habeas-data'
+      fullPath: '/es/legal/habeas-data'
+      preLoaderRoute: typeof EsLegalHabeasDataRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/legal/privacy': {
+      id: '/es/legal/privacy'
+      path: '/es/legal/privacy'
+      fullPath: '/es/legal/privacy'
+      preLoaderRoute: typeof EsLegalPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/legal/terms': {
+      id: '/es/legal/terms'
+      path: '/es/legal/terms'
+      fullPath: '/es/legal/terms'
+      preLoaderRoute: typeof EsLegalTermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/propiedades/': {
@@ -198,11 +398,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
+  EsNosotrosRoute: EsNosotrosRoute,
+  LegalCookiesRoute: LegalCookiesRoute,
+  LegalHabeasDataRoute: LegalHabeasDataRoute,
+  LegalPrivacyRoute: LegalPrivacyRoute,
+  LegalTermsRoute: LegalTermsRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   EsIndexRoute: EsIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
+  EsLegalCookiesRoute: EsLegalCookiesRoute,
+  EsLegalHabeasDataRoute: EsLegalHabeasDataRoute,
+  EsLegalPrivacyRoute: EsLegalPrivacyRoute,
+  EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
 }
