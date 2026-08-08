@@ -14,6 +14,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
@@ -54,6 +55,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const CitiesSlugRoute = CitiesSlugRouteImport.update({
   id: '/cities/$slug',
   path: '/cities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -191,6 +199,7 @@ export interface FileRoutesById {
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/buying-from-abroad'
     | '/sitemap.xml'
     | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/buying-from-abroad'
     | '/sitemap.xml'
     | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -262,6 +273,7 @@ export interface FileRouteTypes {
     | '/buying-from-abroad'
     | '/sitemap.xml'
     | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -286,6 +298,7 @@ export interface RootRouteChildren {
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       path: '/cities/$slug'
       fullPath: '/cities/$slug'
       preLoaderRoute: typeof CitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/': {
@@ -462,6 +482,7 @@ const rootRouteChildren: RootRouteChildren = {
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CitiesSlugRoute: CitiesSlugRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   LegalCookiesRoute: LegalCookiesRoute,
