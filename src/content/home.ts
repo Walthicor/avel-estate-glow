@@ -175,12 +175,12 @@ const en: HomeContent = {
   collections: {
     heading: "Find it by why you're buying.",
     items: [
-      { label: "Rental income", blurb: "Short and long-stay yield.", href: "/collections" },
-      { label: "Relocation", blurb: "Living here full time.", href: "/collections" },
-      { label: "Pre-construction", blurb: "Buy early, pay in stages.", href: "/collections" },
-      { label: "Retirement", blurb: "Slow living, warm climate.", href: "/collections" },
-      { label: "Second home", blurb: "Coast and country escapes.", href: "/collections" },
-      { label: "Diversification", blurb: "Hard assets outside your currency.", href: "/collections" },
+      { label: "Short-term rental approved", blurb: "Buildings that permit nightly stays, in writing.", href: "/collections/short-term-rental-approved" },
+      { label: "Pre-construction", blurb: "Buy early, pay in stages, held in fiducia.", href: "/collections/pre-construction" },
+      { label: "Poblado & Envigado", blurb: "The southern corridor, deepest resale.", href: "/collections/poblado-and-envigado" },
+      { label: "Beachfront Caribbean", blurb: "Cartagena and Santa Marta coast.", href: "/collections/beachfront-caribbean" },
+      { label: "Ready to move", blurb: "Delivered units, a key not a date.", href: "/collections/ready-to-move" },
+      { label: "Land & lots", blurb: "Use, water and access checked first.", href: "/collections/land-and-lots" },
     ],
   },
   why: {
@@ -327,12 +327,12 @@ const es: HomeContent = {
   collections: {
     heading: "Encuéntrala por el motivo de tu compra.",
     items: [
-      { label: "Renta", blurb: "Rentabilidad corta y larga estadía.", href: "/collections" },
-      { label: "Mudanza", blurb: "Para vivir aquí todo el año.", href: "/collections" },
-      { label: "Sobre planos", blurb: "Compra temprano, paga por etapas.", href: "/collections" },
-      { label: "Retiro", blurb: "Vida tranquila, clima cálido.", href: "/collections" },
-      { label: "Segunda vivienda", blurb: "Escapadas de costa y campo.", href: "/collections" },
-      { label: "Diversificación", blurb: "Activos reales fuera de tu moneda.", href: "/collections" },
+      { label: "Aptas para renta corta", blurb: "Edificios que permiten estadías cortas, por escrito.", href: "/collections/short-term-rental-approved" },
+      { label: "Sobre planos", blurb: "Compra temprano, paga por cuotas, con fiducia.", href: "/collections/pre-construction" },
+      { label: "Poblado y Envigado", blurb: "El corredor sur, la mejor reventa.", href: "/collections/poblado-and-envigado" },
+      { label: "Frente al mar Caribe", blurb: "Costa de Cartagena y Santa Marta.", href: "/collections/beachfront-caribbean" },
+      { label: "Listas para habitar", blurb: "Unidades entregadas: una llave, no una fecha.", href: "/collections/ready-to-move" },
+      { label: "Lotes y tierra", blurb: "Uso, agua y acceso verificados primero.", href: "/collections/land-and-lots" },
     ],
   },
   why: {

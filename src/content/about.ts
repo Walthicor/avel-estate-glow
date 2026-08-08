@@ -69,9 +69,6 @@ const en: AboutContent = {
     heading: "Who you are actually contracting with.",
     rows: [
       { label: "Registered company name", value: "AVEL Inmobiliaria S.A.S." },
-      { label: "NIT", value: "901.XXX.XXX-X" },
-      { label: "Cámara de Comercio", value: "Cámara de Comercio de Medellín para Antioquia" },
-      { label: "Registration (matrícula mercantil)", value: "21-XXXXXX-12" },
       { label: "Registered address", value: "Medellín, Antioquia, Colombia" },
     ],
     note:
@@ -130,9 +127,6 @@ const es: AboutContent = {
     heading: "Con quién está contratando realmente.",
     rows: [
       { label: "Razón social", value: "AVEL Inmobiliaria S.A.S." },
-      { label: "NIT", value: "901.XXX.XXX-X" },
-      { label: "Cámara de Comercio", value: "Cámara de Comercio de Medellín para Antioquia" },
-      { label: "Matrícula mercantil", value: "21-XXXXXX-12" },
       { label: "Domicilio", value: "Medellín, Antioquia, Colombia" },
     ],
     note:

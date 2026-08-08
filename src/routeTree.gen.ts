@@ -13,15 +13,25 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
+import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
+import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
+import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalHabeasDataRouteImport } from './routes/legal.habeas-data'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
+import { Route as EsColeccionesIndexRouteImport } from './routes/es/colecciones.index'
+import { Route as EsColeccionesSlugRouteImport } from './routes/es/colecciones.$slug'
+import { Route as EsGuiasIndexRouteImport } from './routes/es/guias.index'
+import { Route as EsGuiasSlugRouteImport } from './routes/es/guias.$slug'
 import { Route as EsLegalCookiesRouteImport } from './routes/es/legal.cookies'
 import { Route as EsLegalHabeasDataRouteImport } from './routes/es/legal.habeas-data'
 import { Route as EsLegalPrivacyRouteImport } from './routes/es/legal.privacy'
@@ -49,6 +59,21 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CitiesSlugRoute = CitiesSlugRouteImport.update({
+  id: '/cities/$slug',
+  path: '/cities/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
+  id: '/collections/',
+  path: '/collections/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
+  id: '/collections/$slug',
+  path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsIndexRoute = EsIndexRouteImport.update({
   id: '/es/',
   path: '/es/',
@@ -63,6 +88,16 @@ const EsComprarDesdeElExteriorRoute =
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
   id: '/es/nosotros',
   path: '/es/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesIndexRoute = GuidesIndexRouteImport.update({
+  id: '/guides/',
+  path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalCookiesRoute = LegalCookiesRouteImport.update({
@@ -93,6 +128,31 @@ const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
 const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   id: '/properties/$slug',
   path: '/properties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsCiudadesSlugRoute = EsCiudadesSlugRouteImport.update({
+  id: '/es/ciudades/$slug',
+  path: '/es/ciudades/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsColeccionesIndexRoute = EsColeccionesIndexRouteImport.update({
+  id: '/es/colecciones/',
+  path: '/es/colecciones/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsColeccionesSlugRoute = EsColeccionesSlugRouteImport.update({
+  id: '/es/colecciones/$slug',
+  path: '/es/colecciones/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsGuiasIndexRoute = EsGuiasIndexRouteImport.update({
+  id: '/es/guias/',
+  path: '/es/guias/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsGuiasSlugRoute = EsGuiasSlugRouteImport.update({
+  id: '/es/guias/$slug',
+  path: '/es/guias/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsLegalCookiesRoute = EsLegalCookiesRouteImport.update({
@@ -131,20 +191,30 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/es/': typeof EsIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
+  '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
+  '/es/guias/$slug': typeof EsGuiasSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones/': typeof EsColeccionesIndexRoute
+  '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -152,20 +222,30 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections': typeof CollectionsIndexRoute
   '/es': typeof EsIndexRoute
+  '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
+  '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
+  '/es/guias/$slug': typeof EsGuiasSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones': typeof EsColeccionesIndexRoute
+  '/es/guias': typeof EsGuiasIndexRoute
   '/es/propiedades': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesById {
@@ -174,20 +254,30 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
+  '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
   '/properties/$slug': typeof PropertiesSlugRoute
+  '/collections/': typeof CollectionsIndexRoute
   '/es/': typeof EsIndexRoute
+  '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
+  '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
+  '/es/guias/$slug': typeof EsGuiasSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones/': typeof EsColeccionesIndexRoute
+  '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRouteTypes {
@@ -197,20 +287,30 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections/'
     | '/es/'
+    | '/guides/'
     | '/properties/'
+    | '/es/ciudades/$slug'
+    | '/es/colecciones/$slug'
+    | '/es/guias/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones/'
+    | '/es/guias/'
     | '/es/propiedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -218,20 +318,30 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections'
     | '/es'
+    | '/guides'
     | '/properties'
+    | '/es/ciudades/$slug'
+    | '/es/colecciones/$slug'
+    | '/es/guias/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones'
+    | '/es/guias'
     | '/es/propiedades'
   id:
     | '__root__'
@@ -239,20 +349,30 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
+    | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
     | '/legal/terms'
     | '/properties/$slug'
+    | '/collections/'
     | '/es/'
+    | '/guides/'
     | '/properties/'
+    | '/es/ciudades/$slug'
+    | '/es/colecciones/$slug'
+    | '/es/guias/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones/'
+    | '/es/guias/'
     | '/es/propiedades/'
   fileRoutesById: FileRoutesById
 }
@@ -261,20 +381,30 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CitiesSlugRoute: typeof CitiesSlugRoute
+  CollectionsSlugRoute: typeof CollectionsSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalHabeasDataRoute: typeof LegalHabeasDataRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalTermsRoute: typeof LegalTermsRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
+  CollectionsIndexRoute: typeof CollectionsIndexRoute
   EsIndexRoute: typeof EsIndexRoute
+  GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
+  EsCiudadesSlugRoute: typeof EsCiudadesSlugRoute
+  EsColeccionesSlugRoute: typeof EsColeccionesSlugRoute
+  EsGuiasSlugRoute: typeof EsGuiasSlugRoute
   EsLegalCookiesRoute: typeof EsLegalCookiesRoute
   EsLegalHabeasDataRoute: typeof EsLegalHabeasDataRoute
   EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
   EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
+  EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
+  EsGuiasIndexRoute: typeof EsGuiasIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
 }
 
@@ -308,6 +438,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cities/$slug': {
+      id: '/cities/$slug'
+      path: '/cities/$slug'
+      fullPath: '/cities/$slug'
+      preLoaderRoute: typeof CitiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/': {
+      id: '/collections/'
+      path: '/collections'
+      fullPath: '/collections/'
+      preLoaderRoute: typeof CollectionsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/collections/$slug': {
+      id: '/collections/$slug'
+      path: '/collections/$slug'
+      fullPath: '/collections/$slug'
+      preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/': {
       id: '/es/'
       path: '/es'
@@ -327,6 +478,20 @@ declare module '@tanstack/react-router' {
       path: '/es/nosotros'
       fullPath: '/es/nosotros'
       preLoaderRoute: typeof EsNosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/': {
+      id: '/guides/'
+      path: '/guides'
+      fullPath: '/guides/'
+      preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal/cookies': {
@@ -369,6 +534,41 @@ declare module '@tanstack/react-router' {
       path: '/properties/$slug'
       fullPath: '/properties/$slug'
       preLoaderRoute: typeof PropertiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/ciudades/$slug': {
+      id: '/es/ciudades/$slug'
+      path: '/es/ciudades/$slug'
+      fullPath: '/es/ciudades/$slug'
+      preLoaderRoute: typeof EsCiudadesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/colecciones/': {
+      id: '/es/colecciones/'
+      path: '/es/colecciones'
+      fullPath: '/es/colecciones/'
+      preLoaderRoute: typeof EsColeccionesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/colecciones/$slug': {
+      id: '/es/colecciones/$slug'
+      path: '/es/colecciones/$slug'
+      fullPath: '/es/colecciones/$slug'
+      preLoaderRoute: typeof EsColeccionesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/guias/': {
+      id: '/es/guias/'
+      path: '/es/guias'
+      fullPath: '/es/guias/'
+      preLoaderRoute: typeof EsGuiasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/guias/$slug': {
+      id: '/es/guias/$slug'
+      path: '/es/guias/$slug'
+      fullPath: '/es/guias/$slug'
+      preLoaderRoute: typeof EsGuiasSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/legal/cookies': {
@@ -421,20 +621,30 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CitiesSlugRoute: CitiesSlugRoute,
+  CollectionsSlugRoute: CollectionsSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsNosotrosRoute: EsNosotrosRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalHabeasDataRoute: LegalHabeasDataRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalTermsRoute: LegalTermsRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
+  CollectionsIndexRoute: CollectionsIndexRoute,
   EsIndexRoute: EsIndexRoute,
+  GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
+  EsCiudadesSlugRoute: EsCiudadesSlugRoute,
+  EsColeccionesSlugRoute: EsColeccionesSlugRoute,
+  EsGuiasSlugRoute: EsGuiasSlugRoute,
   EsLegalCookiesRoute: EsLegalCookiesRoute,
   EsLegalHabeasDataRoute: EsLegalHabeasDataRoute,
   EsLegalPrivacyRoute: EsLegalPrivacyRoute,
   EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
+  EsColeccionesIndexRoute: EsColeccionesIndexRoute,
+  EsGuiasIndexRoute: EsGuiasIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
 }
 export const routeTree = rootRouteImport
