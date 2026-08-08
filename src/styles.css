@@ -268,3 +268,356 @@
   transform-origin: left;
   animation: gold-line-draw 400ms ease-out forwards;
 }
+
+/* ============================================================
+   4.1 — Tower contact button (stepped skyscraper silhouette)
+   ============================================================ */
+
+@keyframes avel-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes avel-breathe {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.94);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes avel-sheen {
+  0% {
+    transform: translateY(120%);
+  }
+  100% {
+    transform: translateY(-140%);
+  }
+}
+
+.avel-tower {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 62px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.avel-tower__glow {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 96px;
+  height: 168px;
+  margin-left: -48px;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in oklab, var(--color-gold) 34%, transparent) 0%,
+    transparent 68%
+  );
+  filter: blur(10px);
+  animation: avel-breathe 4.2s ease-in-out infinite;
+}
+
+.avel-tower__body {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 140px;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-deep) 92%, var(--color-gold) 8%) 0%,
+    var(--color-abyss) 100%
+  );
+  box-shadow: inset 0 0 0 1px rgba(247, 167, 62, 0.28);
+  transition: box-shadow 260ms ease, transform 260ms ease;
+  clip-path: polygon(
+    38% 0%,
+    62% 0%,
+    62% 8%,
+    72% 8%,
+    72% 20%,
+    82% 20%,
+    82% 38%,
+    90% 38%,
+    90% 62%,
+    96% 62%,
+    96% 100%,
+    4% 100%,
+    4% 62%,
+    10% 62%,
+    10% 38%,
+    18% 38%,
+    18% 20%,
+    28% 20%,
+    28% 8%,
+    38% 8%
+  );
+}
+
+/* Orbiting golden light traced around the silhouette edge */
+.avel-tower__body::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 300deg,
+    color-mix(in oklab, var(--color-gold) 85%, white 15%) 342deg,
+    var(--color-gold) 352deg,
+    transparent 360deg
+  );
+  animation: avel-orbit 3.6s linear infinite;
+}
+
+/* Inner mask so only a hairline of the orbit shows at the edge */
+.avel-tower__body::after {
+  content: "";
+  position: absolute;
+  inset: 1.5px;
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--color-deep) 92%, var(--color-gold) 8%) 0%,
+    var(--color-abyss) 100%
+  );
+  clip-path: inherit;
+}
+
+.avel-tower__sheen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 46px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(247, 245, 241, 0.16),
+    transparent
+  );
+  animation: avel-sheen 5.6s ease-in-out infinite;
+}
+
+.avel-tower__icon {
+  position: relative;
+  z-index: 3;
+  color: var(--color-gold);
+}
+
+.avel-tower__label {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-sage);
+  transition: color 260ms ease;
+}
+
+.avel-tower:hover .avel-tower__body,
+.avel-tower:focus-visible .avel-tower__body {
+  box-shadow: inset 0 0 0 1px rgba(247, 167, 62, 0.6);
+  transform: translateY(-2px);
+}
+
+.avel-tower:hover .avel-tower__label {
+  color: var(--color-gold);
+}
+
+/* ============================================================
+   4.2 — Back to top (teardrop)
+   ============================================================ */
+
+.avel-drop {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(247, 167, 62, 0.34);
+  background: color-mix(in oklab, var(--color-deep) 88%, transparent);
+  color: var(--color-gold);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  border-radius: 50% 50% 50% 2px;
+  backdrop-filter: blur(6px);
+  transition:
+    opacity 320ms ease,
+    transform 320ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 260ms ease,
+    background-color 260ms ease,
+    visibility 0s linear 320ms;
+}
+
+.avel-drop[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.avel-drop:hover {
+  border-color: var(--color-gold);
+  background: color-mix(in oklab, var(--color-gold) 14%, var(--color-deep));
+}
+
+/* Shared floating layer */
+.avel-float {
+  position: fixed;
+  bottom: 92px;
+  z-index: 90;
+}
+
+@media (min-width: 768px) {
+  .avel-float {
+    bottom: 32px;
+  }
+}
+
+.avel-float--right {
+  right: 20px;
+}
+
+.avel-float--left {
+  left: 20px;
+}
+
+/* ============================================================
+   4.3 — Global buttons
+   ============================================================ */
+
+@keyframes avel-pulse-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.28);
+  }
+}
+
+@utility btn-gold {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-gold);
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-deep));
+  color: var(--color-abyss);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition:
+    filter 260ms ease,
+    transform 260ms ease,
+    box-shadow 260ms ease;
+
+  /* Pulse ring — use on ONE primary action per viewport */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 1px solid var(--color-gold);
+    border-radius: 2px;
+    pointer-events: none;
+    animation: avel-pulse-ring 2.6s ease-out infinite;
+  }
+
+  &:hover {
+    filter: brightness(1.06);
+    box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--color-gold) 60%, transparent);
+    transform: translateY(-1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    &::after {
+      animation: none;
+    }
+  }
+}
+
+@utility btn-gold-quiet {
+  &::after {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+/* ============================================================
+   Drawer
+   ============================================================ */
+
+@keyframes avel-drawer-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes avel-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.avel-drawer {
+  animation: avel-drawer-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.avel-drawer-backdrop {
+  background: color-mix(in oklab, var(--color-abyss) 60%, transparent);
+  backdrop-filter: blur(4px);
+  animation: avel-fade-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avel-tower__body::before,
+  .avel-tower__glow,
+  .avel-tower__sheen,
+  .btn-gold::after {
+    animation: none !important;
+  }
+  .avel-tower__glow {
+    opacity: 0.35;
+  }
+  .avel-drawer,
+  .avel-drawer-backdrop {
+    animation-duration: 1ms;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
