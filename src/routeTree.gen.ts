@@ -26,6 +26,7 @@ import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
+import { Route as EsColeccionesIndexRouteImport } from './routes/es/colecciones.index'
 import { Route as EsColeccionesSlugRouteImport } from './routes/es/colecciones.$slug'
 import { Route as EsLegalCookiesRouteImport } from './routes/es/legal.cookies'
 import { Route as EsLegalHabeasDataRouteImport } from './routes/es/legal.habeas-data'
@@ -120,6 +121,11 @@ const EsCiudadesSlugRoute = EsCiudadesSlugRouteImport.update({
   path: '/es/ciudades/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsColeccionesIndexRoute = EsColeccionesIndexRouteImport.update({
+  id: '/es/colecciones/',
+  path: '/es/colecciones/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsColeccionesSlugRoute = EsColeccionesSlugRouteImport.update({
   id: '/es/colecciones/$slug',
   path: '/es/colecciones/$slug',
@@ -180,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones/': typeof EsColeccionesIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones': typeof EsColeccionesIndexRoute
   '/es/propiedades': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesById {
@@ -233,6 +241,7 @@ export interface FileRoutesById {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/colecciones/': typeof EsColeccionesIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRouteTypes {
@@ -261,6 +270,7 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones/'
     | '/es/propiedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -287,6 +297,7 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones'
     | '/es/propiedades'
   id:
     | '__root__'
@@ -313,6 +324,7 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/es/colecciones/'
     | '/es/propiedades/'
   fileRoutesById: FileRoutesById
 }
@@ -340,6 +352,7 @@ export interface RootRouteChildren {
   EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
   EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
+  EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
 }
 
@@ -464,6 +477,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsCiudadesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/colecciones/': {
+      id: '/es/colecciones/'
+      path: '/es/colecciones'
+      fullPath: '/es/colecciones/'
+      preLoaderRoute: typeof EsColeccionesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/colecciones/$slug': {
       id: '/es/colecciones/$slug'
       path: '/es/colecciones/$slug'
@@ -540,6 +560,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsLegalPrivacyRoute: EsLegalPrivacyRoute,
   EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
+  EsColeccionesIndexRoute: EsColeccionesIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
 }
 export const routeTree = rootRouteImport
