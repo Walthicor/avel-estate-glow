@@ -175,3 +175,96 @@
 @utility hairline-b {
   border-bottom: 1px solid rgba(140, 164, 165, 0.18);
 }
+
+/* Buttons */
+@utility btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(140, 164, 165, 0.35);
+  background-color: transparent;
+  color: var(--color-bone);
+  padding: 0.625rem 1.125rem;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border-radius: 2px;
+  transition:
+    color 260ms ease,
+    border-color 260ms ease,
+    background-color 260ms ease;
+  &:hover {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+}
+
+/* Nav underline that grows from the left */
+@utility nav-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 260ms ease;
+  }
+  &[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Footer triangular divider band */
+@utility triangle-band {
+  background-image:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(140, 164, 165, 0.08) calc(50% - 0.5px), rgba(140, 164, 165, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(140, 164, 165, 0.08) calc(50% - 0.5px), rgba(140, 164, 165, 0.08) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+  background-size: 104px 120px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gold-line-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@utility menu-item-in {
+  opacity: 0;
+  animation: menu-item-in 420ms ease-out forwards;
+}
+
+@utility gold-line-draw {
+  transform-origin: left;
+  animation: gold-line-draw 400ms ease-out forwards;
+}
