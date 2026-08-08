@@ -71,7 +71,7 @@ function notificationRows(payload: LeadPayload, property: PropertyInfo): [string
 export async function saveLead(payload: LeadPayload) {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-  const { error } = await supabaseAdmin.from("leads").insert({
+  const { data: inserted, error } = await supabaseAdmin.from("leads").insert({
     form_type: payload.form_type,
     buyer_type: payload.buyer_type ?? null,
     purpose: payload.purpose ?? null,
