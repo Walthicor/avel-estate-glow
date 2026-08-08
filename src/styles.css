@@ -710,3 +710,33 @@
     transition: none;
   }
 }
+
+/* ============================================================
+   Property card — gold hairline painting across the image edge
+   ============================================================ */
+
+.prop-media::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: var(--color-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 2;
+}
+
+.group:hover .prop-media::after,
+.group:focus-within .prop-media::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prop-media img,
+  .prop-media::after {
+    transition: none;
+  }
+}
