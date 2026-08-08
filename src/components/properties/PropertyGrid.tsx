@@ -3,7 +3,7 @@ import type { PropertyRecord } from "../../content/properties";
 import { PROPERTIES_COPY } from "../../content/properties-page";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
-import { PropertyCard } from "./PropertyGridCard";
+import { PropertyCard } from "./PropertyCard";
 
 /** Filtered grid used by city, collection and guide pages. */
 export function PropertyGrid({
