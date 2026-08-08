@@ -18,6 +18,7 @@ import {
 } from "../../content/property-detail";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 import { Lightbox } from "./Lightbox";
 import { Gallery } from "./Gallery";
 import { PropertyCard } from "./PropertyCard";
