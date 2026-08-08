@@ -175,12 +175,12 @@ const en: HomeContent = {
   collections: {
     heading: "Find it by why you're buying.",
     items: [
-      { label: "Rental income", blurb: "Short and long-stay yield.", href: "/collections/short-term-rental-approved" },
-      { label: "Relocation", blurb: "Living here full time.", href: "/collections/pre-construction" },
-      { label: "Pre-construction", blurb: "Buy early, pay in stages.", href: "/collections/poblado-and-envigado" },
-      { label: "Retirement", blurb: "Slow living, warm climate.", href: "/collections/beachfront-caribbean" },
-      { label: "Second home", blurb: "Coast and country escapes.", href: "/collections/ready-to-move" },
-      { label: "Diversification", blurb: "Hard assets outside your currency.", href: "/collections/land-and-lots" },
+      { label: "Short-term rental approved", blurb: "Buildings that permit nightly stays, in writing.", href: "/collections/short-term-rental-approved" },
+      { label: "Pre-construction", blurb: "Buy early, pay in stages, held in fiducia.", href: "/collections/pre-construction" },
+      { label: "Poblado & Envigado", blurb: "The southern corridor, deepest resale.", href: "/collections/poblado-and-envigado" },
+      { label: "Beachfront Caribbean", blurb: "Cartagena and Santa Marta coast.", href: "/collections/beachfront-caribbean" },
+      { label: "Ready to move", blurb: "Delivered units, a key not a date.", href: "/collections/ready-to-move" },
+      { label: "Land & lots", blurb: "Use, water and access checked first.", href: "/collections/land-and-lots" },
     ],
   },
   why: {
