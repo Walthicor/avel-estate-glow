@@ -31,7 +31,7 @@ export function Header() {
       >
         <div
           className={`mx-auto flex max-w-[1400px] items-center justify-between px-6 transition-all duration-300 ease-out ${
-            condensed ? "h-[68px]" : "h-[84px]"
+            condensed ? "h-[128px]" : "h-[144px]"
           }`}
         >
           <a
