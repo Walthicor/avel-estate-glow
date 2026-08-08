@@ -20,21 +20,28 @@ import { BackToTopButton } from "../components/floating/BackToTopButton";
 import { CookieBanner } from "../components/consent/CookieBanner";
 
 function NotFoundComponent() {
+  const isEs = typeof window !== "undefined" && window.location.pathname.startsWith("/es");
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="flex min-h-screen items-center bg-abyss px-6 py-32 md:px-12">
+      <div className="mx-auto w-full max-w-[1240px]">
+        <span className="gold-rule mb-8 block" />
+        <p className="type-label text-sage">404</p>
+        <h1 className="type-hero mt-4 max-w-[16ch] text-bone">
+          {isEs ? "Esta página siguió su camino." : "This page moved on."}
+        </h1>
+        <p className="type-body mt-6 max-w-[46ch] text-sage">
+          {isEs
+            ? "El enlace ya no existe. Las propiedades siguen aquí."
+            : "The link no longer exists. The properties are still here."}
         </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <a href={isEs ? "/es/propiedades" : "/properties"} className="btn-gold">
+            {isEs ? "Ver propiedades" : "View properties"}
+          </a>
+          <a href={isEs ? "/es" : "/"} className="btn-ghost">
+            {isEs ? "Ir al inicio" : "Go home"}
+          </a>
         </div>
       </div>
     </div>
@@ -103,6 +110,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      // Bodoni Moda 400 (latin) renders above the fold — preload the exact file.
+      {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        crossOrigin: "anonymous",
+        href: "https://fonts.gstatic.com/s/bodonimoda/v28/aFT67PxzY382XsXX63LUYL6GYFcan6NJrKp-VPjfJMShrpsGFUt8oU7a8Id4tA.woff2",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600&family=Source+Sans+3:wght@300;400;600&display=swap",
