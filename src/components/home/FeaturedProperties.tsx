@@ -2,6 +2,7 @@ import type { HomeContent } from "../../content/home";
 import { PROPERTY_IMAGES } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 
 export function FeaturedProperties({ content }: { content: HomeContent["featured"] }) {
   const { localePath } = useLocale();
