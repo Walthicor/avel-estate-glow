@@ -1,0 +1,90 @@
+import { useState } from "react";
+
+import type { DetailCopy } from "../../content/property-detail";
+import { Lightbox } from "./Lightbox";
+
+export function Gallery({
+  images,
+  videoYoutubeId,
+  alt,
+  copy,
+}: {
+  images: string[];
+  videoYoutubeId: string | null;
+  alt: string;
+  copy: DetailCopy;
+}) {
+  const slides: Array<{ kind: "video" | "image"; src: string }> = [
+    ...(videoYoutubeId ? [{ kind: "video" as const, src: videoYoutubeId }] : []),
+    ...images.map((src) => ({ kind: "image" as const, src })),
+  ];
+  const [active, setActive] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
+
+  const current = slides[active]!;
+
+  return (
+    <section className="bg-abyss">
+      <div className="relative h-[70vh] w-full overflow-hidden bg-deep">
+        {current.kind === "video" ? (
+          <iframe
+            title={alt}
+            src={`https://www.youtube.com/embed/${current.src}?autoplay=1&mute=1&playsinline=1&rel=0`}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            className="h-full w-full"
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setLightbox(images.indexOf(current.src))}
+            aria-label={copy.gallery.open}
+            className="group h-full w-full"
+          >
+            <img
+              src={current.src}
+              alt={alt}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              decoding="async"
+            />
+          </button>
+        )}
+      </div>
+
+      <div className="hairline-b bg-deep">
+        <ul className="mx-auto flex max-w-[1400px] gap-3 overflow-x-auto px-6 py-4">
+          {slides.map((slide, i) => (
+            <li key={`${slide.kind}-${slide.src}-${i}`} className="shrink-0">
+              <button
+                type="button"
+                onClick={() => setActive(i)}
+                aria-current={active === i ? "true" : undefined}
+                className={`block h-16 w-24 overflow-hidden border transition-colors ${
+                  active === i ? "border-gold" : "border-transparent hover:border-sage/50"
+                }`}
+              >
+                {slide.kind === "video" ? (
+                  <span className="type-label grid h-full w-full place-items-center bg-abyss text-gold">
+                    ▶
+                  </span>
+                ) : (
+                  <img src={slide.src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                )}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {lightbox !== null ? (
+        <Lightbox
+          images={images}
+          index={lightbox}
+          onIndexChange={setLightbox}
+          onClose={() => setLightbox(null)}
+          labels={copy.gallery}
+        />
+      ) : null}
+    </section>
+  );
+}
