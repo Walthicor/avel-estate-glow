@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { Locale } from "../../config/site";
 import {
   areaLabel,
   bedroomsLabel,
+  propertyAlt,
   stageLabel,
   typeLabel,
 } from "../../content/properties";
@@ -52,12 +53,20 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
   const similar = similarProperties(detail);
   const contactHref = localePath("/contact");
 
+  // Tell the floating buttons to sit above the sticky mobile bar.
+  useEffect(() => {
+    document.body.dataset["stickybar"] = "open";
+    return () => {
+      delete document.body.dataset["stickybar"];
+    };
+  }, []);
+
   return (
     <div className="pb-24 pt-[112px] md:pb-0">
       <Gallery
         images={detail.gallery}
         videoYoutubeId={detail.videoYoutubeId}
-        alt={`${p.titleEn}, ${p.zone}, ${p.cityLabel}`}
+        alt={propertyAlt(p, locale)}
         copy={copy}
       />
 
@@ -130,12 +139,17 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
           </div>
           {detail.lat !== null && detail.lng !== null ? (
             <figure className="hairline overflow-hidden bg-deep">
-              <iframe
-                title={`${copy.approximate} — ${p.zone}`}
-                loading="lazy"
-                className="h-[320px] w-full grayscale"
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=${detail.lng - 0.02}%2C${detail.lat - 0.015}%2C${detail.lng + 0.02}%2C${detail.lat + 0.015}&layer=mapnik&marker=${detail.lat}%2C${detail.lng}`}
-              />
+              {/* Self-contained approximate map: no third-party request, no exact address. */}
+              <div
+                role="img"
+                aria-label={`${copy.approximate} — ${p.zone}, ${p.cityLabel}`}
+                className="avel-map relative h-[320px] w-full"
+              >
+                <span aria-hidden="true" className="avel-map__pin" />
+                <span className="type-label absolute bottom-4 left-4 text-sage">
+                  {p.zone} · {p.cityLabel}
+                </span>
+              </div>
               <figcaption className="type-label hairline-t px-4 py-3 text-sage">
                 {copy.approximate}
               </figcaption>
@@ -155,12 +169,12 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
                   <button
                     type="button"
                     onClick={() => setPlanIndex(i)}
+                    aria-label={`${copy.floorplans} ${i + 1}`}
                     className="block h-32 w-44 overflow-hidden border border-sage/30 transition-colors hover:border-gold"
                   >
                     <AvelImage
                       src={src}
-                      alt=""
-                      ariaHidden
+                      alt={`${copy.floorplans} ${i + 1} — ${p.titleEn}`}
                       preset="thumbnail"
                       ratio="11/8"
                       className="h-full w-full"
@@ -178,6 +192,7 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
               onIndexChange={setPlanIndex}
               onClose={() => setPlanIndex(null)}
               labels={copy.gallery}
+              alt={`${copy.floorplans} — ${p.titleEn}`}
             />
           ) : null}
         </section>

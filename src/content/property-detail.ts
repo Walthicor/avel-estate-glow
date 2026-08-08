@@ -138,7 +138,7 @@ export type DetailCopy = {
   pathLink: string;
   similar: string;
   requestDetails: string;
-  gallery: { open: string; close: string; prev: string; next: string; slide: (i: number, n: number) => string };
+  gallery: { open: string; close: string; prev: string; next: string; videoThumb: string; slide: (i: number, n: number) => string };
   meta: (p: PropertyRecord) => { title: string; description: string };
 };
 
@@ -172,11 +172,12 @@ export const DETAIL_COPY: Record<Locale, DetailCopy> = {
       close: "Close gallery",
       prev: "Previous image",
       next: "Next image",
+      videoThumb: "Play the property video",
       slide: (i, n) => `Image ${i} of ${n}`,
     },
     meta: (p) => ({
-      title: `${p.titleEn} — ${p.zone}, ${p.cityLabel} | Price on request`,
-      description: `${p.titleEn} in ${p.zone}, ${p.cityLabel}. ${p.areaMin}–${p.areaMax} m², ${p.bedroomsMin}–${p.bedroomsMax} bedrooms. Title-checked and available to remote buyers. Price on request.`,
+      title: `${p.titleEn} — ${p.zone}, ${p.cityLabel}`,
+      description: `${p.zone}, ${p.cityLabel}. ${p.areaMin}–${p.areaMax} m², ${p.bedroomsMin}–${p.bedroomsMax} bedrooms. Title-checked for remote buyers. Price on request.`,
     }),
   },
   es: {
@@ -208,11 +209,12 @@ export const DETAIL_COPY: Record<Locale, DetailCopy> = {
       close: "Cerrar galería",
       prev: "Imagen anterior",
       next: "Imagen siguiente",
+      videoThumb: "Reproducir el video de la propiedad",
       slide: (i, n) => `Imagen ${i} de ${n}`,
     },
     meta: (p) => ({
-      title: `${p.titleEn} — ${p.zone}, ${p.cityLabel} | Precio a consultar`,
-      description: `${p.titleEn} en ${p.zone}, ${p.cityLabel}. ${p.areaMin}–${p.areaMax} m², ${p.bedroomsMin}–${p.bedroomsMax} habitaciones. Con estudio de títulos y disponible para compradores remotos. Precio a consultar.`,
+      title: `${p.titleEn} — ${p.zone}, ${p.cityLabel}`,
+      description: `${p.zone}, ${p.cityLabel}. ${p.areaMin}–${p.areaMax} m², ${p.bedroomsMin}–${p.bedroomsMax} habitaciones. Estudio de títulos. Precio a consultar.`,
     }),
   },
 };

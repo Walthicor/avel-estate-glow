@@ -64,6 +64,11 @@ export function Gallery({
                 type="button"
                 onClick={() => setActive(i)}
                 aria-current={active === i ? "true" : undefined}
+                aria-label={
+                  slide.kind === "video"
+                    ? copy.gallery.videoThumb
+                    : copy.gallery.slide(i + 1, slides.length)
+                }
                 className={`block h-16 w-24 overflow-hidden border transition-colors ${
                   active === i ? "border-gold" : "border-transparent hover:border-sage/50"
                 }`}
@@ -96,6 +101,7 @@ export function Gallery({
           onIndexChange={setLightbox}
           onClose={() => setLightbox(null)}
           labels={copy.gallery}
+          alt={alt}
         />
       ) : null}
     </section>

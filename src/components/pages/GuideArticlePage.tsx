@@ -70,7 +70,7 @@ export function GuideArticlePage({ slug }: { slug: string }) {
   let firstParagraphSeen = false;
 
   return (
-    <main>
+    <div>
       <ReadingProgress />
 
       <article className="bg-abyss px-6 pt-[168px] pb-20 md:px-12 md:pt-[200px] md:pb-28">
@@ -98,6 +98,6 @@ export function GuideArticlePage({ slug }: { slug: string }) {
       </Reveal>
 
       <LeadCapture content={HOME[locale].lead} />
-    </main>
+    </div>
   );
 }

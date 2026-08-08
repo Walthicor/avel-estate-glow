@@ -8,12 +8,14 @@ export function Lightbox({
   onClose,
   onIndexChange,
   labels,
+  alt,
 }: {
   images: string[];
   index: number;
   onClose: () => void;
   onIndexChange: (i: number) => void;
   labels: { close: string; prev: string; next: string; slide: (i: number, n: number) => string };
+  alt: string;
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -83,8 +85,7 @@ export function Lightbox({
           </button>
           <AvelImage
             src={images[index] ?? ""}
-            alt=""
-            ariaHidden
+            alt={`${alt} — ${labels.slide(index + 1, images.length)}`}
             preset="lightbox"
             fit="contain"
             priority

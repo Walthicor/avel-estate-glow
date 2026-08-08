@@ -20,7 +20,7 @@ export function AboutPage() {
 
       <section className="bg-bone px-6 py-24 text-abyss md:px-12 md:py-32">
         <Reveal className="mx-auto max-w-[1240px]">
-          <p className="type-label text-abyss/50">{c.founder.credentialsLabel}</p>
+          <p className="type-label text-abyss/70">{c.founder.credentialsLabel}</p>
           <ul className="mt-8 max-w-[70ch] space-y-3">
             {c.founder.credentials.map((cr) => (
               <li key={cr} className="type-body flex gap-4 text-abyss/80">

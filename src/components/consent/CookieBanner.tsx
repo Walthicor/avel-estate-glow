@@ -55,6 +55,14 @@ export function CookieBanner() {
     };
   }, []);
 
+  useEffect(() => {
+    if (visible) document.body.dataset["cookiebar"] = "open";
+    else delete document.body.dataset["cookiebar"];
+    return () => {
+      delete document.body.dataset["cookiebar"];
+    };
+  }, [visible]);
+
   const decide = (choice: { analytics: boolean; marketing: boolean }) => {
     writeConsent(choice);
     setEntered(false);

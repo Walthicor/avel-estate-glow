@@ -46,8 +46,7 @@ export const CITIES: CityRecord[] = [
       name: "Medellín",
       region: "Antioquia",
       seoTitle: "Buying property in Medellín as a foreigner — AVEL Estates",
-      seoDescription:
-        "What Medellín is actually like for a foreign buyer: which zones matter, how the altitude and valley shape prices, and what to check before you sign.",
+      seoDescription: "Zones, altitude, rental rules and how foreign buyers purchase in Medellín remotely. Price on request.",
       intro: [
         "Medellín sits at 1,495 metres in a narrow valley, which is the single fact that explains most of the property market here. The climate does not change through the year — days sit around 22–28°C, nights are cool, and nothing needs heating or air conditioning. Buildings are therefore cheap to run, balconies are used year-round, and the ones with a valley view command a premium that never really softens.",
         "The valley is narrow, so the city grows upward and sideways along the hills. Flat, walkable land is scarce and expensive; the steep land above it is cheaper but you will be dependent on a car or on a long walk uphill. When a listing sounds unusually good for its zone, the reason is almost always slope, noise from a main avenue, or a building with no lift redundancy.",
@@ -68,9 +67,8 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Medellín",
       region: "Antioquia",
-      seoTitle: "Comprar propiedad en Medellín siendo extranjero — AVEL Estates",
-      seoDescription:
-        "Cómo es realmente Medellín para un comprador extranjero: qué zonas importan, cómo el valle define los precios y qué revisar antes de firmar.",
+      seoTitle: "Comprar propiedad en Medellín | AVEL Estates",
+      seoDescription: "Zonas, clima, reglas de renta y cómo compran los extranjeros en Medellín a distancia.",
       intro: [
         "Medellín está a 1.495 metros en un valle estrecho, y ese dato explica casi todo el mercado inmobiliario local. El clima no cambia durante el año: entre 22 y 28°C de día, noches frescas, y nada necesita calefacción ni aire acondicionado. Los edificios son baratos de operar, los balcones se usan todo el año y los que tienen vista al valle mantienen un sobreprecio que casi nunca cede.",
         "Como el valle es angosto, la ciudad crece hacia arriba y hacia las laderas. La tierra plana y caminable es escasa y cara; la de ladera es más barata, pero dependerá del carro o de una subida larga. Cuando una oferta parece demasiado buena para su zona, la razón suele ser la pendiente, el ruido de una avenida o un edificio sin redundancia de ascensores.",
@@ -97,8 +95,7 @@ export const CITIES: CityRecord[] = [
       name: "Cartagena",
       region: "Bolívar",
       seoTitle: "Buying property in Cartagena as a foreigner — AVEL Estates",
-      seoDescription:
-        "Cartagena for the remote buyer: walled city versus Bocagrande versus the northern beaches, salt-air maintenance, and what the tourist season really does to occupancy.",
+      seoDescription: "Walled city, Bocagrande or the northern beaches: what Cartagena means for a remote foreign buyer.",
       intro: [
         "Cartagena is a Caribbean port with a UNESCO-listed walled city attached to a modern beach strip, and those two halves behave like different markets. Inside the walls you are buying a restored colonial house or a converted apartment, usually with a heritage restriction on what you can change and an owners' community that is small and opinionated. Outside, in Bocagrande and Castillogrande, you are buying a tower: newer, easier to maintain, and far more liquid when you sell.",
         "Heat and salt are the real variables here. It is hot and humid all year, so air conditioning runs constantly and electricity is a genuine monthly cost, not a rounding error. Salt air attacks metal, glass fittings and façades; a building that skips maintenance shows it within five years. Before you commit, ask for the administration fee, the last two years of extraordinary levies, and whether the façade has been treated. A cheap tower with a deferred maintenance backlog is not cheap.",
@@ -119,9 +116,8 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Cartagena",
       region: "Bolívar",
-      seoTitle: "Comprar propiedad en Cartagena siendo extranjero — AVEL Estates",
-      seoDescription:
-        "Cartagena para el comprador remoto: ciudad amurallada frente a Bocagrande y las playas del norte, mantenimiento por salitre y ocupación real por temporada.",
+      seoTitle: "Comprar propiedad en Cartagena | AVEL Estates",
+      seoDescription: "Ciudad amurallada, Bocagrande o playas del norte: qué significa Cartagena para un comprador remoto.",
       intro: [
         "Cartagena es un puerto caribeño con una ciudad amurallada declarada por la UNESCO pegada a una franja de playa moderna, y esas dos mitades se comportan como mercados distintos. Dentro de las murallas usted compra una casa colonial restaurada o un apartamento adaptado, casi siempre con restricción patrimonial sobre lo que puede modificar y una copropiedad pequeña y muy opinada. Afuera, en Bocagrande y Castillogrande, compra una torre: más nueva, más fácil de mantener y mucho más líquida al vender.",
         "El calor y la sal son las variables reales. Hace calor y humedad todo el año, el aire acondicionado funciona sin parar y la energía es un costo mensual serio, no un detalle. El salitre ataca metales, herrajes y fachadas; un edificio que descuida el mantenimiento lo muestra en cinco años. Antes de comprometerse pida la cuota de administración, las cuotas extraordinarias de los últimos dos años y si la fachada tiene tratamiento. Una torre barata con mantenimiento aplazado no es barata.",
@@ -148,8 +144,7 @@ export const CITIES: CityRecord[] = [
       name: "Santa Marta",
       region: "Magdalena",
       seoTitle: "Buying property in Santa Marta as a foreigner — AVEL Estates",
-      seoDescription:
-        "Santa Marta for foreign buyers: Rodadero, Pozos Colorados and Bello Horizonte compared, water supply realities, and why entry prices sit below Cartagena.",
+      seoDescription: "Rodadero, Pozos Colorados and Bello Horizonte compared for foreign buyers in Santa Marta.",
       intro: [
         "Santa Marta is the oldest surviving city in Colombia and, for a buyer, the cheapest way into the Caribbean coast. Entry prices per square metre sit well below Cartagena for comparable sea-view stock, which is the main reason foreign interest has moved here. The trade-off is a smaller, less international rental market and a shorter list of buildings that are genuinely well run.",
         "The city is squeezed between the Sierra Nevada and the sea, so the coastline breaks into distinct pockets rather than one continuous strip. El Rodadero is the established tourist bay: dense, busy, and where nightly rental demand actually exists. South of it, Bello Horizonte and Pozos Colorados are newer condominium corridors with better beaches, resort-style amenities and more space per peso, but you are car-dependent and dining options are inside the complexes. The Centro Histórico has been steadily restored and is the most interesting place to actually live; Taganga, over the hill, is beautiful and stubbornly informal.",
@@ -170,9 +165,8 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Santa Marta",
       region: "Magdalena",
-      seoTitle: "Comprar propiedad en Santa Marta siendo extranjero — AVEL Estates",
-      seoDescription:
-        "Santa Marta para compradores extranjeros: Rodadero, Pozos Colorados y Bello Horizonte comparados, realidad del agua y por qué la entrada es menor que en Cartagena.",
+      seoTitle: "Comprar propiedad en Santa Marta | AVEL Estates",
+      seoDescription: "Rodadero, Pozos Colorados y Bello Horizonte comparados para el comprador extranjero.",
       intro: [
         "Santa Marta es la ciudad más antigua del país que sigue en pie y, para un comprador, la entrada más económica al Caribe colombiano. El precio por metro cuadrado está bastante por debajo de Cartagena para producto comparable con vista al mar, y esa es la razón principal del interés extranjero. El costo: un mercado de renta más pequeño y menos internacional, y una lista corta de edificios realmente bien administrados.",
         "La ciudad está apretada entre la Sierra Nevada y el mar, así que la costa se rompe en bolsillos y no en una franja continua. El Rodadero es la bahía turística consolidada: densa, movida y donde sí existe demanda de renta por noches. Al sur, Bello Horizonte y Pozos Colorados son corredores de condominios nuevos con mejores playas, amenidades tipo resort y más espacio por peso, pero dependen del carro y la oferta gastronómica está dentro de los conjuntos. El Centro Histórico se ha restaurado de forma sostenida y es el lugar más interesante para vivir; Taganga, cruzando la loma, es hermosa y tercamente informal.",
@@ -199,8 +193,7 @@ export const CITIES: CityRecord[] = [
       name: "Bogotá",
       region: "Cundinamarca",
       seoTitle: "Buying property in Bogotá as a foreigner — AVEL Estates",
-      seoDescription:
-        "Bogotá for foreign buyers: the northern corridor explained, long-term tenants instead of nightly rental, altitude, traffic and what actually holds value.",
+      seoDescription: "Bogotá for foreign buyers: the northern corridor, long-term tenants and what the market rewards.",
       intro: [
         "Bogotá is the country's economic centre and behaves like one: nine million people, corporate tenants, and a property market driven by long-term leases rather than tourism. If your plan is nightly rental income, this is the wrong city. If your plan is a stable tenant on a one- or two-year contract, indexed annually, this is the most predictable market in Colombia.",
         "The city sits at 2,640 metres. It is cool year-round — roughly 8–19°C — and the altitude is a real consideration for older buyers and anyone with a cardiac or respiratory condition. Buildings are built for cold and damp, not heat: look at insulation, window quality and whether the apartment gets afternoon sun, because a north-facing flat in Bogotá is genuinely colder to live in.",
@@ -222,8 +215,7 @@ export const CITIES: CityRecord[] = [
       name: "Bogotá",
       region: "Cundinamarca",
       seoTitle: "Comprar propiedad en Bogotá siendo extranjero — AVEL Estates",
-      seoDescription:
-        "Bogotá para compradores extranjeros: el corredor norte explicado, arriendo largo en vez de renta corta, altura, tráfico y qué sostiene el valor.",
+      seoDescription: "Bogotá para compradores extranjeros: corredor norte, arriendo largo y qué premia el mercado.",
       intro: [
         "Bogotá es el centro económico del país y se comporta como tal: nueve millones de habitantes, arrendatarios corporativos y un mercado movido por contratos de largo plazo, no por turismo. Si su plan es renta por noches, esta es la ciudad equivocada. Si su plan es un arrendatario estable con contrato a uno o dos años, indexado cada año, este es el mercado más predecible de Colombia.",
         "La ciudad está a 2.640 metros. El clima es frío todo el año —entre 8 y 19°C— y la altura es una consideración real para compradores mayores o con condiciones cardíacas o respiratorias. Los edificios están hechos para frío y humedad, no para calor: revise aislamiento, calidad de ventanas y si el apartamento recibe sol de la tarde, porque un apartamento hacia el norte se vive notablemente más frío.",
@@ -250,8 +242,7 @@ export const CITIES: CityRecord[] = [
       name: "Envigado",
       region: "Antioquia",
       seoTitle: "Buying property in Envigado as a foreigner — AVEL Estates",
-      seoDescription:
-        "Envigado explained for foreign buyers: a separate municipality south of Medellín with its own rules, calmer streets and better value than El Poblado.",
+      seoDescription: "Envigado for foreign buyers: a separate municipality south of Medellín, calmer and with its own rules.",
       intro: [
         "Envigado is not a neighbourhood of Medellín. It is a separate municipality with its own mayor, its own building rules and its own property tax, and that distinction matters more than the ten minutes it takes to drive between them. Decisions about density, licences and short-term rental are taken in Envigado, not in Medellín, so a rule you read about El Poblado may simply not apply here.",
         "Physically it feels like the quieter version of the south of the valley. Streets are narrower and more residential, the parque principal still functions as an actual town square on Sundays, and the population skews towards families and long-term residents rather than short-stay visitors. For a buyer choosing between here and El Poblado, the practical difference is noise, price per square metre and how far you are from a restaurant at 11pm.",
@@ -272,9 +263,8 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Envigado",
       region: "Antioquia",
-      seoTitle: "Comprar propiedad en Envigado siendo extranjero — AVEL Estates",
-      seoDescription:
-        "Envigado explicado para compradores extranjeros: municipio aparte al sur de Medellín, con reglas propias, calles más tranquilas y mejor precio que El Poblado.",
+      seoTitle: "Comprar propiedad en Envigado | AVEL Estates",
+      seoDescription: "Envigado: municipio aparte al sur de Medellín, más tranquilo y con reglas propias de renta.",
       intro: [
         "Envigado no es un barrio de Medellín. Es un municipio aparte, con alcalde propio, normativa urbana propia e impuesto predial propio, y esa diferencia pesa más que los diez minutos que separan a uno del otro. Las decisiones sobre densidad, licencias y renta corta se toman en Envigado, no en Medellín, así que una regla que leyó sobre El Poblado puede sencillamente no aplicar aquí.",
         "En la práctica se siente como la versión tranquila del sur del valle. Las calles son más angostas y residenciales, el parque principal todavía funciona como plaza de pueblo los domingos, y la población es de familias y residentes de largo plazo más que de visitantes de paso. Para quien elige entre esto y El Poblado, la diferencia real es ruido, precio por metro cuadrado y qué tan lejos queda un restaurante a las 11 de la noche.",
@@ -301,8 +291,7 @@ export const CITIES: CityRecord[] = [
       name: "Rionegro",
       region: "Antioquia",
       seoTitle: "Buying property in Rionegro and Llanogrande — AVEL Estates",
-      seoDescription:
-        "Rionegro and Llanogrande for foreign buyers: country houses, lots and condominium projects near José María Córdova airport, and what to check before buying land.",
+      seoDescription: "Rionegro and Llanogrande: country houses, lots and condominiums near Medellín's airport.",
       intro: [
         "Rionegro sits forty-five minutes east of Medellín on the high plateau, at around 2,100 metres, and it is where the valley goes when it wants space. This is the country market: houses on plots, gated condominium communities, and serviced lots sold for self-build. The international airport is here, which means a buyer landing from Miami or Madrid is already in Rionegro before they are in Medellín — a fact that has driven a decade of construction along the airport corridor.",
         "The climate is cooler than Medellín and greener, with real rain. Mornings are misty, afternoons are bright, and gardens grow without effort. The trade-off is distance. Everything is a drive: the school, the supermarket, the restaurant. Households here typically run two cars, and the road into Medellín via Las Palmas or the tunnel is fast outside peak hours and slow inside them.",
@@ -324,8 +313,7 @@ export const CITIES: CityRecord[] = [
       name: "Rionegro",
       region: "Antioquia",
       seoTitle: "Comprar propiedad en Rionegro y Llanogrande — AVEL Estates",
-      seoDescription:
-        "Rionegro y Llanogrande para compradores extranjeros: casas campestres, lotes y condominios cerca del aeropuerto José María Córdova, y qué revisar antes de comprar tierra.",
+      seoDescription: "Rionegro y Llanogrande: casas campestres, lotes y condominios cerca del aeropuerto.",
       intro: [
         "Rionegro queda cuarenta y cinco minutos al oriente de Medellín, en el altiplano, a unos 2.100 metros, y es a donde va el valle cuando quiere espacio. Este es el mercado campestre: casas con lote, condominios cerrados y lotes urbanizados para construir. El aeropuerto internacional está aquí, así que un comprador que aterriza desde Miami o Madrid ya está en Rionegro antes de estar en Medellín, un hecho que impulsó una década de construcción sobre el corredor del aeropuerto.",
         "El clima es más frío y más verde que el de Medellín, con lluvia de verdad. Las mañanas son de neblina, las tardes despejadas y los jardines crecen solos. El costo es la distancia: todo implica manejar —el colegio, el supermercado, el restaurante—. Los hogares suelen tener dos carros, y la vía a Medellín por Las Palmas o por el túnel es rápida fuera de hora pico y lenta dentro de ella.",

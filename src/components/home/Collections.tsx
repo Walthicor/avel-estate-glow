@@ -23,8 +23,7 @@ export function Collections({ content }: { content: HomeContent["collections"] }
               >
                 <AvelImage
                   src={COLLECTION_IMAGES[i] ?? ""}
-                  alt=""
-                  ariaHidden
+                  alt={item.label}
                   preset="card"
                   ratio="4/3"
                   sizes="(max-width: 640px) 100vw, 33vw"

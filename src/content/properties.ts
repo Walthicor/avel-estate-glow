@@ -31,6 +31,9 @@ export type PropertyRecord = {
   str: boolean;
   image: number;
   titleEn: string;
+  /** Localised image alt text, generated at module load. */
+  alt_en?: string;
+  alt_es?: string;
   /** Higher = newer. */
   order: number;
 };
@@ -684,9 +687,24 @@ const RAW: PropertyRecord[] = [
   }
 ];
 
-export const PROPERTIES = RAW;
+/**
+ * Localised alt text for every property photograph.
+ * Derived once at module load so each record always carries alt_en / alt_es.
+ */
+const withAlt = (p: PropertyRecord): PropertyRecord => ({
+  ...p,
+  alt_en: `${p.titleEn} — ${p.typeEn.toLowerCase()} in ${p.zone}, ${p.cityLabel}, Colombia`,
+  alt_es: `${p.titleEn} — ${p.typeEs.toLowerCase()} en ${p.zone}, ${p.cityLabel}, Colombia`,
+});
+
+export const PROPERTIES = RAW.map(withAlt);
+
+export const propertyAlt = (p: PropertyRecord, locale: Locale) =>
+  (locale === "es" ? p.alt_es : p.alt_en) ??
+  `${p.titleEn}, ${p.zone}, ${p.cityLabel}`;
 
 export const imageFor = (p: PropertyRecord) => IMAGES[p.image % IMAGES.length]!;
+
 
 export const CITY_OPTIONS = [
   { value: "medellin", label: "Medellín" },

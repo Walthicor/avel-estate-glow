@@ -7,6 +7,10 @@ export const SITE = {
   notifyEmail: "avelinmobiliaria@gmail.com",
   fromEmail: "noreply@avelestates.com",
   phone: "",
+  social: {
+    instagram: "https://www.instagram.com/avelestates",
+    linkedin: "https://www.linkedin.com/company/avelestates",
+  },
   defaultLocale: "en",
   locales: ["en", "es"] as const,
 } as const;
