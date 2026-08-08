@@ -29,6 +29,7 @@ import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
 import { Route as EsColeccionesIndexRouteImport } from './routes/es/colecciones.index'
 import { Route as EsColeccionesSlugRouteImport } from './routes/es/colecciones.$slug'
+import { Route as EsGuiasIndexRouteImport } from './routes/es/guias.index'
 import { Route as EsLegalCookiesRouteImport } from './routes/es/legal.cookies'
 import { Route as EsLegalHabeasDataRouteImport } from './routes/es/legal.habeas-data'
 import { Route as EsLegalPrivacyRouteImport } from './routes/es/legal.privacy'
@@ -137,6 +138,11 @@ const EsColeccionesSlugRoute = EsColeccionesSlugRouteImport.update({
   path: '/es/colecciones/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsGuiasIndexRoute = EsGuiasIndexRouteImport.update({
+  id: '/es/guias/',
+  path: '/es/guias/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsLegalCookiesRoute = EsLegalCookiesRouteImport.update({
   id: '/es/legal/cookies',
   path: '/es/legal/cookies',
@@ -194,6 +200,7 @@ export interface FileRoutesByFullPath {
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/colecciones/': typeof EsColeccionesIndexRoute
+  '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -222,6 +229,7 @@ export interface FileRoutesByTo {
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/colecciones': typeof EsColeccionesIndexRoute
+  '/es/guias': typeof EsGuiasIndexRoute
   '/es/propiedades': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesById {
@@ -251,6 +259,7 @@ export interface FileRoutesById {
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
   '/es/colecciones/': typeof EsColeccionesIndexRoute
+  '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRouteTypes {
@@ -281,6 +290,7 @@ export interface FileRouteTypes {
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/colecciones/'
+    | '/es/guias/'
     | '/es/propiedades/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -309,6 +319,7 @@ export interface FileRouteTypes {
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/colecciones'
+    | '/es/guias'
     | '/es/propiedades'
   id:
     | '__root__'
@@ -337,6 +348,7 @@ export interface FileRouteTypes {
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
     | '/es/colecciones/'
+    | '/es/guias/'
     | '/es/propiedades/'
   fileRoutesById: FileRoutesById
 }
@@ -366,6 +378,7 @@ export interface RootRouteChildren {
   EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
   EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
+  EsGuiasIndexRoute: typeof EsGuiasIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
 }
 
@@ -511,6 +524,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsColeccionesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/guias/': {
+      id: '/es/guias/'
+      path: '/es/guias'
+      fullPath: '/es/guias/'
+      preLoaderRoute: typeof EsGuiasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/legal/cookies': {
       id: '/es/legal/cookies'
       path: '/es/legal/cookies'
@@ -582,6 +602,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
   EsColeccionesIndexRoute: EsColeccionesIndexRoute,
+  EsGuiasIndexRoute: EsGuiasIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
 }
 export const routeTree = rootRouteImport
