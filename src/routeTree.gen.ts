@@ -10,18 +10,15 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PropertiesRouteImport } from './routes/properties'
 import { Route as EsIndexRouteImport } from './routes/es/index'
-import { Route as EsPropiedadesRouteImport } from './routes/es/propiedades'
+import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
+import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as EsPropiedadesIndexRouteImport } from './routes/es/propiedades.index'
+import { Route as EsPropiedadesSlugRouteImport } from './routes/es/propiedades.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PropertiesRoute = PropertiesRouteImport.update({
-  id: '/properties',
-  path: '/properties',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -29,44 +26,86 @@ const EsIndexRoute = EsIndexRouteImport.update({
   path: '/es/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EsPropiedadesRoute = EsPropiedadesRouteImport.update({
-  id: '/es/propiedades',
-  path: '/es/propiedades',
+const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
+  id: '/properties/',
+  path: '/properties/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
+  id: '/properties/$slug',
+  path: '/properties/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsPropiedadesIndexRoute = EsPropiedadesIndexRouteImport.update({
+  id: '/es/propiedades/',
+  path: '/es/propiedades/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
+  id: '/es/propiedades/$slug',
+  path: '/es/propiedades/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/properties': typeof PropertiesRoute
-  '/es/propiedades': typeof EsPropiedadesRoute
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
+  '/properties/': typeof PropertiesIndexRoute
+  '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/properties': typeof PropertiesRoute
-  '/es/propiedades': typeof EsPropiedadesRoute
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/es': typeof EsIndexRoute
+  '/properties': typeof PropertiesIndexRoute
+  '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/propiedades': typeof EsPropiedadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/properties': typeof PropertiesRoute
-  '/es/propiedades': typeof EsPropiedadesRoute
+  '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
+  '/properties/': typeof PropertiesIndexRoute
+  '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/es/propiedades/': typeof EsPropiedadesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/properties' | '/es/propiedades' | '/es/'
+  fullPaths:
+    | '/'
+    | '/properties/$slug'
+    | '/es/'
+    | '/properties/'
+    | '/es/propiedades/$slug'
+    | '/es/propiedades/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/properties' | '/es/propiedades' | '/es'
-  id: '__root__' | '/' | '/properties' | '/es/propiedades' | '/es/'
+  to:
+    | '/'
+    | '/properties/$slug'
+    | '/es'
+    | '/properties'
+    | '/es/propiedades/$slug'
+    | '/es/propiedades'
+  id:
+    | '__root__'
+    | '/'
+    | '/properties/$slug'
+    | '/es/'
+    | '/properties/'
+    | '/es/propiedades/$slug'
+    | '/es/propiedades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  PropertiesRoute: typeof PropertiesRoute
-  EsPropiedadesRoute: typeof EsPropiedadesRoute
+  PropertiesSlugRoute: typeof PropertiesSlugRoute
   EsIndexRoute: typeof EsIndexRoute
+  PropertiesIndexRoute: typeof PropertiesIndexRoute
+  EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
+  EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -78,13 +117,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/properties': {
-      id: '/properties'
-      path: '/properties'
-      fullPath: '/properties'
-      preLoaderRoute: typeof PropertiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/es/': {
       id: '/es/'
       path: '/es'
@@ -92,11 +124,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/es/propiedades': {
-      id: '/es/propiedades'
+    '/properties/': {
+      id: '/properties/'
+      path: '/properties'
+      fullPath: '/properties/'
+      preLoaderRoute: typeof PropertiesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/properties/$slug': {
+      id: '/properties/$slug'
+      path: '/properties/$slug'
+      fullPath: '/properties/$slug'
+      preLoaderRoute: typeof PropertiesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/propiedades/': {
+      id: '/es/propiedades/'
       path: '/es/propiedades'
-      fullPath: '/es/propiedades'
-      preLoaderRoute: typeof EsPropiedadesRouteImport
+      fullPath: '/es/propiedades/'
+      preLoaderRoute: typeof EsPropiedadesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/propiedades/$slug': {
+      id: '/es/propiedades/$slug'
+      path: '/es/propiedades/$slug'
+      fullPath: '/es/propiedades/$slug'
+      preLoaderRoute: typeof EsPropiedadesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -104,9 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  PropertiesRoute: PropertiesRoute,
-  EsPropiedadesRoute: EsPropiedadesRoute,
+  PropertiesSlugRoute: PropertiesSlugRoute,
   EsIndexRoute: EsIndexRoute,
+  PropertiesIndexRoute: PropertiesIndexRoute,
+  EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
+  EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
