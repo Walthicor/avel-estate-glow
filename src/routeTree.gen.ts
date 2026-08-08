@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
@@ -19,6 +20,11 @@ import { Route as EsPropiedadesSlugRouteImport } from './routes/es/propiedades.$
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
+  id: '/buying-from-abroad',
+  path: '/buying-from-abroad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -49,6 +55,7 @@ const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es': typeof EsIndexRoute
   '/properties': typeof PropertiesIndexRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -76,6 +85,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/buying-from-abroad'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
@@ -84,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/buying-from-abroad'
     | '/properties/$slug'
     | '/es'
     | '/properties'
@@ -92,6 +103,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/buying-from-abroad'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
@@ -101,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   EsIndexRoute: typeof EsIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
@@ -115,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buying-from-abroad': {
+      id: '/buying-from-abroad'
+      path: '/buying-from-abroad'
+      fullPath: '/buying-from-abroad'
+      preLoaderRoute: typeof BuyingFromAbroadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/': {
@@ -157,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   EsIndexRoute: EsIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
