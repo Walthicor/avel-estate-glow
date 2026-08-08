@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import logo from "../assets/avel-logo-full.png.asset.json";
 import { PRESET_WIDTH, buildSrcSet, parseRatio, transformedSrc, type ImagePreset } from "../lib/image";
