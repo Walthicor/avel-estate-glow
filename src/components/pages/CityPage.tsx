@@ -23,7 +23,6 @@ export function CityPage({ slug }: { slug: string }) {
           alt={`${c.name}, ${c.region}, Colombia`}
           preset="hero"
           priority
-          ratio="16/9"
           sizes="100vw"
           className="absolute inset-0 h-full w-full"
         />
