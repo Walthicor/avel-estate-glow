@@ -103,7 +103,7 @@ export const descriptionFor = (d: PropertyDetail, locale: Locale): string[] => {
     ];
   }
   return [
-    `${p.titleEn} is a ${p.typeEn.toLowerCase()} project in ${p.zone}, ${p.cityLabel}, with units between ${p.areaMin} and ${p.areaMax} m². The building was designed with international owners in mind: move-in finishes, professional administration and clean paperwork from day one.`,
+    `${p.titleEn} is ${/^[aeiou]/i.test(p.typeEn) ? "an" : "a"} ${p.typeEn.toLowerCase()} project in ${p.zone}, ${p.cityLabel}, with units between ${p.areaMin} and ${p.areaMax} m². The building was designed with international owners in mind: move-in finishes, professional administration and clean paperwork from day one.`,
     `Units offer ${p.bedroomsMin} to ${p.bedroomsMax} bedrooms, floor-to-ceiling glazing and open social areas. ${p.delivery ? `Delivery is scheduled for ${p.delivery}.` : "The property is ready for immediate handover."} ${p.str ? "Short-term rental is permitted under the building bylaws." : ""}`,
     "We run the whole process remotely: title verification, power of attorney, bank account opening and registration of the foreign investment with Banco de la República.",
   ];
