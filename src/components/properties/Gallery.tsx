@@ -73,7 +73,15 @@ export function Gallery({
                     ▶
                   </span>
                 ) : (
-                  <img src={slide.src} alt="" className="h-full w-full object-cover" loading="lazy" />
+                  <AvelImage
+                    src={slide.src}
+                    alt=""
+                    ariaHidden
+                    preset="thumbnail"
+                    ratio="3/2"
+                    className="h-full w-full"
+                  />
+
                 )}
               </button>
             </li>
