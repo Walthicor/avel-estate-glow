@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef } from "react";
 
+import { AvelImage } from "../AvelImage";
+
 export function Lightbox({
   images,
   index,
