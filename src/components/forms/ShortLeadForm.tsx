@@ -18,8 +18,8 @@ export function ShortLeadForm({
 }: {
   tone?: Tone;
   propertyId?: string;
-  heading?: string;
-  body?: string;
+  heading?: string | null;
+  body?: string | null;
   className?: string;
 }) {
   const { locale, localePath } = useLocale();
@@ -30,7 +30,8 @@ export function ShortLeadForm({
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  const title = heading ?? (propertyId ? copy.shortPropertyHeading : copy.shortHeading);
+  const title =
+    heading === null ? null : (heading ?? (propertyId ? copy.shortPropertyHeading : copy.shortHeading));
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -82,12 +83,20 @@ export function ShortLeadForm({
 
   return (
     <form className={`grid gap-5 ${className}`} onSubmit={onSubmit} noValidate>
-      <div>
-        <h3 className={`type-h3 ${tone === "dark" ? "text-bone" : "text-abyss"}`}>{title}</h3>
-        <p className={`type-body mt-3 max-w-[42ch] ${tone === "dark" ? "text-sage" : "text-abyss/70"}`}>
-          {body ?? copy.shortBody}
-        </p>
-      </div>
+      {title === null ? null : (
+        <div>
+          <h3 className={`type-h3 ${tone === "dark" ? "text-bone" : "text-abyss"}`}>{title}</h3>
+          {body === null ? null : (
+            <p
+              className={`type-body mt-3 max-w-[42ch] ${
+                tone === "dark" ? "text-sage" : "text-abyss/70"
+              }`}
+            >
+              {body ?? copy.shortBody}
+            </p>
+          )}
+        </div>
+      )}
 
       <Field id="short-name" label={copy.name} error={errors["name"]} tone={tone}>
         {(props) => <input name="name" className={fieldClass(tone, Boolean(errors["name"]))} {...props} />}
@@ -121,8 +130,11 @@ export function ShortLeadForm({
       />
 
       <p className={`type-label ${tone === "dark" ? "text-sage/70" : "text-abyss/55"}`}>
-        {copy.consent.replace(copy.consentLinkText, "")}
-        <a href={localePath("/legal/privacy")} className="link-draw">
+        {copy.consent}{" "}
+        <a
+          href={localePath("/legal/privacy")}
+          className={`link-draw ${tone === "dark" ? "text-gold" : "text-gold-ink"}`}
+        >
           {copy.consentLinkText}
         </a>
       </p>

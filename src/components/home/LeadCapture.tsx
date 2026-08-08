@@ -11,7 +11,7 @@ export function LeadCapture({ content }: { content: HomeContent["lead"] }) {
           <p className="type-body mt-5 max-w-[40ch] text-abyss/70">{content.body}</p>
         </div>
 
-        <ShortLeadForm tone="light" heading={content.heading} body={content.body} />
+        <ShortLeadForm tone="light" heading={null} />
       </Reveal>
     </section>
   );
