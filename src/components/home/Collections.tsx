@@ -2,6 +2,7 @@ import type { HomeContent } from "../../content/home";
 import { COLLECTION_IMAGES } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 
 export function Collections({ content }: { content: HomeContent["collections"] }) {
   const { localePath } = useLocale();
