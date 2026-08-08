@@ -31,7 +31,7 @@ export function GuidesIndexPage() {
                     {g.title}
                   </h2>
                   <p className="type-body mt-4 max-w-[64ch] text-sage">{g.excerpt}</p>
-                  <p className="type-label mt-5 text-sage/70">{g.readTime}</p>
+                  <p className="type-label mt-5 text-sage">{g.readTime}</p>
                 </a>
               </Reveal>
             );

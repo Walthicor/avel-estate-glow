@@ -80,7 +80,7 @@ export function GuideArticlePage({ slug }: { slug: string }) {
           </a>
           <p className="type-label mt-8 text-gold">{g.category}</p>
           <h1 className="type-h1 mt-4 text-bone">{g.title}</h1>
-          <p className="type-label mt-6 text-sage/70">{g.readTime}</p>
+          <p className="type-label mt-6 text-sage">{g.readTime}</p>
           <span className="gold-rule mt-10 block" />
 
           <div className="mt-10">

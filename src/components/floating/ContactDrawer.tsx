@@ -65,7 +65,7 @@ export function ContactDrawer({ open, onClose }: { open: boolean; onClose: () =>
   };
 
   const inputClass =
-    "w-full bg-transparent hairline px-3 py-2.5 text-[15px] text-bone placeholder:text-sage/80 focus:border-gold";
+    "w-full bg-transparent hairline px-3 py-2.5 text-[15px] text-bone placeholder:text-sage focus:border-gold";
 
   return (
     <div className="fixed inset-0 z-[100]">
