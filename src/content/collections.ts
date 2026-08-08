@@ -79,7 +79,6 @@ export const COLLECTIONS: CollectionRecord[] = [
     slug: "poblado-and-envigado",
     image: pobladoImg,
     filter: { city: "medellin" },
-    zones: ["El Poblado", "Envigado"],
     en: {
       name: "Poblado & Envigado",
       seoTitle: "Property in El Poblado and Envigado, Medellín — AVEL Estates",
@@ -103,7 +102,7 @@ export const COLLECTIONS: CollectionRecord[] = [
     slug: "beachfront-caribbean",
     image: beachImg,
     filter: {},
-    zones: ["Bocagrande", "Castillogrande", "Centro Histórico", "El Rodadero", "Bello Horizonte", "Playa Salguero"],
+    zones: ["Centro Histórico", "Rodadero", "Bello Horizonte", "Pozos Colorados", "Playa Salguero", "Bocagrande"],
     en: {
       name: "Beachfront Caribbean",
       seoTitle: "Caribbean beachfront property in Colombia — AVEL Estates",
