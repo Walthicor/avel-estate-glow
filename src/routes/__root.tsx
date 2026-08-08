@@ -13,7 +13,6 @@ import appCss from "../styles.css?url";
 import { SITE } from "../config/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LocaleProvider } from "../i18n/LocaleProvider";
-import { LanguageSuggestionBar } from "../components/LanguageSuggestionBar";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { TowerContactButton } from "../components/floating/TowerContactButton";
@@ -137,7 +136,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
-        <LanguageSuggestionBar />
         <Header />
         <main>
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
