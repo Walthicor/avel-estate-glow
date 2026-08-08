@@ -41,9 +41,9 @@ export function seoHead({ title, description, path, locale, image, type = "websi
 
   const links = [
     { rel: "canonical", href: canonical },
-    { rel: "alternate", hrefLang: "en", href: enUrl },
-    { rel: "alternate", hrefLang: "es", href: esUrl },
-    { rel: "alternate", hrefLang: "x-default", href: enUrl },
+    { rel: "alternate", hreflang: "en", href: enUrl },
+    { rel: "alternate", hreflang: "es", href: esUrl },
+    { rel: "alternate", hreflang: "x-default", href: enUrl },
   ];
 
   return { meta, links };
@@ -81,7 +81,7 @@ export function Seo(props: SeoProps) {
     for (const link of links) {
       const el = document.createElement("link");
       el.setAttribute("rel", link.rel);
-      if (link.hrefLang) el.setAttribute("hreflang", link.hrefLang);
+      if (link["hreflang"]) el.setAttribute("hreflang", link["hreflang"]);
       el.setAttribute("href", link.href);
       document.head.appendChild(el);
     }
