@@ -2,6 +2,7 @@ import type { HomeContent } from "../../content/home";
 import { PROPERTY_IMAGES } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 
 export function FeaturedProperties({ content }: { content: HomeContent["featured"] }) {
   const { localePath } = useLocale();
@@ -28,14 +29,16 @@ export function FeaturedProperties({ content }: { content: HomeContent["featured
                       reversed ? "md:col-span-7" : "md:col-span-7"
                     }`}
                   >
-                    <img
-                      src={PROPERTY_IMAGES[i]}
+                    <AvelImage
+                      src={PROPERTY_IMAGES[i] ?? ""}
                       alt={`${p.title}, ${p.city}`}
-                      loading="lazy"
-                      width={1440}
-                      height={1080}
-                      className={`w-full object-cover ${i === 1 ? "aspect-4/3" : "aspect-16/10"}`}
+                      preset="card"
+                      width={1200}
+                      ratio={i === 1 ? "4/3" : "16/10"}
+                      sizes="(max-width: 768px) 100vw, 58vw"
+                      className="w-full"
                     />
+
                   </div>
 
                   <div className="md:col-span-5 md:[direction:ltr]">

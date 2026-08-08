@@ -2,6 +2,7 @@ import type { HomeContent } from "../../content/home";
 import { COLLECTION_IMAGES } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 
 export function Collections({ content }: { content: HomeContent["collections"] }) {
   const { localePath } = useLocale();
@@ -20,15 +21,17 @@ export function Collections({ content }: { content: HomeContent["collections"] }
                 href={localePath(item.href)}
                 className="hairline group relative flex h-full min-h-[210px] flex-col justify-end overflow-hidden bg-deep p-6 transition-colors hover:border-gold"
               >
-                <img
-                  src={COLLECTION_IMAGES[i]}
+                <AvelImage
+                  src={COLLECTION_IMAGES[i] ?? ""}
                   alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  width={800}
-                  height={600}
-                  className="absolute inset-0 h-full w-full object-cover opacity-30 transition-transform duration-700 group-hover:scale-105"
+                  ariaHidden
+                  preset="card"
+                  ratio="4/3"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="absolute inset-0 h-full w-full opacity-30"
+                  imgClassName="transition-transform duration-700 group-hover:scale-105"
                 />
+
                 <div className="relative">
                   <p className="type-label text-gold">{item.label}</p>
                   <p className="type-body mt-2 text-sage">{item.blurb}</p>

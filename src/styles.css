@@ -740,3 +740,68 @@
     transition: none;
   }
 }
+
+/* ============================================================
+   AvelImage — deep placeholder, gold shimmer, isotype fallback
+   ============================================================ */
+
+.avel-img {
+  background-color: var(--color-deep);
+}
+
+.avel-img__shimmer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
+
+.avel-img[data-state="loading"] .avel-img__shimmer {
+  opacity: 1;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 46%,
+    rgba(198, 160, 78, 0.55) 50%,
+    transparent 54%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  animation: avel-shimmer 1600ms linear infinite;
+}
+
+@keyframes avel-shimmer {
+  from {
+    background-position: -110% 0;
+  }
+  to {
+    background-position: 210% 0;
+  }
+}
+
+.avel-img__el {
+  position: relative;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 400ms ease-out;
+}
+
+.avel-img[data-state="loaded"] .avel-img__el {
+  opacity: 1;
+}
+
+.avel-img[data-state="error"] .avel-img__el {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avel-img[data-state="loading"] .avel-img__shimmer {
+    animation: none;
+    background-image: none;
+  }
+  .avel-img__el {
+    transition: none;
+  }
+}

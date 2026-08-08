@@ -18,6 +18,7 @@ import {
 } from "../../content/property-detail";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
 import { Lightbox } from "./Lightbox";
 import { Gallery } from "./Gallery";
 import { PropertyCard } from "./PropertyCard";
@@ -156,7 +157,15 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
                     onClick={() => setPlanIndex(i)}
                     className="block h-32 w-44 overflow-hidden border border-sage/30 transition-colors hover:border-gold"
                   >
-                    <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+                    <AvelImage
+                      src={src}
+                      alt=""
+                      ariaHidden
+                      preset="thumbnail"
+                      ratio="11/8"
+                      className="h-full w-full"
+                    />
+
                   </button>
                 </li>
               ))}

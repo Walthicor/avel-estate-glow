@@ -10,6 +10,7 @@ import {
 } from "../../content/properties";
 import type { PropertiesCopy } from "../../content/properties-page";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { AvelImage } from "../AvelImage";
 
 export function PropertyCard({
   property,
@@ -33,15 +34,17 @@ export function PropertyCard({
     <article className="group">
       <a href={localePath(`/properties/${property.slug}`)} className="block">
         <div className="prop-media relative aspect-4/3 overflow-hidden bg-deep">
-          <img
+          <AvelImage
             src={imageFor(property)}
             alt={`${property.titleEn}, ${property.zone}, ${property.cityLabel}`}
-            loading={eager ? "eager" : "lazy"}
-            decoding="async"
-            width={1200}
-            height={900}
-            className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            preset="card"
+            ratio="4/3"
+            priority={eager ?? false}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="h-full w-full"
+            imgClassName="transition-transform duration-700 ease-out group-hover:scale-[1.03]"
           />
+
           <span className="type-label absolute left-4 top-4 border border-gold bg-[rgba(15,22,20,0.7)] px-3 py-1.5 text-bone backdrop-blur-[4px]">
             {stageLabel(property.stage, locale)}
           </span>
