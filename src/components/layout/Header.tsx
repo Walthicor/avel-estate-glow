@@ -5,7 +5,6 @@ import { MAIN_NAV } from "../../config/nav";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { toEnglishPath } from "../../i18n/routes";
 import { AvelLogo } from "../brand/AvelLogo";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 
 export function Header() {
@@ -64,7 +63,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-5">
-            <LanguageSwitcher className="hidden sm:flex" />
+            
             <a href={localePath("/contact")} className="btn-ghost hidden sm:inline-flex">
               {t("btn.enquire")}
             </a>
