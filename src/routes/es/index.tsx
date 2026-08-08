@@ -13,7 +13,7 @@ export const Route = createFileRoute("/es/")({
       description:
         "Casas de lujo y propiedades de inversión en Colombia para compradores internacionales.",
     }),
-  component: IndexEs;
+  component: IndexEs,
 });
 
 function IndexEs() {
