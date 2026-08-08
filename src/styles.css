@@ -819,3 +819,14 @@
     transition: none;
   }
 }
+
+/* Guide article drop cap: first letter in Bodoni Moda, gold. */
+.guide-dropcap::first-letter {
+  font-family: var(--font-display), serif;
+  color: var(--color-gold);
+  float: left;
+  font-size: 4.4em;
+  line-height: 0.82;
+  padding-right: 0.1em;
+  padding-top: 0.06em;
+}
