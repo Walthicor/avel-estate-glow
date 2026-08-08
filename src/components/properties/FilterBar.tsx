@@ -6,6 +6,7 @@ import {
   PAGE_SIZE,
   type PropertySearch,
   type ResolvedSearch,
+  type Sort,
 } from "../../lib/property-search";
 
 type Patch = Partial<PropertySearch>;
@@ -145,7 +146,7 @@ export function FilterBar({
             <select
               className={`${selectClass} w-auto`}
               value={search.sort}
-              onChange={(e) => onChange({ sort: e.target.value as PropertySearch["sort"] })}
+              onChange={(e) => onChange({ sort: e.target.value as Sort })}
             >
               <option value="newest">{copy.sort.newest}</option>
               <option value="area-desc">{copy.sort.largest}</option>
