@@ -44,6 +44,26 @@ export const en = {
   "locale.switchToSpanish": "Ver en español",
   "locale.switchToEnglish": "View in English",
   "locale.suggestion": "This site is also available in Spanish.",
+
+  "footer.cookies": "Cookie policy",
+  "footer.habeasData": "Habeas Data",
+  "footer.cookiePreferences": "Cookie preferences",
+
+  "cookie.regionLabel": "Cookie consent",
+  "cookie.text": "We use cookies to understand how this site is used. You choose what we measure.",
+  "cookie.readPolicy": "Read the cookie policy",
+  "cookie.acceptAll": "Accept all",
+  "cookie.essentialOnly": "Essential only",
+  "cookie.manage": "Manage preferences",
+  "cookie.panelTitle": "What you allow",
+  "cookie.essential": "Essential",
+  "cookie.essentialDesc": "Needed for the site to work and to remember this choice. Cannot be switched off.",
+  "cookie.alwaysOn": "Always on",
+  "cookie.analytics": "Analytics",
+  "cookie.analyticsDesc": "Aggregated measurement of which pages are read. Never used to contact you.",
+  "cookie.marketing": "Marketing",
+  "cookie.marketingDesc": "Measures whether an advertisement led to an enquiry, and allows retargeting.",
+  "cookie.save": "Save preferences",
 } as const;
 
 export type UIKey = keyof typeof en;

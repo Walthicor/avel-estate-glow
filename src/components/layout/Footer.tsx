@@ -2,6 +2,7 @@ import { FOOTER_CITIES, FOOTER_COMPANY, FOOTER_LEGAL } from "../../config/nav";
 import { SITE } from "../../config/site";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { AvelLogo } from "../brand/AvelLogo";
+import { openCookiePreferences } from "../../lib/consent";
 
 export function Footer() {
   const { t, localePath } = useLocale();
@@ -56,6 +57,11 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <button type="button" onClick={openCookiePreferences} className={linkClass}>
+                {t("footer.cookiePreferences")}
+              </button>
+            </li>
             <li>
               <a href={`mailto:${SITE.publicEmail}`} className={linkClass}>
                 {SITE.publicEmail}

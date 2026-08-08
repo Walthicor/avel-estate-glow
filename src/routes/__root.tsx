@@ -17,6 +17,7 @@ import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 import { TowerContactButton } from "../components/floating/TowerContactButton";
 import { BackToTopButton } from "../components/floating/BackToTopButton";
+import { CookieBanner } from "../components/consent/CookieBanner";
 
 function NotFoundComponent() {
   return (
@@ -144,6 +145,7 @@ function RootComponent() {
         <Footer />
         <TowerContactButton />
         <BackToTopButton />
+        <CookieBanner />
       </LocaleProvider>
     </QueryClientProvider>
   );
