@@ -1,10 +1,8 @@
 import { ABOUT } from "../../content/about";
 import { HOME } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
-import { AvelImage } from "../AvelImage";
 import { Reveal } from "../Reveal";
 import { LeadCapture } from "../home/LeadCapture";
-import founderPhoto from "../../assets/founder.jpg";
 
 export function AboutPage() {
   const { locale } = useLocale();

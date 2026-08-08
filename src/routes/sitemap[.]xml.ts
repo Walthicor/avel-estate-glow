@@ -3,6 +3,9 @@ import type {} from "@tanstack/react-start";
 
 import { SITE } from "../config/site";
 import { PROPERTIES } from "../content/properties";
+import { CITIES } from "../content/cities";
+import { COLLECTIONS } from "../content/collections";
+import { GUIDES } from "../content/guides";
 import { LEGAL_PATHS } from "../content/legal";
 import { pathForLocale } from "../i18n/routes";
 
@@ -22,6 +25,8 @@ function buildEntries(): Entry[] {
     { path: "/properties", changefreq: "daily", priority: "0.9" },
     { path: "/buying-from-abroad", changefreq: "monthly", priority: "0.9" },
     { path: "/about", changefreq: "yearly", priority: "0.5" },
+    { path: "/collections", changefreq: "weekly", priority: "0.7" },
+    { path: "/guides", changefreq: "weekly", priority: "0.7" },
     { path: LEGAL_PATHS.privacy, changefreq: "yearly", priority: "0.2" },
     { path: LEGAL_PATHS.terms, changefreq: "yearly", priority: "0.2" },
     { path: LEGAL_PATHS.cookies, changefreq: "yearly", priority: "0.2" },
@@ -35,7 +40,25 @@ function buildEntries(): Entry[] {
     priority: "0.8",
   }));
 
-  return [...staticPages, ...properties];
+  const cities: Entry[] = CITIES.map((c) => ({
+    path: `/cities/${c.slug}`,
+    changefreq: "weekly" as const,
+    priority: "0.8",
+  }));
+
+  const collections: Entry[] = COLLECTIONS.map((c) => ({
+    path: `/collections/${c.slug}`,
+    changefreq: "weekly" as const,
+    priority: "0.7",
+  }));
+
+  const guides: Entry[] = GUIDES.map((g) => ({
+    path: `/guides/${g.slug}`,
+    changefreq: "monthly" as const,
+    priority: "0.6",
+  }));
+
+  return [...staticPages, ...cities, ...collections, ...guides, ...properties];
 }
 
 /** Each URL is emitted once per locale, each carrying both hreflang alternates. */
