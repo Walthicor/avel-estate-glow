@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as EsIndexRouteImport } from './routes/es/index'
+import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
 import { Route as EsPropiedadesIndexRouteImport } from './routes/es/propiedades.index'
@@ -32,6 +33,12 @@ const EsIndexRoute = EsIndexRouteImport.update({
   path: '/es/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsComprarDesdeElExteriorRoute =
+  EsComprarDesdeElExteriorRouteImport.update({
+    id: '/es/comprar-desde-el-exterior',
+    path: '/es/comprar-desde-el-exterior',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PropertiesIndexRoute = PropertiesIndexRouteImport.update({
   id: '/properties/',
   path: '/properties/',
@@ -56,6 +63,7 @@ const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -65,6 +73,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es': typeof EsIndexRoute
   '/properties': typeof PropertiesIndexRoute
@@ -75,6 +84,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/buying-from-abroad'
+    | '/es/comprar-desde-el-exterior'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/buying-from-abroad'
+    | '/es/comprar-desde-el-exterior'
     | '/properties/$slug'
     | '/es'
     | '/properties'
@@ -104,6 +116,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/buying-from-abroad'
+    | '/es/comprar-desde-el-exterior'
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
@@ -114,6 +127,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
+  EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   EsIndexRoute: typeof EsIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
@@ -142,6 +156,13 @@ declare module '@tanstack/react-router' {
       path: '/es'
       fullPath: '/es/'
       preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/comprar-desde-el-exterior': {
+      id: '/es/comprar-desde-el-exterior'
+      path: '/es/comprar-desde-el-exterior'
+      fullPath: '/es/comprar-desde-el-exterior'
+      preLoaderRoute: typeof EsComprarDesdeElExteriorRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/properties/': {
@@ -178,6 +199,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
+  EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   PropertiesSlugRoute: PropertiesSlugRoute,
   EsIndexRoute: EsIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
