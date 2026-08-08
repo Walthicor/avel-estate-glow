@@ -29,7 +29,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       pathForLocale(enPath, target);
     const switchLocale = (next: Locale) => {
       const target = pathForLocale(toEnglishPath(pathname), next);
-      navigate({ to: target as never, search: (prev: Record<string, unknown>) => prev });
+      navigate({ to: target as never, search: ((prev: unknown) => prev) as never });
     };
     return { locale, t, switchLocale, localePath };
   }, [locale, pathname, navigate]);
