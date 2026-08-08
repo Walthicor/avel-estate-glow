@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
@@ -52,6 +53,11 @@ const AboutRoute = AboutRouteImport.update({
 const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
   id: '/buying-from-abroad',
   path: '/buying-from-abroad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -190,6 +196,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
@@ -253,6 +261,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
@@ -317,6 +327,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
@@ -348,6 +359,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
@@ -380,6 +392,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
+  ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
@@ -429,6 +442,13 @@ declare module '@tanstack/react-router' {
       path: '/buying-from-abroad'
       fullPath: '/buying-from-abroad'
       preLoaderRoute: typeof BuyingFromAbroadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -620,6 +640,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
+  ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
