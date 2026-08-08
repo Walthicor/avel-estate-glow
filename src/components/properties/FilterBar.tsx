@@ -156,8 +156,10 @@ export function FilterBar({
           </label>
         </div>
 
-        <div className="hairline-t mt-5 flex flex-wrap items-center justify-between gap-4 pt-4">
-          <p className="type-label text-bone" aria-live="polite">
+        <div
+          className={`hairline-t mt-5 ${open ? "flex" : "hidden"} flex-wrap items-center justify-between gap-4 pt-4 md:flex`}
+        >
+          <p className="type-label hidden text-bone md:block" aria-live="polite">
             {copy.count(count).toUpperCase()}
           </p>
 
