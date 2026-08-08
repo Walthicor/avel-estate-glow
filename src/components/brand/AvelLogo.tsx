@@ -5,7 +5,7 @@ export function AvelLogo({ className = "" }: { className?: string }) {
     <img
       src={logo.url}
       alt="AVEL Estates"
-      className={`h-9 w-auto shrink-0 select-none md:h-10 ${className}`}
+      className={`h-[120px] w-auto shrink-0 select-none ${className}`}
       loading="eager"
       decoding="async"
     />
