@@ -94,7 +94,7 @@ export async function saveLead(payload: LeadPayload) {
     referrer: payload.referrer ?? null,
     consent_at: new Date().toISOString(),
     marketing_consent: payload.marketing_consent ?? false,
-  });
+  }).select("id").maybeSingle();
 
   if (error) throw new Error(error.message);
 
