@@ -38,6 +38,14 @@ export function AvelImage({
   ariaHidden,
 }: AvelImageProps) {
   const [state, setState] = useState<"loading" | "loaded" | "error">("loading");
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // An image cached or server-rendered before hydration never fires onLoad.
+  useEffect(() => {
+    const el = imgRef.current;
+    if (!el) return;
+    if (el.complete) setState(el.naturalWidth > 0 ? "loaded" : "error");
+  }, [finalSrcKey]);
 
   const w = width ?? PRESET_WIDTH[preset];
   const r = parseRatio(ratio);
