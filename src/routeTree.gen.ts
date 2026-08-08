@@ -23,6 +23,7 @@ import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
 import { Route as EsLegalCookiesRouteImport } from './routes/es/legal.cookies'
 import { Route as EsLegalHabeasDataRouteImport } from './routes/es/legal.habeas-data'
 import { Route as EsLegalPrivacyRouteImport } from './routes/es/legal.privacy'
@@ -101,6 +102,11 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsCiudadesSlugRoute = EsCiudadesSlugRouteImport.update({
+  id: '/es/ciudades/$slug',
+  path: '/es/ciudades/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsLegalCookiesRoute = EsLegalCookiesRouteImport.update({
   id: '/es/legal/cookies',
   path: '/es/legal/cookies',
@@ -147,6 +153,7 @@ export interface FileRoutesByFullPath {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
@@ -169,6 +176,7 @@ export interface FileRoutesByTo {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es': typeof EsIndexRoute
   '/properties': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/properties/$slug': typeof PropertiesSlugRoute
   '/es/': typeof EsIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/legal/cookies': typeof EsLegalCookiesRoute
   '/es/legal/habeas-data': typeof EsLegalHabeasDataRoute
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
@@ -216,6 +225,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
+    | '/es/ciudades/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
@@ -238,6 +248,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/es'
     | '/properties'
+    | '/es/ciudades/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
@@ -260,6 +271,7 @@ export interface FileRouteTypes {
     | '/properties/$slug'
     | '/es/'
     | '/properties/'
+    | '/es/ciudades/$slug'
     | '/es/legal/cookies'
     | '/es/legal/habeas-data'
     | '/es/legal/privacy'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   PropertiesSlugRoute: typeof PropertiesSlugRoute
   EsIndexRoute: typeof EsIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
+  EsCiudadesSlugRoute: typeof EsCiudadesSlugRoute
   EsLegalCookiesRoute: typeof EsLegalCookiesRoute
   EsLegalHabeasDataRoute: typeof EsLegalHabeasDataRoute
   EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
@@ -391,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/ciudades/$slug': {
+      id: '/es/ciudades/$slug'
+      path: '/es/ciudades/$slug'
+      fullPath: '/es/ciudades/$slug'
+      preLoaderRoute: typeof EsCiudadesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/legal/cookies': {
       id: '/es/legal/cookies'
       path: '/es/legal/cookies'
@@ -451,6 +471,7 @@ const rootRouteChildren: RootRouteChildren = {
   PropertiesSlugRoute: PropertiesSlugRoute,
   EsIndexRoute: EsIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
+  EsCiudadesSlugRoute: EsCiudadesSlugRoute,
   EsLegalCookiesRoute: EsLegalCookiesRoute,
   EsLegalHabeasDataRoute: EsLegalHabeasDataRoute,
   EsLegalPrivacyRoute: EsLegalPrivacyRoute,
