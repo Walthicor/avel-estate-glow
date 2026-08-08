@@ -54,11 +54,7 @@ export function FilterBar({
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? copy.filters.any : copy.filters.stage
-              ? open
-                ? "—"
-                : "+"
-              : "+"}
+            <span aria-hidden="true">{open ? "−" : "+"}</span>
             <span className="ml-2">{locale === "es" ? "Filtros" : "Filters"}</span>
           </button>
         </div>
