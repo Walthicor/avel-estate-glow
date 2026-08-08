@@ -20,6 +20,8 @@
   --color-paper: #f7f5f1;
   --color-gold: #f7a73e;
   --color-gold-deep: #c9832b;
+  /* Gold that passes WCAG AA as text on bone/paper (5.9:1). Never use on abyss. */
+  --color-gold-ink: #7a4e12;
 
   /* Sharp corners are intentional */
   --radius-xs: 2px;
@@ -479,18 +481,40 @@
   background: color-mix(in oklab, var(--color-gold) 14%, var(--color-deep));
 }
 
-/* Shared floating layer */
+/* Shared floating layer.
+   --avel-bottom-inset is raised by the cookie banner and the sticky mobile
+   property bar so the floating buttons never sit underneath them. */
 .avel-float {
   position: fixed;
-  bottom: 92px;
+  bottom: calc(92px + var(--avel-bottom-inset, 0px));
   z-index: 90;
+  transition: bottom 260ms ease;
 }
 
 @media (min-width: 768px) {
   .avel-float {
-    bottom: 32px;
+    bottom: calc(32px + var(--avel-bottom-inset, 0px));
   }
 }
+
+body[data-cookiebar="open"] {
+  --avel-bottom-inset: 168px;
+}
+
+@media (min-width: 1024px) {
+  body[data-cookiebar="open"] {
+    --avel-bottom-inset: 108px;
+  }
+}
+
+body[data-stickybar="open"] {
+  --avel-bottom-inset: 84px;
+}
+
+body[data-cookiebar="open"][data-stickybar="open"] {
+  --avel-bottom-inset: 244px;
+}
+
 
 .avel-float--right {
   right: 20px;
@@ -829,4 +853,102 @@
   line-height: 0.82;
   padding-right: 0.1em;
   padding-top: 0.06em;
+}
+
+/* ============================================================
+   Skip link — first focusable element on the page
+   ============================================================ */
+
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--color-abyss);
+  color: var(--color-gold);
+  border: 1px solid var(--color-gold);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   Reduced motion — global safety net
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html,
+  body {
+    scroll-behavior: auto !important;
+  }
+
+  /* Hover scales and translations are removed, not merely instant. */
+  .prop-media img,
+  .group:hover .prop-media img,
+  .btn-gold:hover,
+  .avel-tower:hover .avel-tower__body {
+    transform: none !important;
+  }
+
+  .avel-drop,
+  .avel-drop[data-visible="true"] {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   Approximate location plate — drawn in CSS, no third-party map request
+   ============================================================ */
+
+.avel-map {
+  background-color: var(--color-deep);
+  background-image:
+    linear-gradient(rgba(140, 164, 165, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 164, 165, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 50% 46%, rgba(247, 167, 62, 0.14) 0%, transparent 58%);
+  background-size:
+    36px 36px,
+    36px 36px,
+    100% 100%;
+}
+
+.avel-map__pin {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 76px;
+  height: 76px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  background: color-mix(in oklab, var(--color-gold) 12%, transparent);
+}
+
+.avel-map__pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%);
+  background: var(--color-gold);
+  border-radius: 50%;
 }

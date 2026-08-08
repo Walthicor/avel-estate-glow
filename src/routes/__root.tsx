@@ -17,12 +17,13 @@ import { Footer } from "../components/layout/Footer";
 import { TowerContactButton } from "../components/floating/TowerContactButton";
 import { BackToTopButton } from "../components/floating/BackToTopButton";
 import { CookieBanner } from "../components/consent/CookieBanner";
+import { SkipLink } from "../components/layout/SkipLink";
 
 function NotFoundComponent() {
   const isEs = typeof window !== "undefined" && window.location.pathname.startsWith("/es");
 
   return (
-    <div className="flex min-h-screen items-center bg-abyss px-6 py-32 md:px-12">
+    <div className="flex min-h-dvh items-center bg-abyss px-6 py-32 md:px-12">
       <div className="mx-auto w-full max-w-[1240px]">
         <span className="gold-rule mb-8 block" />
         <p className="type-label text-sage">404</p>
@@ -55,7 +56,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-dvh items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-xl font-semibold tracking-tight text-foreground">
           This page didn't load
@@ -151,8 +152,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
+        <SkipLink />
         <Header />
-        <main>
+        <main id="main-content" tabIndex={-1} className="focus:outline-none">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>

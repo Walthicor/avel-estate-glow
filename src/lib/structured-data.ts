@@ -40,8 +40,8 @@ export function organizationJsonLd(locale: Locale) {
         addressCountry: "CO",
       },
       sameAs: [
-        `https://www.instagram.com/${SITE.domain.split(".")[0]}`,
-        `https://www.linkedin.com/company/${SITE.domain.split(".")[0]}`,
+        SITE.social.instagram,
+        SITE.social.linkedin,
         `https://www.youtube.com/@${SITE.domain.split(".")[0]}`,
       ],
     }),

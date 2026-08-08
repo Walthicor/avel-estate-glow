@@ -70,7 +70,7 @@ export function GuideArticlePage({ slug }: { slug: string }) {
   let firstParagraphSeen = false;
 
   return (
-    <main>
+    <div>
       <ReadingProgress />
 
       <article className="bg-abyss px-6 pt-[168px] pb-20 md:px-12 md:pt-[200px] md:pb-28">
@@ -80,7 +80,7 @@ export function GuideArticlePage({ slug }: { slug: string }) {
           </a>
           <p className="type-label mt-8 text-gold">{g.category}</p>
           <h1 className="type-h1 mt-4 text-bone">{g.title}</h1>
-          <p className="type-label mt-6 text-sage/70">{g.readTime}</p>
+          <p className="type-label mt-6 text-sage">{g.readTime}</p>
           <span className="gold-rule mt-10 block" />
 
           <div className="mt-10">
@@ -98,6 +98,6 @@ export function GuideArticlePage({ slug }: { slug: string }) {
       </Reveal>
 
       <LeadCapture content={HOME[locale].lead} />
-    </main>
+    </div>
   );
 }

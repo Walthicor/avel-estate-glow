@@ -2,6 +2,7 @@ import type { UIKey } from "./en";
 
 // Solo textos de interfaz. El contenido de las propiedades vive en la base de datos.
 export const es: Record<UIKey, string> = {
+  "nav.skip": "Ir al contenido",
   "nav.properties": "Propiedades",
   "nav.cities": "Ciudades",
   "nav.collections": "Colecciones",

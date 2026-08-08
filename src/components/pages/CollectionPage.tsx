@@ -21,7 +21,7 @@ export function CollectionPage({ slug }: { slug: string }) {
   }
 
   return (
-    <main>
+    <div>
       <section className="bg-abyss px-6 pt-[168px] pb-16 md:px-12 md:pt-[200px] md:pb-20">
         <div className="mx-auto max-w-[1240px]">
           <span className="gold-rule mb-8 block" />
@@ -34,7 +34,7 @@ export function CollectionPage({ slug }: { slug: string }) {
       <PropertyGrid properties={results} heading={c.gridHeading} />
 
       <LeadCapture content={HOME[locale].lead} />
-    </main>
+    </div>
   );
 }
 
@@ -43,7 +43,7 @@ export function CollectionsIndexPage() {
   const copy = COLLECTIONS_INDEX[locale as Locale];
 
   return (
-    <main>
+    <div>
       <section className="bg-abyss px-6 pt-[168px] pb-14 md:px-12 md:pt-[200px] md:pb-16">
         <div className="mx-auto max-w-[1240px]">
           <span className="gold-rule mb-8 block" />
@@ -67,7 +67,6 @@ export function CollectionsIndexPage() {
                     alt=""
                     ariaHidden
                     preset="card"
-                    ratio="4/3"
                     sizes="(max-width: 640px) 100vw, 33vw"
                     className="absolute inset-0 h-full w-full opacity-30"
                     imgClassName="transition-transform duration-700 group-hover:scale-105"
@@ -84,6 +83,6 @@ export function CollectionsIndexPage() {
       </section>
 
       <LeadCapture content={HOME[locale].lead} />
-    </main>
+    </div>
   );
 }

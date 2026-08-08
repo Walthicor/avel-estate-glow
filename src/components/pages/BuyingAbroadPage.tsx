@@ -42,7 +42,7 @@ function StepSection({
 }) {
   const tone = dark
     ? { bg: "bg-abyss text-bone", heading: "text-bone", body: "text-bone/70", border: "border-sage/25", label: "text-sage" }
-    : { bg: "bg-bone text-abyss", heading: "text-abyss", body: "text-abyss/70", border: "border-abyss/15", label: "text-abyss/50" };
+    : { bg: "bg-bone text-abyss", heading: "text-abyss", body: "text-abyss/70", border: "border-abyss/15", label: "text-abyss/70" };
 
   return (
     <section className={`${tone.bg} px-6 py-24 md:px-12 md:py-32 lg:pr-28`}>

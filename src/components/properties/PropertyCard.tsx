@@ -4,6 +4,7 @@ import {
   bedroomsLabel,
   deliveryLabel,
   imageFor,
+  propertyAlt,
   stageLabel,
   typeLabel,
   type PropertyRecord,
@@ -36,7 +37,7 @@ export function PropertyCard({
         <div className="prop-media relative aspect-4/3 overflow-hidden bg-deep">
           <AvelImage
             src={imageFor(property)}
-            alt={`${property.titleEn}, ${property.zone}, ${property.cityLabel}`}
+            alt={propertyAlt(property, locale)}
             preset="card"
             ratio="4/3"
             priority={eager ?? false}

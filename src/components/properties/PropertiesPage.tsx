@@ -40,7 +40,7 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
   };
 
   return (
-    <main>
+    <div>
       <section className="bg-abyss px-6 pb-12 pt-[160px] md:px-12 md:pt-[200px]">
         <div className="mx-auto max-w-[1400px]">
           <span className="gold-rule" />
@@ -93,6 +93,6 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
           )}
         </div>
       </section>
-    </main>
+    </div>
   );
 }

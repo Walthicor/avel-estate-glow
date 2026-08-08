@@ -37,9 +37,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "No residency, no local partner, no minimum investment. What you do need is a passport, a tax ID, a bank route the regulator can see, and four documents.",
       readTime: "6 min read",
-      seoTitle: "Can a foreigner buy property in Colombia? What is actually required",
-      seoDescription:
-        "Foreigners can buy property in Colombia on the same terms as citizens. The passport, NIT, foreign-exchange declaration and title checks you actually need.",
+      seoTitle: "Can a foreigner buy property in Colombia?",
+      seoDescription: "Foreigners can buy property in Colombia on the same terms as citizens.",
       blocks: [
         {
           k: "p",
@@ -82,9 +81,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "Sin residencia, sin socio local, sin inversión mínima. Lo que sí necesita: pasaporte, NIT, una ruta bancaria visible para el regulador y cuatro documentos.",
       readTime: "6 min de lectura",
-      seoTitle: "¿Puede un extranjero comprar propiedad en Colombia? Requisitos reales",
-      seoDescription:
-        "Los extranjeros compran en Colombia en las mismas condiciones que un nacional. Pasaporte, NIT, declaración de cambio y estudio de títulos: lo que de verdad se necesita.",
+      seoTitle: "¿Puede un extranjero comprar propiedad en Colombia?",
+      seoDescription: "Los extranjeros compran en Colombia en las mismas condiciones que un nacional.",
       blocks: [
         {
           k: "p",
@@ -133,8 +131,7 @@ export const GUIDES: GuideRecord[] = [
         "The money leaves easily if the money entered correctly. Registration, withholding, the annual return, and the mistake that traps capital for years.",
       readTime: "7 min read",
       seoTitle: "How to repatriate rental income from Colombia legally",
-      seoDescription:
-        "Registering foreign investment, withholding on rental income, filing in Colombia and repatriating funds through the exchange market — step by step.",
+      seoDescription: "Registering foreign investment, withholding tax and moving Colombian rental income abroad legally.",
       blocks: [
         {
           k: "p",
@@ -177,9 +174,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "El dinero sale fácil si entró bien. Registro de inversión, retención, declaración anual y el error que congela capital durante años.",
       readTime: "7 min de lectura",
-      seoTitle: "Cómo repatriar legalmente la renta de un inmueble en Colombia",
-      seoDescription:
-        "Registro de inversión extranjera, retención sobre arrendamientos, declaración en Colombia y giro al exterior por el mercado cambiario, paso a paso.",
+      seoTitle: "Cómo repatriar la renta de un inmueble en Colombia",
+      seoDescription: "Registro de inversión extranjera, retenciones y cómo girar legalmente la renta al exterior.",
       blocks: [
         {
           k: "p",
@@ -227,9 +223,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "Your instalments do not go to the developer. They sit with a regulated trust that only releases them when legal and commercial conditions are met.",
       readTime: "6 min read",
-      seoTitle: "Fiducia in Colombia explained — pre-construction buyer protection",
-      seoDescription:
-        "How the fiducia mercantil protects pre-construction buyers in Colombia: escrow of instalments, the punto de equilibrio, and what the structure does not cover.",
+      seoTitle: "Fiducia in Colombia explained for off-plan buyers",
+      seoDescription: "How the fiducia mercantil protects off-plan buyers: escrow, punto de equilibrio and refunds.",
       blocks: [
         {
           k: "p",
@@ -272,9 +267,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "Sus cuotas no van al constructor. Quedan en una fiduciaria vigilada que solo libera recursos cuando se cumplen condiciones legales y comerciales.",
       readTime: "6 min de lectura",
-      seoTitle: "La fiducia en Colombia explicada — protección al comprar sobre planos",
-      seoDescription:
-        "Cómo la fiducia mercantil protege al comprador sobre planos en Colombia: encargo de cuotas, punto de equilibrio y qué no cubre la estructura.",
+      seoTitle: "La fiducia en Colombia al comprar sobre planos",
+      seoDescription: "Cómo la fiducia protege al comprador sobre planos: encargo, punto de equilibrio y devoluciones.",
       blocks: [
         {
           k: "p",
@@ -322,9 +316,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "Three zones, three different buyers. Resale liquidity, price per square metre, noise, and which one survives a change in short-term rental rules.",
       readTime: "8 min read",
-      seoTitle: "El Poblado vs Envigado vs Laureles — where foreigners buy in Medellín",
-      seoDescription:
-        "A direct comparison of Medellín's three foreign-buyer zones: resale liquidity, value per square metre, noise, walkability and short-term rental exposure.",
+      seoTitle: "El Poblado vs Envigado vs Laureles: dónde comprar",
+      seoDescription: "Resale liquidity, price per square metre and rental rules across Medellín's three key zones.",
       blocks: [
         {
           k: "p",
@@ -368,9 +361,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "Tres zonas, tres compradores distintos. Liquidez de reventa, precio por metro cuadrado, ruido y cuál resiste un cambio en las reglas de renta corta.",
       readTime: "8 min de lectura",
-      seoTitle: "El Poblado vs Envigado vs Laureles — dónde compran los extranjeros",
-      seoDescription:
-        "Comparación directa de las tres zonas de comprador extranjero en Medellín: reventa, valor por metro cuadrado, ruido, caminabilidad y exposición a la renta corta.",
+      seoTitle: "El Poblado vs Envigado vs Laureles para extranjeros",
+      seoDescription: "Reventa, precio por metro y reglas de renta en las tres zonas clave de Medellín.",
       blocks: [
         {
           k: "p",
@@ -419,9 +411,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "The constraint is not the city. It is the building's reglamento, the RNT registration and the horizontal-property law that lets owners vote you out.",
       readTime: "7 min read",
-      seoTitle: "Short-term rental rules in Medellín — what buyers need to know",
-      seoDescription:
-        "How Medellín's short-term rental rules work: the reglamento de propiedad horizontal, RNT registration and how owner assemblies can restrict nightly stays.",
+      seoTitle: "Short-term rental rules in Medellín for buyers",
+      seoDescription: "Medellín short-term rental rules: building bylaws, RNT registration and what buyers must check.",
       blocks: [
         {
           k: "p",
@@ -464,9 +455,8 @@ export const GUIDES: GuideRecord[] = [
       excerpt:
         "La restricción no es la ciudad. Es el reglamento del edificio, el RNT y la ley de propiedad horizontal que permite a los copropietarios prohibirla.",
       readTime: "7 min de lectura",
-      seoTitle: "Reglas de renta corta en Medellín — lo que debe saber un comprador",
-      seoDescription:
-        "Cómo funcionan las reglas de alojamiento turístico en Medellín: reglamento de propiedad horizontal, registro RNT y decisiones de la asamblea de copropietarios.",
+      seoTitle: "Reglas de renta corta en Medellín para compradores",
+      seoDescription: "Reglas de renta corta en Medellín: reglamento del edificio, registro RNT y qué revisar antes.",
       blocks: [
         {
           k: "p",
@@ -515,8 +505,7 @@ export const GUIDES: GuideRecord[] = [
         "Every avoidable problem in a Colombian purchase is visible in one of seven documents. Ask for all seven in PDF, before the reservation fee.",
       readTime: "6 min read",
       seoTitle: "7 documents to demand before buying property in Colombia",
-      seoDescription:
-        "Certificado de tradición y libertad, building licence, fiducia agreement, reglamento, paz y salvos, assembly minutes and the payment plan — what each reveals.",
+      seoDescription: "The seven documents to demand before signing anything on a Colombian property purchase.",
       blocks: [
         {
           k: "p",
@@ -564,8 +553,7 @@ export const GUIDES: GuideRecord[] = [
         "Todo problema evitable en una compra en Colombia es visible en alguno de siete documentos. Pídalos los siete en PDF, antes de la cuota de separación.",
       readTime: "6 min de lectura",
       seoTitle: "7 documentos que debe exigir antes de comprar en Colombia",
-      seoDescription:
-        "Certificado de tradición y libertad, licencia, contrato de fiducia, reglamento, paz y salvos, actas de asamblea y plan de pagos: qué revela cada uno.",
+      seoDescription: "Los siete documentos que debe exigir antes de firmar la compra de un inmueble en Colombia.",
       blocks: [
         {
           k: "p",

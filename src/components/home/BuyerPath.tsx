@@ -10,7 +10,7 @@ export function BuyerPath({ content }: { content: HomeContent["path"] }) {
   return (
     <section className="bg-bone px-6 py-24 text-abyss md:px-12 md:py-32">
       <Reveal className="mx-auto max-w-[1240px]">
-        <p className="type-label text-gold-deep">{content.intro}</p>
+        <p className="type-label text-gold-ink">{content.intro}</p>
         <h2 className="type-h1 mt-4 max-w-[16ch] text-abyss">{content.heading}</h2>
 
         {/* Rail */}
@@ -25,15 +25,15 @@ export function BuyerPath({ content }: { content: HomeContent["path"] }) {
                   aria-expanded={isOpen}
                   aria-controls={`step-panel-${step.n}`}
                   className="group flex w-full flex-col items-start gap-2 px-1 py-5 text-left transition-colors md:border-t md:pt-6"
-                  style={{ borderTopColor: isOpen ? "var(--color-gold-deep)" : "rgba(15,22,20,0.15)" }}
+                  style={{ borderTopColor: isOpen ? "var(--color-gold-ink)" : "rgba(15,22,20,0.15)" }}
                 >
                   <span
                     className="type-label transition-colors"
-                    style={{ color: isOpen ? "var(--color-gold-deep)" : "rgba(15,22,20,0.45)" }}
+                    style={{ color: isOpen ? "var(--color-gold-ink)" : "rgba(15,22,20,0.7)" }}
                   >
                     {step.n}
                   </span>
-                  <span className="type-h3 text-abyss group-hover:text-gold-deep">
+                  <span className="type-h3 text-abyss group-hover:text-gold-ink">
                     {step.title}
                   </span>
                 </button>
@@ -71,7 +71,7 @@ export function BuyerPath({ content }: { content: HomeContent["path"] }) {
 function Field({ label, value, wide }: { label: string; value: string; wide?: boolean }) {
   return (
     <div className={wide ? "md:col-span-1" : undefined}>
-      <p className="type-label text-abyss/50">{label}</p>
+      <p className="type-label text-abyss/70">{label}</p>
       <p className="type-body mt-2 text-abyss/85">{value}</p>
     </div>
   );

@@ -16,14 +16,13 @@ export function CityPage({ slug }: { slug: string }) {
   const results = city.filterCity ? PROPERTIES.filter((p) => p.city === city.filterCity) : [];
 
   return (
-    <main>
+    <div>
       <section className="relative h-[50vh] min-h-[380px] w-full overflow-hidden bg-abyss">
         <AvelImage
           src={city.image}
           alt={`${c.name}, ${c.region}, Colombia`}
           preset="hero"
           priority
-          ratio="16/9"
           sizes="100vw"
           className="absolute inset-0 h-full w-full"
         />
@@ -70,6 +69,6 @@ export function CityPage({ slug }: { slug: string }) {
       </section>
 
       <LeadCapture content={HOME[locale].lead} />
-    </main>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 // UI strings only. Property content lives in the database in both languages.
 export const en = {
+  "nav.skip": "Skip to content",
   "nav.properties": "Properties",
   "nav.cities": "Cities",
   "nav.collections": "Collections",

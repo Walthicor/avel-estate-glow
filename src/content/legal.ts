@@ -1,3 +1,4 @@
+import { SITE } from "../config/site";
 import type { Locale } from "../config/site";
 
 export type LegalSection = {
@@ -43,12 +44,12 @@ export const LEGAL_PATHS: Record<LegalDoc["slug"], string> = {
 
 const CONTROLLER_EN = [
   "Data controller: AVEL Inmobiliaria S.A.S. (AVEL Estates), NIT 901.XXX.XXX-X, registered with the Cámara de Comercio de Medellín para Antioquia, domiciled in Medellín, Antioquia, Colombia.",
-  "Channel to exercise your rights and to file enquiries, requests or complaints: hello@avelestates.com. We respond to enquiries within ten (10) business days and to complaints within fifteen (15) business days, as required by Law 1581 of 2012.",
+  `Channel to exercise your rights and to file enquiries, requests or complaints: ${SITE.publicEmail}. We respond to enquiries within ten (10) business days and to complaints within fifteen (15) business days, as required by Law 1581 of 2012.`,
 ];
 
 const CONTROLLER_ES = [
   "Responsable del tratamiento: AVEL Inmobiliaria S.A.S. (AVEL Estates), NIT 901.XXX.XXX-X, inscrita en la Cámara de Comercio de Medellín para Antioquia, con domicilio en Medellín, Antioquia, Colombia.",
-  "Canal para ejercer sus derechos y radicar consultas, peticiones o reclamos: hello@avelestates.com. Atendemos las consultas en un plazo de diez (10) días hábiles y los reclamos en quince (15) días hábiles, conforme a la Ley 1581 de 2012.",
+  `Canal para ejercer sus derechos y radicar consultas, peticiones o reclamos: ${SITE.publicEmail}. Atendemos las consultas en un plazo de diez (10) días hábiles y los reclamos en quince (15) días hábiles, conforme a la Ley 1581 de 2012.`,
 ];
 
 const COOKIE_ROWS_EN: CookieRow[] = [
@@ -205,7 +206,7 @@ const en: LegalPack = {
         {
           heading: "7. How to exercise them",
           paragraphs: [
-            "Write to hello@avelestates.com from the email address you gave us, stating your name, what you are asking for, and the facts that support the request. We may ask for proof of identity. Consultations are answered within ten (10) business days and complaints within fifteen (15) business days; where we cannot meet the term we tell you why and give a new date, as Law 1581 requires.",
+            `Write to ${SITE.publicEmail} from the email address you gave us, stating your name, what you are asking for, and the facts that support the request. We may ask for proof of identity. Consultations are answered within ten (10) business days and complaints within fifteen (15) business days; where we cannot meet the term we tell you why and give a new date, as Law 1581 requires.`,
             "Withdrawing consent does not affect processing carried out before the withdrawal, nor processing we are legally required to continue.",
           ],
         },
@@ -247,7 +248,7 @@ const en: LegalPack = {
       title: "Terms of use",
       updated: "1 August 2026",
       intro: [
-        "These terms govern your use of avelestates.com, operated by AVEL Inmobiliaria S.A.S. (AVEL Estates). Using the site means you accept them.",
+        `These terms govern your use of ${SITE.domain}, operated by AVEL Inmobiliaria S.A.S. (AVEL Estates). Using the site means you accept them.`,
       ],
       sections: [
         {
@@ -310,7 +311,7 @@ const en: LegalPack = {
         },
         {
           heading: "10. Contact",
-          paragraphs: ["Questions about these terms: hello@avelestates.com."],
+          paragraphs: [`Questions about these terms: ${SITE.publicEmail}.`],
         },
       ],
     },
@@ -319,7 +320,7 @@ const en: LegalPack = {
       slug: "cookies",
       seoTitle: "Cookie policy",
       seoDescription:
-        "Every cookie used on avelestates.com: name, purpose, duration and category, and how to change your choice at any time.",
+        `Every cookie used on ${SITE.domain}: name, purpose, duration and category, and how to change your choice at any time.`,
       title: "Cookie policy",
       updated: "1 August 2026",
       intro: [
@@ -392,7 +393,7 @@ const en: LegalPack = {
         {
           heading: "Channel",
           paragraphs: [
-            "Rights are exercised by writing to hello@avelestates.com, or in writing to our registered address in Medellín, Antioquia. Consultations are answered within ten (10) business days and complaints within fifteen (15) business days.",
+            `Rights are exercised by writing to ${SITE.publicEmail}, or in writing to our registered address in Medellín, Antioquia. Consultations are answered within ten (10) business days and complaints within fifteen (15) business days.`,
           ],
         },
         {
@@ -470,7 +471,7 @@ const es: LegalPack = {
         {
           heading: "7. Cómo ejercerlos",
           paragraphs: [
-            "Escriba a hello@avelestates.com desde el correo que nos suministró, indicando su nombre, lo que solicita y los hechos que lo sustentan. Podemos pedirle prueba de identidad. Las consultas se atienden en diez (10) días hábiles y los reclamos en quince (15) días hábiles; si no podemos cumplir el término, le explicamos por qué y le informamos la nueva fecha, como exige la Ley 1581.",
+            `Escriba a ${SITE.publicEmail} desde el correo que nos suministró, indicando su nombre, lo que solicita y los hechos que lo sustentan. Podemos pedirle prueba de identidad. Las consultas se atienden en diez (10) días hábiles y los reclamos en quince (15) días hábiles; si no podemos cumplir el término, le explicamos por qué y le informamos la nueva fecha, como exige la Ley 1581.`,
             "Revocar el consentimiento no afecta el tratamiento realizado antes de la revocatoria ni el que estemos obligados a continuar por ley.",
           ],
         },
@@ -512,7 +513,7 @@ const es: LegalPack = {
       title: "Términos de uso",
       updated: "1 de agosto de 2026",
       intro: [
-        "Estos términos rigen el uso de avelestates.com, operado por AVEL Inmobiliaria S.A.S. (AVEL Estates). Usar el sitio implica aceptarlos.",
+        `Estos términos rigen el uso de ${SITE.domain}, operado por AVEL Inmobiliaria S.A.S. (AVEL Estates). Usar el sitio implica aceptarlos.`,
       ],
       sections: [
         {
@@ -575,7 +576,7 @@ const es: LegalPack = {
         },
         {
           heading: "10. Contacto",
-          paragraphs: ["Preguntas sobre estos términos: hello@avelestates.com."],
+          paragraphs: [`Preguntas sobre estos términos: ${SITE.publicEmail}.`],
         },
       ],
     },
@@ -584,7 +585,7 @@ const es: LegalPack = {
       slug: "cookies",
       seoTitle: "Política de cookies",
       seoDescription:
-        "Todas las cookies de avelestates.com: nombre, finalidad, duración y categoría, y cómo cambiar su decisión en cualquier momento.",
+        `Todas las cookies de ${SITE.domain}: nombre, finalidad, duración y categoría, y cómo cambiar su decisión en cualquier momento.`,
       title: "Política de cookies",
       updated: "1 de agosto de 2026",
       intro: [
@@ -657,7 +658,7 @@ const es: LegalPack = {
         {
           heading: "Canal",
           paragraphs: [
-            "Los derechos se ejercen escribiendo a hello@avelestates.com o por escrito a nuestro domicilio en Medellín, Antioquia. Las consultas se atienden en diez (10) días hábiles y los reclamos en quince (15) días hábiles.",
+            `Los derechos se ejercen escribiendo a ${SITE.publicEmail} o por escrito a nuestro domicilio en Medellín, Antioquia. Las consultas se atienden en diez (10) días hábiles y los reclamos en quince (15) días hábiles.`,
           ],
         },
         {
