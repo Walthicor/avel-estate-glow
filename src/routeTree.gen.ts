@@ -12,12 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
+import { Route as EsContactoRouteImport } from './routes/es/contacto'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -54,6 +56,11 @@ const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
   path: '/buying-from-abroad',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -85,6 +92,11 @@ const EsComprarDesdeElExteriorRoute =
     path: '/es/comprar-desde-el-exterior',
     getParentRoute: () => rootRouteImport,
   } as any)
+const EsContactoRoute = EsContactoRouteImport.update({
+  id: '/es/contacto',
+  path: '/es/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
   id: '/es/nosotros',
   path: '/es/nosotros',
@@ -190,10 +202,12 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -221,10 +235,12 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -253,10 +269,12 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
+  '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -286,10 +304,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -317,10 +337,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -348,10 +370,12 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/contact'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
+    | '/es/contacto'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -380,10 +404,12 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
+  ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
+  EsContactoRoute: typeof EsContactoRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -431,6 +457,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyingFromAbroadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -471,6 +504,13 @@ declare module '@tanstack/react-router' {
       path: '/es/comprar-desde-el-exterior'
       fullPath: '/es/comprar-desde-el-exterior'
       preLoaderRoute: typeof EsComprarDesdeElExteriorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/contacto': {
+      id: '/es/contacto'
+      path: '/es/contacto'
+      fullPath: '/es/contacto'
+      preLoaderRoute: typeof EsContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/nosotros': {
@@ -620,10 +660,12 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
+  ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
+  EsContactoRoute: EsContactoRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,

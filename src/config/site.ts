@@ -7,6 +7,11 @@ export const SITE = {
   notifyEmail: "avelinmobiliaria@gmail.com",
   fromEmail: "noreply@avelestates.com",
   phone: "",
+  advisor: {
+    name: "Valentina Restrepo",
+    titleEn: "Client Advisor",
+    titleEs: "Asesora de clientes",
+  },
   social: {
     instagram: "https://www.instagram.com/avelestates",
     linkedin: "https://www.linkedin.com/company/avelestates",
