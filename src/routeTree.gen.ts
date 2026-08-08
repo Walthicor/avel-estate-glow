@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
@@ -41,6 +42,11 @@ const AboutRoute = AboutRouteImport.update({
 const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
   id: '/buying-from-abroad',
   path: '/buying-from-abroad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -124,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -165,6 +173,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -187,6 +196,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/sitemap.xml'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/sitemap.xml'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/buying-from-abroad'
+    | '/sitemap.xml'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -248,6 +260,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -286,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/buying-from-abroad'
       fullPath: '/buying-from-abroad'
       preLoaderRoute: typeof BuyingFromAbroadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/': {
@@ -400,6 +420,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   LegalCookiesRoute: LegalCookiesRoute,
@@ -419,3 +440,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
