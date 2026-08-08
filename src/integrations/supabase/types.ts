@@ -14,7 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          budget: string | null
+          buyer_type: string | null
+          cities: string[]
+          consent_at: string | null
+          country: string | null
+          created_at: string
+          email: string
+          form_type: string
+          id: string
+          locale: string
+          marketing_consent: boolean
+          message: string | null
+          name: string
+          phone: string | null
+          property_id: string | null
+          purpose: string | null
+          referrer: string | null
+          source_page: string | null
+          timeline: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+        }
+        Insert: {
+          budget?: string | null
+          buyer_type?: string | null
+          cities?: string[]
+          consent_at?: string | null
+          country?: string | null
+          created_at?: string
+          email: string
+          form_type?: string
+          id?: string
+          locale?: string
+          marketing_consent?: boolean
+          message?: string | null
+          name: string
+          phone?: string | null
+          property_id?: string | null
+          purpose?: string | null
+          referrer?: string | null
+          source_page?: string | null
+          timeline?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Update: {
+          budget?: string | null
+          buyer_type?: string | null
+          cities?: string[]
+          consent_at?: string | null
+          country?: string | null
+          created_at?: string
+          email?: string
+          form_type?: string
+          id?: string
+          locale?: string
+          marketing_consent?: boolean
+          message?: string | null
+          name?: string
+          phone?: string | null
+          property_id?: string | null
+          purpose?: string | null
+          referrer?: string | null
+          source_page?: string | null
+          timeline?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
