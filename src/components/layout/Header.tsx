@@ -64,7 +64,7 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-5">
-            <LanguageSwitcher className="hidden sm:flex" />
+            
             <a href={localePath("/contact")} className="btn-ghost hidden sm:inline-flex">
               {t("btn.enquire")}
             </a>
