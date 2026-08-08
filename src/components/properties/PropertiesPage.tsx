@@ -7,6 +7,7 @@ import {
   filterProperties,
   PAGE_SIZE,
   resolveSearch,
+  DEFAULT_SEARCH,
   type PropertySearch,
 } from "../../lib/property-search";
 import { Reveal } from "../Reveal";
@@ -25,7 +26,14 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
   const update = (patch: Partial<PropertySearch>) => {
     void navigate({
       to: ".",
-      search: (prev: Record<string, unknown>) => ({ ...prev, ...patch }),
+      search: (prev: Record<string, unknown>) => {
+        const next = { ...prev, ...patch } as Record<string, unknown>;
+        // Drop defaults so shared URLs stay short and canonical.
+        for (const [k, v] of Object.entries(DEFAULT_SEARCH)) {
+          if (next[k] === v || next[k] === "" || next[k] === undefined) delete next[k];
+        }
+        return next;
+      },
       replace: true,
       resetScroll: false,
     });
