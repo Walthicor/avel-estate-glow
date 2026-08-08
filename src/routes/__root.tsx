@@ -16,6 +16,8 @@ import { LocaleProvider } from "../i18n/LocaleProvider";
 import { LanguageSuggestionBar } from "../components/LanguageSuggestionBar";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
+import { TowerContactButton } from "../components/floating/TowerContactButton";
+import { BackToTopButton } from "../components/floating/BackToTopButton";
 
 function NotFoundComponent() {
   return (
@@ -142,6 +144,8 @@ function RootComponent() {
           <Outlet />
         </main>
         <Footer />
+        <TowerContactButton />
+        <BackToTopButton />
       </LocaleProvider>
     </QueryClientProvider>
   );
