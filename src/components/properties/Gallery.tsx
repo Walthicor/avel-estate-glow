@@ -41,12 +41,16 @@ export function Gallery({
             aria-label={copy.gallery.open}
             className="group h-full w-full"
           >
-            <img
+            <AvelImage
               src={current.src}
               alt={alt}
-              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              decoding="async"
+              preset="hero"
+              priority
+              sizes="100vw"
+              className="h-full w-full"
+              imgClassName="transition-transform duration-700 ease-out group-hover:scale-[1.02]"
             />
+
           </button>
         )}
       </div>
