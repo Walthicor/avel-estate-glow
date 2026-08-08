@@ -10,6 +10,7 @@ import {
 } from "../../content/properties";
 import type { PropertiesCopy } from "../../content/properties-page";
 import { useLocale } from "../../i18n/LocaleProvider";
+import { AvelImage } from "../AvelImage";
 
 export function PropertyCard({
   property,
