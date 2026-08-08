@@ -1,7 +1,12 @@
 import type { Locale } from "../../config/site";
 import { CITY_OPTIONS, STAGE_OPTIONS, TYPE_OPTIONS } from "../../content/properties";
 import type { PropertiesCopy } from "../../content/properties-page";
-import { AREA_BOUNDS, PAGE_SIZE, type PropertySearch } from "../../lib/property-search";
+import {
+  AREA_BOUNDS,
+  PAGE_SIZE,
+  type PropertySearch,
+  type ResolvedSearch,
+} from "../../lib/property-search";
 
 type Patch = Partial<PropertySearch>;
 
@@ -24,7 +29,7 @@ export function FilterBar({
   count,
   onChange,
 }: {
-  search: PropertySearch;
+  search: ResolvedSearch;
   copy: PropertiesCopy;
   locale: Locale;
   count: number;

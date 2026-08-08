@@ -4,17 +4,20 @@ export const PAGE_SIZE = 12;
 export const SORTS = ["newest", "area-desc", "area-asc"] as const;
 export type Sort = (typeof SORTS)[number];
 
+/** URL shape: defaults are omitted so shared links stay clean. */
 export type PropertySearch = {
-  city: string;
-  type: string;
-  amin: number;
-  amax: number;
-  beds: number;
-  stage: string;
-  str: boolean;
-  sort: Sort;
-  show: number;
+  city?: string;
+  type?: string;
+  amin?: number;
+  amax?: number;
+  beds?: number;
+  stage?: string;
+  str?: boolean;
+  sort?: Sort;
+  show?: number;
 };
+
+export type ResolvedSearch = Required<PropertySearch>;
 
 export const AREA_BOUNDS = { min: 40, max: 260 };
 
@@ -26,21 +29,27 @@ const num = (v: unknown, fallback: number) => {
 
 /** URL query params → typed, shareable search state. */
 export function validatePropertySearch(raw: Record<string, unknown>): PropertySearch {
+  const out: PropertySearch = {};
   const sort = str(raw["sort"]) as Sort;
-  return {
-    city: str(raw["city"]),
-    type: str(raw["type"]),
-    amin: num(raw["amin"], AREA_BOUNDS.min),
-    amax: num(raw["amax"], AREA_BOUNDS.max),
-    beds: num(raw["beds"], 0),
-    stage: str(raw["stage"]),
-    str: raw["str"] === true || raw["str"] === "true",
-    sort: SORTS.includes(sort) ? sort : "newest",
-    show: Math.max(PAGE_SIZE, num(raw["show"], PAGE_SIZE)),
-  };
+
+  if (str(raw["city"])) out.city = str(raw["city"]);
+  if (str(raw["type"])) out.type = str(raw["type"]);
+  if (str(raw["stage"])) out.stage = str(raw["stage"]);
+  const amin = num(raw["amin"], AREA_BOUNDS.min);
+  if (amin !== AREA_BOUNDS.min) out.amin = amin;
+  const amax = num(raw["amax"], AREA_BOUNDS.max);
+  if (amax !== AREA_BOUNDS.max) out.amax = amax;
+  const beds = num(raw["beds"], 0);
+  if (beds) out.beds = beds;
+  if (raw["str"] === true || raw["str"] === "true") out.str = true;
+  if (SORTS.includes(sort) && sort !== "newest") out.sort = sort;
+  const show = Math.max(PAGE_SIZE, num(raw["show"], PAGE_SIZE));
+  if (show !== PAGE_SIZE) out.show = show;
+
+  return out;
 }
 
-export const DEFAULT_SEARCH: PropertySearch = {
+export const DEFAULT_SEARCH: ResolvedSearch = {
   city: "",
   type: "",
   amin: AREA_BOUNDS.min,
@@ -52,7 +61,10 @@ export const DEFAULT_SEARCH: PropertySearch = {
   show: PAGE_SIZE,
 };
 
-export function filterProperties(s: PropertySearch): PropertyRecord[] {
+/** Fill in defaults for rendering. */
+export const resolveSearch = (s: PropertySearch): ResolvedSearch => ({ ...DEFAULT_SEARCH, ...s });
+
+export function filterProperties(s: ResolvedSearch): PropertyRecord[] {
   const amin = Math.min(s.amin, s.amax);
   const amax = Math.max(s.amin, s.amax);
 

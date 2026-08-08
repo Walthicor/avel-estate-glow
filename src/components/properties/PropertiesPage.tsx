@@ -6,6 +6,7 @@ import { useLocale } from "../../i18n/LocaleProvider";
 import {
   filterProperties,
   PAGE_SIZE,
+  resolveSearch,
   type PropertySearch,
 } from "../../lib/property-search";
 import { Reveal } from "../Reveal";
@@ -17,8 +18,9 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
   const navigate = useNavigate();
   const copy = PROPERTIES_COPY[locale as Locale];
 
-  const results = filterProperties(search);
-  const visible = results.slice(0, search.show);
+  const resolved = resolveSearch(search);
+  const results = filterProperties(resolved);
+  const visible = results.slice(0, resolved.show);
 
   const update = (patch: Partial<PropertySearch>) => {
     void navigate({
@@ -40,7 +42,7 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
       </section>
 
       <FilterBar
-        search={search}
+        search={resolved}
         copy={copy}
         locale={locale as Locale}
         count={results.length}
@@ -73,7 +75,7 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
                   <button
                     type="button"
                     className="btn-ghost"
-                    onClick={() => update({ show: search.show + PAGE_SIZE })}
+                    onClick={() => update({ show: resolved.show + PAGE_SIZE })}
                   >
                     {copy.loadMore}
                   </button>
