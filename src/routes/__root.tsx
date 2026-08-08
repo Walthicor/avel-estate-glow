@@ -14,6 +14,8 @@ import { SITE } from "../config/site";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { LocaleProvider } from "../i18n/LocaleProvider";
 import { LanguageSuggestionBar } from "../components/LanguageSuggestionBar";
+import { Header } from "../components/layout/Header";
+import { Footer } from "../components/layout/Footer";
 
 function NotFoundComponent() {
   return (
@@ -134,8 +136,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
         <LanguageSuggestionBar />
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <Header />
+        <main>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </main>
+        <Footer />
       </LocaleProvider>
     </QueryClientProvider>
   );

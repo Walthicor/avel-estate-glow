@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import { seoHead } from "../components/Seo";
 import { SITE } from "../config/site";
@@ -20,22 +20,22 @@ function Index() {
   const { t, localePath } = useLocale();
 
   return (
-    <main className="min-h-screen bg-background px-6 py-24">
+    <section className="min-h-screen bg-background px-6 pt-[140px] pb-24">
       <div className="mx-auto max-w-3xl">
         <h1 className="font-display text-5xl text-bone">{SITE.name}</h1>
         <p className="mt-4 text-sage">{t("footer.tagline")}</p>
         <nav className="mt-10 flex flex-wrap gap-4 text-sm">
-          <Link to={localePath("/properties") as never} className="text-gold hover:text-gold-deep">
+          <a href={localePath("/properties")} className="text-gold hover:text-gold-deep">
             {t("nav.properties")}
-          </Link>
-          <Link to={localePath("/contact") as never} className="text-gold hover:text-gold-deep">
+          </a>
+          <a href={localePath("/contact")} className="text-gold hover:text-gold-deep">
             {t("nav.contact")}
-          </Link>
-          <Link to="/es" className="text-sage hover:text-bone">
+          </a>
+          <a href="/es" className="text-sage hover:text-bone">
             {t("locale.switchToSpanish")}
-          </Link>
+          </a>
         </nav>
       </div>
-    </main>
+    </section>
   );
 }
