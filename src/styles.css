@@ -443,6 +443,37 @@
   color: var(--color-gold);
 }
 
+/* Compact tower on phones so it never crowds the content */
+@media (max-width: 767px) {
+  .avel-tower {
+    width: 40px;
+    gap: 5px;
+  }
+
+  .avel-tower__body {
+    width: 40px;
+    height: 84px;
+  }
+
+  .avel-tower__glow {
+    width: 62px;
+    height: 104px;
+    margin-left: -31px;
+    top: -10px;
+  }
+
+  .avel-tower__icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .avel-tower__label {
+    font-size: 7px;
+    letter-spacing: 0.14em;
+  }
+}
+
+
 /* ============================================================
    4.2 — Back to top (teardrop)
    ============================================================ */
