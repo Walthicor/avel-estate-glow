@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
@@ -47,6 +48,11 @@ const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitiesSlugRoute = CitiesSlugRouteImport.update({
+  id: '/cities/$slug',
+  path: '/cities/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -152,6 +159,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/cities/$slug': typeof CitiesSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -239,6 +250,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/buying-from-abroad'
     | '/sitemap.xml'
+    | '/cities/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
     | '/legal/cookies'
@@ -261,6 +273,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  CitiesSlugRoute: typeof CitiesSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -306,6 +319,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cities/$slug': {
+      id: '/cities/$slug'
+      path: '/cities/$slug'
+      fullPath: '/cities/$slug'
+      preLoaderRoute: typeof CitiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/': {
@@ -421,6 +441,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  CitiesSlugRoute: CitiesSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   LegalCookiesRoute: LegalCookiesRoute,
