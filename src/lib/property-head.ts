@@ -1,6 +1,7 @@
 import { seoHead } from "../components/Seo";
 import { SITE, type Locale } from "../config/site";
 import { areaLabel } from "../content/properties";
+import { breadcrumbJsonLd } from "./structured-data";
 import { DETAIL_COPY, descriptionFor, getPropertyDetail } from "../content/property-detail";
 
 /** Head descriptors (SEO meta + RealEstateListing JSON-LD) for a property page. */
@@ -51,8 +52,14 @@ export function propertyHead(slug: string, locale: Locale) {
     // No offers block: this listing is price on request.
   };
 
+  const breadcrumbs = breadcrumbJsonLd(locale, [
+    { name: SITE.name, path: "/" },
+    { name: locale === "es" ? "Propiedades" : "Properties", path: "/properties" },
+    { name: p.titleEn, path: `/properties/${slug}` },
+  ]);
+
   return {
     ...base,
-    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }, breadcrumbs],
   };
 }

@@ -3,7 +3,7 @@ export const SITE = {
   url: "https://avelestates.com",
   name: "AVEL Estates",
   legalName: "AVEL Inmobiliaria",
-  publicEmail: "hello@avelestates.com",
+  publicEmail: "info@avelestates.com",
   notifyEmail: "avelinmobiliaria@gmail.com",
   fromEmail: "noreply@avelestates.com",
   phone: "",
