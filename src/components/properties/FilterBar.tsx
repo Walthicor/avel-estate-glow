@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import type { Locale } from "../../config/site";
 import { CITY_OPTIONS, STAGE_OPTIONS, TYPE_OPTIONS } from "../../content/properties";
 import type { PropertiesCopy } from "../../content/properties-page";
@@ -37,11 +39,33 @@ export function FilterBar({
   onChange: (patch: Patch) => void;
 }) {
   const set = (patch: Patch) => onChange({ ...patch, show: PAGE_SIZE });
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className="hairline-b sticky top-[100px] z-30 bg-deep">
+    <div className="hairline-b z-30 bg-deep md:sticky md:top-[100px]">
       <div className="mx-auto max-w-[1400px] px-6 py-5 md:px-12">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto]">
+        <div className="flex items-center justify-between gap-4 md:hidden">
+          <p className="type-label text-bone" aria-live="polite">
+            {copy.count(count).toUpperCase()}
+          </p>
+          <button
+            type="button"
+            className="type-label border border-[rgba(140,164,165,0.28)] px-4 py-2 text-gold"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? copy.filters.any : copy.filters.stage
+              ? open
+                ? "—"
+                : "+"
+              : "+"}
+            <span className="ml-2">{locale === "es" ? "Filtros" : "Filters"}</span>
+          </button>
+        </div>
+
+        <div
+          className={`${open ? "mt-5 grid" : "hidden"} gap-4 md:mt-0 md:grid md:grid-cols-2 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto]`}
+        >
           <Field label={copy.filters.city}>
             <select
               className={selectClass}
