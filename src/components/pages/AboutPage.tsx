@@ -21,41 +21,19 @@ export function AboutPage() {
       </section>
 
       <section className="bg-bone px-6 py-24 text-abyss md:px-12 md:py-32">
-        <Reveal className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-20">
-          <div>
-            <AvelImage
-              src={founderPhoto}
-              alt={c.founder.photoAlt}
-              ratio="4/5"
-              preset="card"
-              className="w-full"
-            />
-          </div>
-          <div>
-            <p className="type-label text-abyss/50">{c.founder.label}</p>
-            <h2 className="type-h1 mt-3 text-abyss">{c.founder.name}</h2>
-            <p className="type-label mt-3 text-gold-deep">{c.founder.role}</p>
-            <div className="mt-8 max-w-[62ch] space-y-5">
-              {c.founder.body.map((p) => (
-                <p key={p} className="type-body text-abyss/75">
-                  {p}
-                </p>
-              ))}
-            </div>
-            <div className="mt-10 border-t border-abyss/15 pt-6">
-              <p className="type-label text-abyss/50">{c.founder.credentialsLabel}</p>
-              <ul className="mt-4 space-y-3">
-                {c.founder.credentials.map((cr) => (
-                  <li key={cr} className="type-body flex gap-4 text-abyss/80">
-                    <span aria-hidden="true" className="mt-[0.7em] h-px w-6 shrink-0 bg-gold-deep" />
-                    <span>{cr}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        <Reveal className="mx-auto max-w-[1240px]">
+          <p className="type-label text-abyss/50">{c.founder.credentialsLabel}</p>
+          <ul className="mt-8 max-w-[70ch] space-y-3">
+            {c.founder.credentials.map((cr) => (
+              <li key={cr} className="type-body flex gap-4 text-abyss/80">
+                <span aria-hidden="true" className="mt-[0.7em] h-px w-6 shrink-0 bg-gold-deep" />
+                <span>{cr}</span>
+              </li>
+            ))}
+          </ul>
         </Reveal>
       </section>
+
 
       <section className="bg-abyss px-6 py-24 md:px-12 md:py-32">
         <Reveal className="mx-auto max-w-[1240px]">
