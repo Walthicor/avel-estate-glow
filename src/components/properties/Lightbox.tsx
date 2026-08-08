@@ -81,12 +81,18 @@ export function Lightbox({
           >
             ‹
           </button>
-          <img
-            src={images[index]}
+          <AvelImage
+            src={images[index] ?? ""}
             alt=""
-            className="max-h-full max-w-[92vw] object-contain"
-            decoding="async"
+            ariaHidden
+            preset="lightbox"
+            fit="contain"
+            priority
+            sizes="92vw"
+            className="max-h-full max-w-[92vw] bg-transparent"
+            imgClassName="max-h-[86vh] w-auto"
           />
+
           <button
             type="button"
             aria-label={labels.next}
