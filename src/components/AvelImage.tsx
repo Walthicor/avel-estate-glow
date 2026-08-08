@@ -74,6 +74,7 @@ export function AvelImage({
       ) : null}
 
       <img
+        ref={imgRef}
         src={finalSrc}
         {...(srcSet ? { srcSet } : {})}
         {...(sizes ? { sizes } : {})}
