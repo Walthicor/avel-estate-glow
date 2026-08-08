@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import type { DetailCopy } from "../../content/property-detail";
 import { Lightbox } from "./Lightbox";
+import { AvelImage } from "../AvelImage";
 
 export function Gallery({
   images,
