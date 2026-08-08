@@ -20,6 +20,7 @@ import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as LegalCookiesRouteImport } from './routes/legal.cookies'
 import { Route as LegalHabeasDataRouteImport } from './routes/legal.habeas-data'
 import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
@@ -91,6 +92,11 @@ const EsNosotrosRoute = EsNosotrosRouteImport.update({
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesSlugRoute = GuidesSlugRouteImport.update({
+  id: '/guides/$slug',
+  path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalCookiesRoute = LegalCookiesRouteImport.update({
@@ -183,6 +189,7 @@ export interface FileRoutesByFullPath {
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -212,6 +219,7 @@ export interface FileRoutesByTo {
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -242,6 +250,7 @@ export interface FileRoutesById {
   '/collections/$slug': typeof CollectionsSlugRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/nosotros': typeof EsNosotrosRoute
+  '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
   '/legal/habeas-data': typeof LegalHabeasDataRoute
   '/legal/privacy': typeof LegalPrivacyRoute
@@ -273,6 +282,7 @@ export interface FileRouteTypes {
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
@@ -302,6 +312,7 @@ export interface FileRouteTypes {
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
@@ -331,6 +342,7 @@ export interface FileRouteTypes {
     | '/collections/$slug'
     | '/es/comprar-desde-el-exterior'
     | '/es/nosotros'
+    | '/guides/$slug'
     | '/legal/cookies'
     | '/legal/habeas-data'
     | '/legal/privacy'
@@ -361,6 +373,7 @@ export interface RootRouteChildren {
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
+  GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
   LegalHabeasDataRoute: typeof LegalHabeasDataRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
@@ -459,6 +472,13 @@ declare module '@tanstack/react-router' {
       path: '/guides'
       fullPath: '/guides/'
       preLoaderRoute: typeof GuidesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/$slug': {
+      id: '/guides/$slug'
+      path: '/guides/$slug'
+      fullPath: '/guides/$slug'
+      preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal/cookies': {
@@ -585,6 +605,7 @@ const rootRouteChildren: RootRouteChildren = {
   CollectionsSlugRoute: CollectionsSlugRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsNosotrosRoute: EsNosotrosRoute,
+  GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,
   LegalHabeasDataRoute: LegalHabeasDataRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,

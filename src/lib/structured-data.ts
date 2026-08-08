@@ -67,3 +67,29 @@ export function breadcrumbJsonLd(
     }),
   };
 }
+
+/** Article JSON-LD for a guide. */
+export function articleJsonLd(
+  guide: { slug: string; published: string; en: { title: string; excerpt: string }; es: { title: string; excerpt: string } },
+  locale: Locale,
+) {
+  const copy = locale === "es" ? guide.es : guide.en;
+  return {
+    type: "application/ld+json",
+    children: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: copy.title,
+      description: copy.excerpt,
+      inLanguage: locale === "es" ? "es-CO" : "en",
+      datePublished: guide.published,
+      mainEntityOfPage: `${SITE.url}${pathForLocale(`/guides/${guide.slug}`, locale)}`,
+      author: { "@type": "Organization", name: SITE.name },
+      publisher: {
+        "@type": "Organization",
+        name: SITE.name,
+        logo: { "@type": "ImageObject", url: `${SITE.url}${logo.url}` },
+      },
+    }),
+  };
+}
