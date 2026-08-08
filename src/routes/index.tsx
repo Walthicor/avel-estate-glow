@@ -1,24 +1,41 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { seoHead } from "../components/Seo";
+import { SITE } from "../config/site";
+import { useLocale } from "../i18n/LocaleProvider";
+
 export const Route = createFileRoute("/")({
+  head: () =>
+    seoHead({
+      locale: "en",
+      path: "/",
+      title: `${SITE.name} — Luxury Colombian Real Estate`,
+      description:
+        "Curated luxury homes and investment property in Colombia for international buyers.",
+    }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const { t, localePath } = useLocale();
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="min-h-screen bg-background px-6 py-24">
+      <div className="mx-auto max-w-3xl">
+        <h1 className="font-display text-5xl text-bone">{SITE.name}</h1>
+        <p className="mt-4 text-sage">{t("footer.tagline")}</p>
+        <nav className="mt-10 flex flex-wrap gap-4 text-sm">
+          <Link to={localePath("/properties") as never} className="text-gold hover:text-gold-deep">
+            {t("nav.properties")}
+          </Link>
+          <Link to={localePath("/contact") as never} className="text-gold hover:text-gold-deep">
+            {t("nav.contact")}
+          </Link>
+          <Link to="/es" className="text-sage hover:text-bone">
+            {t("locale.switchToSpanish")}
+          </Link>
+        </nav>
+      </div>
+    </main>
   );
 }
