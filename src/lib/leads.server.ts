@@ -104,25 +104,40 @@ export async function saveLead(payload: LeadPayload) {
   if (error) throw new Error(error.message);
 
   const property = propertyInfo(payload);
+  const leadId = inserted?.id ?? crypto.randomUUID();
+  const firstName = payload.name.trim().split(" ")[0] ?? payload.name.trim();
 
-  await Promise.all([
-    sendResend({
-      to: SITE.notifyEmail,
-      subject: `New lead: ${payload.name} · ${payload.budget ?? "No budget given"} · ${
-        payload.country ?? "Unknown country"
-      }`,
-      html: notificationHtml(payload, property),
+  const results = await Promise.allSettled([
+    sendTemplateEmail("lead-notification", SITE.notifyEmail, {
+      idempotencyKey: `lead-notification-${leadId}`,
       replyTo: payload.email,
+      templateData: {
+        name: payload.name,
+        budget: payload.budget ?? "No budget given",
+        country: payload.country ?? "Unknown country",
+        rows: notificationRows(payload, property),
+        ...(property ? { propertyUrl: property.url } : {}),
+      },
     }),
-    sendResend({
-      to: payload.email,
-      subject:
-        payload.locale === "es"
-          ? "Recibimos tu solicitud — AVEL Estates"
-          : "We received your request — AVEL Estates",
-      html: confirmationHtml(payload, property),
+    sendTemplateEmail("lead-confirmation", payload.email, {
+      idempotencyKey: `lead-confirmation-${leadId}`,
+      templateData: {
+        firstName,
+        locale: payload.locale,
+        advisorName: SITE.advisor.name,
+        advisorTitle: payload.locale === "es" ? SITE.advisor.titleEs : SITE.advisor.titleEn,
+        ...(property
+          ? { propertyTitle: property.title, propertyReference: property.reference }
+          : {}),
+      },
     }),
   ]);
+
+  // The lead is already stored; a mail failure must not fail the submission.
+  for (const result of results) {
+    if (result.status === "rejected") console.error("Lead email failed", result.reason);
+  }
+
 
   return { ok: true as const };
 }
