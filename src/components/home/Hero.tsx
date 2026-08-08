@@ -6,19 +6,41 @@ import { useLocale } from "../../i18n/LocaleProvider";
 
 export function Hero({ content }: { content: HomeContent["hero"] }) {
   const { localePath } = useLocale();
-  const [motionOk, setMotionOk] = useState(true);
+  // The hero video is ~19 MB: only load it on wider screens, when motion is
+  // allowed and the connection is not metered/slow. Everyone else gets the poster.
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => setMotionOk(!mq.matches);
+    const conn = (
+      navigator as Navigator & { connection?: { saveData?: boolean; effectiveType?: string } }
+    ).connection;
+    const apply = () => {
+      const slow =
+        Boolean(conn?.saveData) ||
+        (conn?.effectiveType ? /2g|3g/.test(conn.effectiveType) : false);
+      setShowVideo(!mq.matches && !slow && window.innerWidth >= 768);
+    };
     apply();
     mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
+    window.addEventListener("resize", apply);
+    return () => {
+      mq.removeEventListener("change", apply);
+      window.removeEventListener("resize", apply);
+    };
   }, []);
 
   return (
     <section className="relative flex min-h-dvh items-end overflow-hidden bg-abyss">
-      {motionOk ? (
+      <img
+        className="absolute inset-0 h-full w-full object-cover"
+        src={HERO_MEDIA.poster}
+        alt=""
+        aria-hidden="true"
+        fetchPriority="high"
+        decoding="async"
+      />
+      {showVideo ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src={HERO_MEDIA.video}
@@ -27,18 +49,11 @@ export function Hero({ content }: { content: HomeContent["hero"] }) {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           aria-hidden="true"
           tabIndex={-1}
         />
-      ) : (
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          src={HERO_MEDIA.poster}
-          alt=""
-          aria-hidden="true"
-        />
-      )}
+      ) : null}
       <div
         className="absolute inset-0"
         style={{
