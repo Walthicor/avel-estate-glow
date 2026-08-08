@@ -6,7 +6,7 @@ import { SITE } from "../../config/site";
 import { PROPERTIES_COPY } from "../../content/properties-page";
 import { validatePropertySearch } from "../../lib/property-search";
 
-export const Route = createFileRoute("/es/propiedades")({
+export const Route = createFileRoute("/es/propiedades/")({
   validateSearch: validatePropertySearch,
   head: () =>
     seoHead({
