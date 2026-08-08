@@ -32,6 +32,7 @@ export function PropertiesPage({ search }: { search: PropertySearch }) {
         for (const [k, v] of Object.entries(DEFAULT_SEARCH)) {
           if (next[k] === v || next[k] === "" || next[k] === undefined) delete next[k];
         }
+        console.log("NEXT", JSON.stringify(next));
         return next;
       },
       replace: true,
