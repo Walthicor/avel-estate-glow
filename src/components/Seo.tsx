@@ -61,9 +61,9 @@ export function Seo(props: SeoProps) {
     document.title = props.title;
 
     for (const entry of meta) {
-      if (entry.title) continue;
-      const attr = entry.name ? "name" : "property";
-      const key = entry.name ?? entry.property;
+      if (entry["title"]) continue;
+      const attr = entry["name"] ? "name" : "property";
+      const key = entry["name"] ?? entry["property"];
       if (!key) continue;
       let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
       if (!el) {
@@ -71,7 +71,7 @@ export function Seo(props: SeoProps) {
         el.setAttribute(attr, key);
         document.head.appendChild(el);
       }
-      el.setAttribute("content", entry.content ?? "");
+      el.setAttribute("content", entry["content"] ?? "");
     }
 
     document.head
