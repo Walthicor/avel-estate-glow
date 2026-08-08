@@ -327,12 +327,12 @@ const es: HomeContent = {
   collections: {
     heading: "Encuéntrala por el motivo de tu compra.",
     items: [
-      { label: "Renta", blurb: "Rentabilidad corta y larga estadía.", href: "/collections/short-term-rental-approved" },
-      { label: "Mudanza", blurb: "Para vivir aquí todo el año.", href: "/collections/pre-construction" },
-      { label: "Sobre planos", blurb: "Compra temprano, paga por etapas.", href: "/collections/poblado-and-envigado" },
-      { label: "Retiro", blurb: "Vida tranquila, clima cálido.", href: "/collections/beachfront-caribbean" },
-      { label: "Segunda vivienda", blurb: "Escapadas de costa y campo.", href: "/collections/ready-to-move" },
-      { label: "Diversificación", blurb: "Activos reales fuera de tu moneda.", href: "/collections/land-and-lots" },
+      { label: "Aptas para renta corta", blurb: "Edificios que permiten estadías cortas, por escrito.", href: "/collections/short-term-rental-approved" },
+      { label: "Sobre planos", blurb: "Compra temprano, paga por cuotas, con fiducia.", href: "/collections/pre-construction" },
+      { label: "Poblado y Envigado", blurb: "El corredor sur, la mejor reventa.", href: "/collections/poblado-and-envigado" },
+      { label: "Frente al mar Caribe", blurb: "Costa de Cartagena y Santa Marta.", href: "/collections/beachfront-caribbean" },
+      { label: "Listas para habitar", blurb: "Unidades entregadas: una llave, no una fecha.", href: "/collections/ready-to-move" },
+      { label: "Lotes y tierra", blurb: "Uso, agua y acceso verificados primero.", href: "/collections/land-and-lots" },
     ],
   },
   why: {
