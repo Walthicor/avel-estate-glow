@@ -15,7 +15,7 @@ export function LeadCapture({ content }: { content: HomeContent["lead"] }) {
     "w-full border border-abyss/20 bg-transparent px-3 py-2.5 text-[15px] text-abyss focus:border-gold-deep focus:outline-none";
 
   return (
-    <section id="enquire" className="bg-bone px-6 py-24 text-abyss md:px-12 md:py-32">
+    <section id="enquire" className="bg-bone px-6 py-24 text-abyss md:px-12 md:py-32 lg:pr-28">
       <Reveal className="mx-auto grid max-w-[1240px] gap-12 md:grid-cols-2 md:gap-20">
         <div>
           <h2 className="type-h1 max-w-[14ch] text-abyss">{content.heading}</h2>
