@@ -11,7 +11,13 @@ type Errors = Record<string, string>;
 
 const TONE = "light" as const;
 
-export function FullLeadForm() {
+export function FullLeadForm({
+  propertyId,
+  className = "",
+}: {
+  propertyId?: string;
+  className?: string;
+} = {}) {
   const { locale, localePath } = useLocale();
   const copy = CONTACT[locale];
   const send = useServerFn(submitLead);
