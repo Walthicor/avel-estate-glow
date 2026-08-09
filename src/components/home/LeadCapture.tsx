@@ -1,5 +1,5 @@
 import type { HomeContent } from "../../content/home";
-import { ShortLeadForm } from "../forms/ShortLeadForm";
+import { FullLeadForm } from "../forms/FullLeadForm";
 import { Reveal } from "../Reveal";
 
 export function LeadCapture({ content }: { content: HomeContent["lead"] }) {
@@ -11,7 +11,7 @@ export function LeadCapture({ content }: { content: HomeContent["lead"] }) {
           <p className="type-body mt-5 max-w-[40ch] text-abyss/70">{content.body}</p>
         </div>
 
-        <ShortLeadForm tone="light" heading={null} />
+        <FullLeadForm className="hairline" />
       </Reveal>
     </section>
   );

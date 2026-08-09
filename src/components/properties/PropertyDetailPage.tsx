@@ -18,7 +18,7 @@ import {
   type PropertyDetail,
 } from "../../content/property-detail";
 import { useLocale } from "../../i18n/LocaleProvider";
-import { ShortLeadForm } from "../forms/ShortLeadForm";
+import { FullLeadForm } from "../forms/FullLeadForm";
 import { Reveal } from "../Reveal";
 import { AvelImage } from "../AvelImage";
 import { Lightbox } from "./Lightbox";
@@ -229,7 +229,7 @@ export function PropertyDetailPage({ detail }: { detail: PropertyDetail }) {
       {/* REQUEST PRICE AND AVAILABILITY */}
       <section className="hairline-t bg-deep">
         <Reveal className="mx-auto max-w-[720px] px-6 py-16 md:py-24">
-          <ShortLeadForm tone="dark" propertyId={p.slug} />
+          <FullLeadForm propertyId={p.slug} />
         </Reveal>
       </section>
 
