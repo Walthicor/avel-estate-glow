@@ -1,7 +1,7 @@
 import { useLocale } from "../../i18n/LocaleProvider";
 import { CONTACT } from "../../content/contact";
 import { SITE } from "../../config/site";
-import { ShortLeadForm } from "../forms/ShortLeadForm";
+import { FullLeadForm } from "../forms/FullLeadForm";
 import { Reveal } from "../Reveal";
 
 export function ContactPage() {
@@ -23,7 +23,7 @@ export function ContactPage() {
         </Reveal>
 
         <Reveal>
-          <ShortLeadForm tone="dark" heading={null} />
+          <FullLeadForm />
         </Reveal>
       </section>
     </div>
