@@ -18,8 +18,10 @@ export function Hero({ content }: { content: HomeContent["hero"] }) {
     const apply = () => {
       const slow =
         Boolean(conn?.saveData) ||
-        (conn?.effectiveType ? /2g|3g/.test(conn.effectiveType) : false);
-      setShowVideo(!mq.matches && !slow && window.innerWidth >= 768);
+        (conn?.effectiveType ? /2g/.test(conn.effectiveType) : false);
+      // The hero video plays on every screen size — it looks great on mobile too.
+      // We only suppress it when the user prefers reduced motion or saves data.
+      setShowVideo(!mq.matches && !slow);
     };
     apply();
     mq.addEventListener("change", apply);
