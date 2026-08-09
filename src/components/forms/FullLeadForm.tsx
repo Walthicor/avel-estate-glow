@@ -71,6 +71,7 @@ export function FullLeadForm({
         data: {
           ...readLeadContext(),
           form_type: "full",
+          ...(propertyId ? { property_id: propertyId } : {}),
           buyer_type: labelOf(copy.buyerTypeOptions, buyerType),
           purpose: labelOf(copy.purposeOptions, purpose),
           budget: labelOf(copy.budgetOptions, budget),
@@ -93,7 +94,7 @@ export function FullLeadForm({
 
   if (status === "sent") {
     return (
-      <div className="hairline bg-bone/95 p-8 text-abyss md:p-10">
+      <div className={`hairline bg-bone/95 p-8 text-abyss md:p-10 ${className}`}>
         <p role="status" aria-live="polite" className="type-h3 max-w-[30ch]">
           {copy.success}
         </p>
@@ -102,7 +103,7 @@ export function FullLeadForm({
   }
 
   return (
-    <div className="bg-bone p-7 text-abyss md:p-10">
+    <div className={`bg-bone p-7 text-abyss md:p-10 ${className}`}>
       {/* Progress: two segments, active filled gold. */}
       <div className="flex items-center gap-3" aria-hidden="true">
         {[1, 2].map((n) => (
