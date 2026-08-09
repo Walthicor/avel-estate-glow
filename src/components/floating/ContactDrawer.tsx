@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import { useLocale } from "../../i18n/LocaleProvider";
-import { ShortLeadForm } from "../forms/ShortLeadForm";
+import { FullLeadForm } from "../forms/FullLeadForm";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
@@ -81,7 +81,7 @@ export function ContactDrawer({ open, onClose }: { open: boolean; onClose: () =>
         </div>
 
         <div className="px-6 pb-10">
-          <ShortLeadForm tone="dark" heading={null} />
+          <FullLeadForm />
         </div>
       </div>
     </div>
