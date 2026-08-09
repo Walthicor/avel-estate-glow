@@ -42,9 +42,9 @@ export function FilterBar({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="hairline-b z-30 bg-deep md:sticky md:top-[100px]">
+    <div className="hairline-b bg-deep">
       <div className="mx-auto max-w-[1400px] px-6 py-5 md:px-12">
-        <div className="flex items-center justify-between gap-4 md:hidden">
+        <div className="flex items-center justify-between gap-4">
           <p className="type-label text-bone" aria-live="polite">
             {copy.count(count).toUpperCase()}
           </p>
@@ -60,7 +60,7 @@ export function FilterBar({
         </div>
 
         <div
-          className={`${open ? "mt-5 grid" : "hidden"} gap-4 md:mt-0 md:grid md:grid-cols-2 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto]`}
+          className={`${open ? "mt-5 grid" : "hidden"} gap-4 md:grid-cols-2 xl:grid-cols-[repeat(5,minmax(0,1fr))_auto]`}
         >
           <Field label={copy.filters.city}>
             <select
