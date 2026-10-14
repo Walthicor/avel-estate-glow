@@ -1,7 +1,32 @@
 import type { Locale } from "../config/site";
 
+/** Everything the 4-step quote builder collects, in the shape it is stored. */
+export type QuoteData = {
+  project_type: string;
+  has_lot: string;
+  services: string[];
+  stage: string;
+  place: string;
+  lot_area_m2: number | null;
+  predio: string;
+  floors: number | null;
+  build_area_m2: number | null;
+  terrain: string;
+  finishes: string;
+  budget: string;
+  residence: string;
+  estimate: {
+    first_floor_m2: number;
+    total_m2: number;
+    min_cop: number;
+    max_cop: number;
+  };
+  gclid?: string | undefined;
+  fbclid?: string | undefined;
+};
+
 export type LeadPayload = {
-  form_type: "short" | "full";
+  form_type: "short" | "full" | "quote";
   buyer_type?: string | undefined;
   purpose?: string | undefined;
   budget?: string | undefined;
@@ -22,6 +47,8 @@ export type LeadPayload = {
   utm_content?: string | undefined;
   referrer?: string | undefined;
   marketing_consent?: boolean | undefined;
+  habeas_consent?: boolean | undefined;
+  quote?: QuoteData | undefined;
 };
 
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -39,5 +66,8 @@ export function readLeadContext(): Partial<LeadPayload> {
     utm_term: get("utm_term"),
     utm_content: get("utm_content"),
     referrer: document.referrer || undefined,
-  };
+    quote: undefined,
+    ...(get("gclid") ? { gclid: get("gclid") } : {}),
+    ...(get("fbclid") ? { fbclid: get("fbclid") } : {}),
+  } as Partial<LeadPayload>;
 }
