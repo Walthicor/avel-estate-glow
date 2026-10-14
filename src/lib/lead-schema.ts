@@ -48,6 +48,8 @@ export type LeadPayload = {
   referrer?: string | undefined;
   marketing_consent?: boolean | undefined;
   habeas_consent?: boolean | undefined;
+  gclid?: string | undefined;
+  fbclid?: string | undefined;
   quote?: QuoteData | undefined;
 };
 
@@ -66,8 +68,7 @@ export function readLeadContext(): Partial<LeadPayload> {
     utm_term: get("utm_term"),
     utm_content: get("utm_content"),
     referrer: document.referrer || undefined,
-    quote: undefined,
     ...(get("gclid") ? { gclid: get("gclid") } : {}),
     ...(get("fbclid") ? { fbclid: get("fbclid") } : {}),
-  } as Partial<LeadPayload>;
+  };
 }

@@ -68,11 +68,11 @@ export function openCookiePreferences() {
  */
 export function applyConsent(record: ConsentRecord) {
   if (typeof window === "undefined") return;
-  if (record.analytics) {
-    // Load the analytics tag here, e.g. injectScript(GA_URL). Intentionally
-    // empty until a measurement ID exists — firing before consent is the breach.
-  }
-  if (record.marketing) {
-    // Load marketing/remarketing tags here, under the same rule.
-  }
+  // The tags themselves live in analytics.ts and stay silent without an ID.
+  import("./analytics")
+    .then((m) => m.loadMeasurementTags())
+    .catch(() => {
+      /* measurement is optional — the site must work without it */
+    });
+  void record;
 }
