@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
-type Props = { photo: string; sketch: string; alt: string; className?: string };
+type Props = { photo: string; sketch: string; alt: string; className?: string; frameClassName?: string; controlsClassName?: string };
 
 const MODES = [
   { label: "Foto", value: 100 },
@@ -10,7 +10,7 @@ const MODES = [
 ] as const;
 
 /** Comparador foto / boceto. `pos` = % de foto visible desde la izquierda. */
-export function BeforeAfterSlider({ photo, sketch, alt, className = "" }: Props) {
+export function BeforeAfterSlider({ photo, sketch, alt, className = "", frameClassName = "aspect-[16/10]", controlsClassName = "right-3 top-3" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState(50);
   const [animate, setAnimate] = useState(false);
@@ -50,7 +50,7 @@ export function BeforeAfterSlider({ photo, sketch, alt, className = "" }: Props)
     <div className={`relative ${className}`}>
       <div
         ref={ref}
-        className="relative aspect-[16/10] w-full touch-none select-none overflow-hidden bg-deep"
+        className={`relative ${frameClassName} w-full touch-none select-none overflow-hidden bg-deep`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
       >
@@ -84,7 +84,7 @@ export function BeforeAfterSlider({ photo, sketch, alt, className = "" }: Props)
           → Boceto
         </span>
       </div>
-      <div className="absolute right-3 top-3 flex gap-1 rounded-full bg-abyss/70 p-1 backdrop-blur">
+      <div className={`absolute ${controlsClassName} flex gap-1 rounded-full bg-abyss/70 p-1 backdrop-blur`}>
         {MODES.map((m) => (
           <button
             key={m.label}
