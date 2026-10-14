@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- AVEL Arquitectura reusable UI lives in src/components/arquitectura/ and animates with framer-motion, always gated by useReducedMotion — keeps the section consistent and accessible.
