@@ -1,14 +1,16 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useServerFn } from "@tanstack/react-start";
 
 import { DIAL_CODES } from "../../content/contact";
 import { BUDGETS, HAS_LOT, PACKAGES, PROJECT_TYPES, RESIDENCE, SERVICES, STAGES } from "../../content/arquitectura";
 import { EMAIL_RE, readLeadContext } from "../../lib/lead-schema";
 import { submitLead } from "../../lib/leads.functions";
-import { trackLeadConversion } from "../../lib/analytics";
+import { trackEvent, trackLeadConversion } from "../../lib/analytics";
+import { readAttribution } from "../../lib/attribution";
 import { firstFloorMax, investmentRange, totalPossibleArea, type Acabados, type Predio } from "../../lib/quote-math";
 import { inputCls, labelCls, Seg } from "./Calculator";
-import { btnGold, btnLine, waLink, WaIcon, type Prefill } from "./shared";
+import { btnGold, btnLine, onWaClick, waLink, WaIcon, type Prefill } from "./shared";
 
 const KEY = "avel-arq-quote-v1";
 const STEP_NAMES = ["Tipo de proyecto", "Servicios y etapa", "Lugar y área", "Contacto"];
@@ -30,6 +32,26 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
   const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [loaded, setLoaded] = useState(false);
+  const [dir, setDir] = useState(1);
+  const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const reached = useRef(new Set<number>());
+  const go = (n: number) => { setDir(n > step ? 1 : -1); setStep(n); };
+
+  // cotizador_paso_N: once per step, only after the person reaches the form.
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || status === "sent") return;
+    const fire = () => {
+      if (reached.current.has(step)) return;
+      reached.current.add(step);
+      trackEvent(`cotizador_paso_${step + 1}`);
+    };
+    if (step > 0) { fire(); return; }
+    const io = new IntersectionObserver(([e]) => { if (e?.isIntersecting) { fire(); io.disconnect(); } }, { threshold: 0.3 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, [step, status]);
 
   useEffect(() => {
     try {
@@ -53,9 +75,11 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
       if (prefill.services) next.services = Array.from(new Set([...cur.services, ...prefill.services]));
       if (prefill.packages) next.packages = Array.from(new Set([...cur.packages, ...prefill.packages]));
       if (prefill.projectType) next.projectType = prefill.projectType;
+      if (prefill.residence) next.residence = prefill.residence;
       if (prefill.calc) Object.assign(next, { lot: prefill.calc.lot, predio: prefill.calc.predio, floors: prefill.calc.floors, build: prefill.calc.build, finishes: prefill.calc.finishes });
       return next;
     });
+    if (prefill.keepStep) return;
     if (prefill.services || prefill.packages) setStep(1);
     else if (prefill.calc) setStep(0);
   }, [prefill]);
@@ -89,10 +113,16 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
     if (!validate(3)) return;
     setStatus("sending");
     const ctx = readLeadContext();
+    const att = readAttribution();
     try {
       await send({
         data: {
           ...ctx,
+          utm_source: att.utm_source ?? ctx.utm_source,
+          utm_medium: att.utm_medium ?? ctx.utm_medium,
+          utm_campaign: att.utm_campaign ?? ctx.utm_campaign,
+          utm_content: att.utm_content ?? ctx.utm_content,
+          utm_term: att.utm_term ?? ctx.utm_term,
           form_type: "quote",
           name: f.name.trim(),
           email: f.email.trim(),
@@ -109,7 +139,8 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
             floors: Number(f.floors) || null, build_area_m2: Number(f.build) || null, terrain: f.terrain,
             finishes: f.finishes, budget: f.budget, residence: f.residence,
             estimate: { first_floor_m2: firstFloorMax(lotN, f.predio), total_m2: total, min_cop: range.min, max_cop: range.max },
-            gclid: ctx.gclid, fbclid: ctx.fbclid,
+            gclid: att.gclid ?? ctx.gclid, fbclid: att.fbclid ?? ctx.fbclid,
+            servicio: att.servicio, landing_url: att.landing_url,
           },
         },
       });
@@ -127,7 +158,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
   ].join(", ")}.`;
 
   return (
-    <section id="cotizar" className="scroll-mt-16 bg-obra px-5 py-20 md:px-10 md:py-28">
+    <section ref={sectionRef} id="cotizar" className="scroll-mt-16 bg-obra px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[1fr_1.3fr]">
         <div>
           <p className="arq-mono text-[12px] text-oro">(11) — Cotización · Paso {step + 1} de 4</p>
@@ -136,7 +167,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
             Cuatro pasos, unos tres minutos. Con esta información preparamos una propuesta con alcance, tiempos y honorarios.
           </p>
           <div className="mt-8 h-[2px] w-full bg-hueso/10" aria-hidden="true">
-            <div className="h-full bg-oro transition-[width] duration-500 motion-reduce:transition-none" style={{ width: `${status === "sent" ? 100 : ((step + 1) / 4) * 100}%` }} />
+            <div className="h-full origin-left bg-oro transition-transform duration-500 motion-reduce:transition-none" style={{ transform: `scaleX(${status === "sent" ? 1 : (step + 1) / 4})` }} />
           </div>
           <ol className="mt-6 grid gap-3">
             {STEP_NAMES.map((s, i) => (
@@ -151,11 +182,21 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
               <p className="arq-display text-[clamp(26px,3.5vw,40px)] text-hueso">Recibimos tu información.</p>
               <p className="arq-body mt-4 text-[17px] text-hueso/80">Te escribimos por WhatsApp en menos de 24 horas hábiles.</p>
               {waLink() ? (
-                <a href={waLink(summary)} target="_blank" rel="noreferrer" className={`${btnGold} mt-8`}><WaIcon /> Escribir por WhatsApp</a>
+                <a href={waLink(summary)} target="_blank" rel="noreferrer" onClick={onWaClick} className={`${btnGold} mt-8`}><WaIcon /> Escribir por WhatsApp</a>
               ) : null}
             </div>
           ) : (
-            <div className="grid gap-7">
+            <div className="grid gap-7 overflow-hidden">
+              <AnimatePresence mode="wait" initial={false} custom={dir}>
+              <motion.div
+                key={step}
+                custom={dir}
+                className="grid gap-7"
+                initial={reduce ? false : { opacity: 0, x: dir * 48 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={reduce ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, x: dir * -48 }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              >
               {step === 0 ? (
                 <>
                   <Choices label="Tipo de proyecto" options={PROJECT_TYPES} value={f.projectType} onPick={(v) => set("projectType", v)} error={errors.projectType} />
@@ -248,18 +289,20 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
                   </div>
                 </div>
               ) : null}
+              </motion.div>
+              </AnimatePresence>
 
               {status === "error" ? <p role="alert" className="arq-body text-[14px] text-[#ff8a7a]">No pudimos enviar tu información. Revisa tu conexión e inténtalo de nuevo.</p> : null}
 
               <div className="flex flex-wrap items-center gap-3">
                 {step < 3 ? (
-                  <button type="button" className={btnGold} onClick={() => validate(step) && setStep(step + 1)}>Continuar</button>
+                  <button type="button" className={btnGold} onClick={() => validate(step) && go(step + 1)}>Continuar</button>
                 ) : (
                   <button type="button" className={btnGold} disabled={status === "sending"} onClick={submit}>
                     {status === "sending" ? "Enviando…" : "Recibir mi cotización"}
                   </button>
                 )}
-                {step > 0 ? <button type="button" className={btnLine} onClick={() => setStep(step - 1)}>Atrás</button> : null}
+                {step > 0 ? <button type="button" className={btnLine} onClick={() => go(step - 1)}>Atrás</button> : null}
               </div>
             </div>
           )}
