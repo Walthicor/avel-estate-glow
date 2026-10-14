@@ -39,7 +39,7 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
   const range = investmentRange(total, finishes);
 
   return (
-    <section id="calculadora" className="bg-carbon px-5 py-20 md:px-10 md:py-28">
+    <section id="calculadora" className="scroll-mt-16 bg-carbon px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1240px] rounded-[4px] border border-oro/60 p-6 md:p-12">
         <Rotulo>(04) — Calculadora</Rotulo>
         <ArqTitle text="¿Cuánto puedes construir en tu lote?" gold="construir" className="mt-4 text-[clamp(32px,5vw,64px)] text-hueso" />
