@@ -34,7 +34,8 @@ test("high-end finishes cost 4.5 to 7 million pesos per m²", () => {
 });
 
 test("amounts are shown in Colombian pesos", () => {
-  expect(formatCOP(6_000_000_000)).toBe("$ 6.000.000.000");
+  // es-CO puts a non-breaking space between the sign and the figure.
+  expect(formatCOP(6_000_000_000).replace(/\u00a0/g, " ")).toBe("$ 6.000.000.000");
 });
 
 test("an empty lot area estimates nothing instead of NaN", () => {

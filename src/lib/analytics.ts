@@ -8,17 +8,21 @@
  */
 import { readConsent } from "./consent";
 
+type Fbq = ((...args: unknown[]) => void) & {
+  callMethod?: (...args: unknown[]) => void;
+};
+
 type TaggedWindow = Window & {
   dataLayer?: unknown[];
   gtag?: (...args: unknown[]) => void;
-  fbq?: ((...args: unknown[]) => void) & { callMethod?: unknown };
+  fbq?: Fbq;
   _fbq?: unknown;
 };
 
 export const TAG_IDS = {
-  ga: import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined,
-  ads: import.meta.env.VITE_GOOGLE_ADS_ID as string | undefined,
-  pixel: import.meta.env.VITE_META_PIXEL_ID as string | undefined,
+  ga: import.meta.env["VITE_GA_MEASUREMENT_ID"] as string | undefined,
+  ads: import.meta.env["VITE_GOOGLE_ADS_ID"] as string | undefined,
+  pixel: import.meta.env["VITE_META_PIXEL_ID"] as string | undefined,
 };
 
 let loaded = false;
@@ -30,7 +34,7 @@ function inject(src: string) {
   const script = document.createElement("script");
   script.async = true;
   script.src = src;
-  script.dataset.avelTag = src;
+  script.dataset["avelTag"] = src;
   document.head.appendChild(script);
 }
 
@@ -46,11 +50,11 @@ export function loadMeasurementTags() {
 
   if (consent.analytics && (ga || ads)) {
     w.dataLayer = w.dataLayer || [];
+    const dataLayer = w.dataLayer;
     w.gtag =
       w.gtag ??
       function gtag() {
-        // eslint-disable-next-line prefer-rest-params
-        w.dataLayer!.push(arguments);
+        dataLayer.push(arguments);
       };
     w.gtag("js", new Date());
     if (ga) w.gtag("config", ga);
@@ -60,19 +64,17 @@ export function loadMeasurementTags() {
 
   if (consent.marketing && pixel) {
     w.dataLayer = w.dataLayer || [];
-    const push = (...args: unknown[]) => w.dataLayer!.push(args);
-    const fbq = ((...args: unknown[]) => {
-      if (typeof w.fbq === "function" && w.fbq.callMethod) {
-        w.fbq.callMethod.apply(w.fbq, args);
-      } else {
-        push(args);
-      }
-    }) as TaggedWindow["fbq"];
+    const dataLayer = w.dataLayer;
+    const queue = ((...args: unknown[]) => dataLayer.push(args)) as unknown as Fbq;
+    const fbq: Fbq = (...args: unknown[]) => {
+      if (w.fbq?.callMethod) w.fbq.callMethod(...args);
+      else queue(args);
+    };
     w.fbq = w.fbq ?? fbq;
     w._fbq = w._fbq ?? w.fbq;
     w.fbq("init", pixel);
     w.fbq("track", "PageView");
-    inject(`https://connect.facebook.net/en_US/fbevents.js`);
+    inject("https://connect.facebook.net/en_US/fbevents.js");
   }
 
   loaded = true;
