@@ -20,8 +20,9 @@ type TaggedWindow = Window & {
 };
 
 export const TAG_IDS = {
-  ga: import.meta.env["VITE_GA_MEASUREMENT_ID"] as string | undefined,
+  ga: (import.meta.env["VITE_GA4_ID"] ?? import.meta.env["VITE_GA_MEASUREMENT_ID"]) as string | undefined,
   ads: import.meta.env["VITE_GOOGLE_ADS_ID"] as string | undefined,
+  adsLabel: import.meta.env["VITE_GOOGLE_ADS_LEAD_LABEL"] as string | undefined,
   pixel: import.meta.env["VITE_META_PIXEL_ID"] as string | undefined,
 };
 
@@ -80,7 +81,7 @@ export function loadMeasurementTags() {
   loaded = true;
 }
 
-/** Report the completed quote to every tag that is present. */
+/** Report the completed quote: GA4 generate_lead, Meta Lead and the Google Ads conversion. */
 export function trackLeadConversion() {
   if (typeof window === "undefined") return;
   const consent = readConsent();
@@ -88,11 +89,24 @@ export function trackLeadConversion() {
   const w = window as TaggedWindow;
   const ga = env(TAG_IDS.ga);
   const ads = env(TAG_IDS.ads);
+  const label = env(TAG_IDS.adsLabel) || "lead";
   const pixel = env(TAG_IDS.pixel);
 
-  if (consent.analytics) {
-    if (ga && w.gtag) w.gtag("event", "Lead", { send_to: ga, currency: "COP" });
-    if (ads && w.gtag) w.gtag("event", "conversion", { send_to: `${ads}/lead`, currency: "COP" });
+  if (consent.analytics && w.gtag) {
+    if (ga) w.gtag("event", "generate_lead", { send_to: ga, currency: "COP" });
+    if (ads) w.gtag("event", "conversion", { send_to: `${ads}/${label}`, currency: "COP" });
   }
   if (consent.marketing && pixel && w.fbq) w.fbq("track", "Lead");
+}
+
+const META_STANDARD = new Set(["Lead", "Contact"]);
+
+/** Any other landing event (Contact, calculadora_usada, cotizador_paso_N, servicio_elegido). */
+export function trackEvent(name: string, params: Record<string, string | number> = {}) {
+  if (typeof window === "undefined") return;
+  const consent = readConsent();
+  if (!consent) return;
+  const w = window as TaggedWindow;
+  if (consent.analytics && w.gtag && env(TAG_IDS.ga)) w.gtag("event", name, { send_to: env(TAG_IDS.ga), ...params });
+  if (consent.marketing && w.fbq && env(TAG_IDS.pixel)) w.fbq(META_STANDARD.has(name) ? "track" : "trackCustom", name, params);
 }
