@@ -17,6 +17,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as DevComponentesRouteImport } from './routes/dev/componentes'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsContactoRouteImport } from './routes/es/contacto'
@@ -80,6 +81,11 @@ const CollectionsIndexRoute = CollectionsIndexRouteImport.update({
 const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   id: '/collections/$slug',
   path: '/collections/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevComponentesRoute = DevComponentesRouteImport.update({
+  id: '/dev/componentes',
+  path: '/dev/componentes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsIndexRoute = EsIndexRouteImport.update({
@@ -213,6 +219,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
@@ -247,6 +254,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
@@ -282,6 +290,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
+  '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/nosotros': typeof EsNosotrosRoute
@@ -318,6 +327,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
+    | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/nosotros'
@@ -352,6 +362,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
+    | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/nosotros'
@@ -386,6 +397,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
+    | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/nosotros'
@@ -421,6 +433,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
+  DevComponentesRoute: typeof DevComponentesRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsContactoRoute: typeof EsContactoRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
@@ -504,6 +517,13 @@ declare module '@tanstack/react-router' {
       path: '/collections/$slug'
       fullPath: '/collections/$slug'
       preLoaderRoute: typeof CollectionsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dev/componentes': {
+      id: '/dev/componentes'
+      path: '/dev/componentes'
+      fullPath: '/dev/componentes'
+      preLoaderRoute: typeof DevComponentesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/': {
@@ -685,6 +705,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
+  DevComponentesRoute: DevComponentesRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsContactoRoute: EsContactoRoute,
   EsNosotrosRoute: EsNosotrosRoute,

@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 
 import { SITE } from "../../config/site";
@@ -12,7 +11,7 @@ export function QuoteMascot() {
       className="fixed right-4 z-[95] flex flex-col items-end gap-2"
       style={{ bottom: "calc(16px + env(safe-area-inset-bottom))" }}
     >
-      <Link to="/es/cotiza" aria-label="Cotiza tu proyecto" className="group flex flex-col items-end gap-2">
+      <a href="/es/cotiza" aria-label="Cotiza tu proyecto" className="group flex flex-col items-end gap-2">
         <span className="relative rounded-2xl bg-paper px-3 py-1.5 text-sm font-semibold text-abyss shadow-lg">
           ¡Cotiza aquí!
           <span className="absolute -bottom-1 right-6 h-2 w-2 rotate-45 bg-paper" aria-hidden="true" />
@@ -32,7 +31,7 @@ export function QuoteMascot() {
             />
           ))}
         </motion.span>
-      </Link>
+      </a>
       {wa && (
         <a
           href={`https://wa.me/${wa}`}
