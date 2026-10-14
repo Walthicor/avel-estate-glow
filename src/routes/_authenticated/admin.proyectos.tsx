@@ -111,7 +111,7 @@ function AdminProyectos() {
 
   async function signOut() {
     await supabase.auth.signOut();
-    navigate({ to: "/auth", replace: true });
+    navigate({ to: "/auth", search: { redirect: "/admin/proyectos" }, replace: true });
   }
 
   if (isAdmin === null) return <main className="min-h-screen bg-paper pt-40 text-center text-abyss">Cargando…</main>;

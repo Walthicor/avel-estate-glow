@@ -52,7 +52,7 @@ export const getProject = createServerFn({ method: "GET" })
     const pick = (r: (typeof list)[number]): ProjectNeighbor => ({ slug: r.slug, name: r.name, main_photo: r.main_photo });
     return {
       project: project as Project,
-      prev: list.length > 1 ? pick(list[(i - 1 + list.length) % list.length]) : null,
-      next: list.length > 1 ? pick(list[(i + 1) % list.length]) : null,
+      prev: list.length > 1 ? pick(list[(i - 1 + list.length) % list.length]!) : null,
+      next: list.length > 1 ? pick(list[(i + 1) % list.length]!) : null,
     };
   });

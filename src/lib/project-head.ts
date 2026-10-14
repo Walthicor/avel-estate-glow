@@ -9,13 +9,12 @@ export function projectHead(project: Project | undefined, slug: string, locale: 
     return { meta: [{ title: "AVEL Arquitectura" }, { name: "robots", content: "noindex" }] };
   }
   const title = `${project.name} en ${project.city} | AVEL Arquitectura`;
-  const image = project.main_photo ?? undefined;
   const base = seoHead({
     locale,
     path: `/architecture/projects/${slug}`,
     title: locale === "en" ? `${project.name} in ${project.city} | AVEL Arquitectura` : title,
     description: project.tagline || project.description,
-    image,
+    ...(project.main_photo ? { image: project.main_photo } : {}),
     type: "article",
   });
   const jsonLd = {
@@ -41,7 +40,7 @@ export function projectHead(project: Project | undefined, slug: string, locale: 
   };
   return {
     ...base,
-    scripts: [...((base as { scripts?: unknown[] }).scripts ?? []), { type: "application/ld+json", children: JSON.stringify(jsonLd) }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(jsonLd) }],
   };
 }
 
