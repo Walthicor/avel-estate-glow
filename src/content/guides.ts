@@ -610,7 +610,7 @@ export const GUIDES_INDEX: Record<
     heading: "Blog",
     intro: "Written for buyers who are not in Colombia. No sales language, no generalities.",
     related: "Related properties",
-    back: "All guides",
+    back: "All articles",
   },
   es: {
     title: "Blog de bienes raíces en Colombia | AVEL Estates",
@@ -619,6 +619,6 @@ export const GUIDES_INDEX: Record<
     heading: "Blog",
     intro: "Escritas para compradores que no están en Colombia. Sin lenguaje comercial ni generalidades.",
     related: "Propiedades relacionadas",
-    back: "Todas las guías",
+    back: "Todos los artículos",
   },
 };
