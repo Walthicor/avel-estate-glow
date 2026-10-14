@@ -30,7 +30,7 @@ export function ArqLanding() {
         <div className={`${wrap} flex h-16 items-center justify-between px-5 md:px-10`}>
           <a href="#inicio" className="flex items-center gap-3" aria-label="AVEL Arquitectura, ir al inicio">
             <AvelLogo className="h-9!" />
-            <span className="arq-mono hidden text-[11px] text-gold sm:inline">Arquitectura</span>
+            <span className="arq-mono text-[10px] text-gold sm:text-[11px]">Arquitectura</span>
           </a>
           <div className="flex items-center gap-3">
             <button type="button" onClick={() => goQuote()} className="rounded-full bg-oro px-5 py-2.5 text-[14px] font-medium text-obra hover:brightness-110">Cotizar</button>
