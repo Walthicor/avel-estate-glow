@@ -6,6 +6,8 @@ import { HOME } from "../../content/home";
 import { PROPERTIES } from "../../content/properties";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
+import { BLOG_PHOTOS } from "../../content/photos";
 import { LeadCapture } from "../home/LeadCapture";
 import { PropertyGrid } from "../properties/PropertyGrid";
 
@@ -82,6 +84,18 @@ export function GuideArticlePage({ slug }: { slug: string }) {
           <h1 className="type-h1 mt-4 text-bone">{g.title}</h1>
           <p className="type-label mt-6 text-sage">{g.readTime}</p>
           <span className="gold-rule mt-10 block" />
+          {BLOG_PHOTOS[guide.slug] ? (
+            <AvelImage
+              src={BLOG_PHOTOS[guide.slug]!}
+              alt={g.title}
+              preset="card"
+              width={1200}
+              ratio="3/2"
+              priority
+              sizes="(max-width: 768px) 100vw, 720px"
+              className="mt-10 w-full"
+            />
+          ) : null}
 
           <div className="mt-10">
             {g.blocks.map((block, i) => {

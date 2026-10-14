@@ -4,7 +4,7 @@ export const en = {
   "nav.properties": "Properties",
   "nav.cities": "Cities",
   "nav.collections": "Collections",
-  "nav.guides": "Guides",
+  "nav.guides": "Blog",
   "nav.about": "About",
   "nav.contact": "Contact",
   "nav.buyingFromAbroad": "Buying from abroad",

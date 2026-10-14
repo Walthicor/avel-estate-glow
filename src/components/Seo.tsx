@@ -27,9 +27,9 @@ export function clamp(text: string, max: number) {
   return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).replace(/[\s,.·—–-]+$/, "");
 }
 
-/** SEO budgets: titles 60 chars, descriptions 110 chars. */
+/** SEO budgets: titles 60 chars, descriptions 155 chars. */
 export const seoTitle = (t: string) => clamp(t, 60);
-export const seoDescription = (d: string) => clamp(d, 110);
+export const seoDescription = (d: string) => clamp(d, 155);
 
 /**
  * Head tag descriptors for a page: title, description, canonical and
