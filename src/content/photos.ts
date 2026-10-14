@@ -57,4 +57,8 @@ export const BLOG_PHOTOS: Record<string, string> = {
   "poblado-vs-envigado-vs-laureles": byName("barrio-laureles-medellin"),
   "short-term-rental-rules-medellin": byName("renta-corta-medellin-normas"),
   "seven-documents-before-you-sign": byName("documentos-compra-inmueble-colombia"),
+  "closing-costs-buying-property-colombia": byName("gastos-escrituracion-colombia"),
+  "is-colombian-real-estate-a-good-investment": byName("invertir-finca-raiz-colombia"),
+  "mortgage-in-colombia-for-foreigners": byName("credito-hipotecario-extranjeros-colombia"),
+  "colombia-investor-visa-real-estate": byName("visa-inversionista-colombia"),
 };
