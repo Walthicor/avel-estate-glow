@@ -9,6 +9,9 @@ export type Prefill = {
   services?: string[];
   packages?: string[];
   projectType?: string;
+  residence?: string;
+  /** Marca opciones sin mover el cotizador de paso (anuncio ?servicio=). */
+  keepStep?: boolean;
   calc?: { lot: string; predio: "urbano" | "rural"; floors: string; build: string; finishes: "medios" | "alta" };
 };
 
