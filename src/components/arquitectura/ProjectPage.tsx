@@ -94,7 +94,7 @@ export function ProjectPage({ project: p, prev, next, locale }: Props) {
               >
                 <img
                   src={src}
-                  alt={`${p.name} — ${i + 1}`}
+                  alt={`${p.name}, ${p.city} — ${tr(p.type, locale)} (${locale === "es" ? "foto" : "photo"} ${i + 1})`}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none"
                 />
