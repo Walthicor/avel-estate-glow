@@ -35,6 +35,7 @@
 
   --font-display: "Bodoni Moda", serif;
   --font-sans: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
 @theme inline {
