@@ -611,8 +611,7 @@ export function QuotePage() {
                     {(p) => (
                       <div className="flex gap-3">
                         <select
-                          {...p}
-                          aria-label={c.step4.whatsapp}
+                          aria-label={locale === "es" ? "Código de país" : "Country code"}
                           value={form.dial}
                           onChange={(e) => set("dial", e.target.value)}
                           className={`${fieldClass(TONE, false)} w-32 shrink-0`}
@@ -624,6 +623,7 @@ export function QuotePage() {
                           ))}
                         </select>
                         <input
+                          {...p}
                           type="tel"
                           inputMode="tel"
                           autoComplete="tel-national"
