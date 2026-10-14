@@ -10,7 +10,7 @@ export const Route = createFileRoute("/es/")({
     ...seoHead({
       locale: "es",
       path: "/",
-      title: `${SITE.name} — Compra propiedad en Colombia desde el exterior`,
+      title: `Inmobiliaria de lujo en Colombia | ${SITE.name}`,
       description:
         "Propiedad de lujo en Medellín, Cartagena, Santa Marta, Bogotá, Cali, Popayán y el Eje Cafetero: gestión para compradores remotos.",
     }),
