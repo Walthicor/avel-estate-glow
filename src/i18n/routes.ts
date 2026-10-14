@@ -12,6 +12,7 @@ export const ROUTE_SEGMENTS = {
   legal: "legal",
   architecture: "arquitectura",
   projects: "proyectos",
+  quote: "cotiza",
 } as const;
 
 export type EnSegment = keyof typeof ROUTE_SEGMENTS;
