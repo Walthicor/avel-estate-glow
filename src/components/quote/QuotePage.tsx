@@ -106,7 +106,12 @@ export function QuotePage() {
     }
   }, [form]);
 
+  const firstPaint = useRef(true);
   useEffect(() => {
+    if (firstPaint.current) {
+      firstPaint.current = false;
+      return;
+    }
     headingRef.current?.focus();
   }, [step]);
 
@@ -309,7 +314,7 @@ export function QuotePage() {
         initial: { opacity: 0, x: 28 * dir },
         animate: { opacity: 1, x: 0 },
         exit: { opacity: 0, x: -28 * dir },
-        transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as const },
+        transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
       };
 
   return (

@@ -222,10 +222,3 @@ export const QUOTE = { en, es } as const;
 
 export const QUOTE_OPTIONS = OPTIONS;
 
-/** Human-readable summary of the quote, used in the WhatsApp message and the email. */
-export function quoteSummary(
-  rows: [string, string][],
-  copy: typeof es,
-): string {
-  return rows.map(([k, v]) => `${k}: ${v}`).join(" · ") + ` — ${copy.whatsappIntro}`;
-}
