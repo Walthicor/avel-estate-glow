@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 
 import { SITE } from "../../config/site";
+import { trackEvent } from "../../lib/analytics";
+import { MaskWords } from "./motion";
 
 export type Prefill = {
   nonce: number;
@@ -38,22 +40,16 @@ export function ArqTitle({
   as?: "h1" | "h2";
   className?: string;
 }) {
-  const i = text.indexOf(gold);
   const goldCls = light ? "text-oro-ink" : "text-oro";
   return (
     <Tag className={`arq-display ${className}`}>
-      {i < 0 ? (
-        text
-      ) : (
-        <>
-          {text.slice(0, i)}
-          <span className={goldCls}>{gold}</span>
-          {text.slice(i + gold.length)}
-        </>
-      )}
+      <MaskWords text={text} gold={gold} goldCls={goldCls} />
     </Tag>
   );
 }
+
+/** WhatsApp click: reports "Contact" to the measurement tags. */
+export const onWaClick = () => trackEvent("Contact", { canal: "whatsapp" });
 
 export const btnGold =
   "inline-flex items-center justify-center gap-2 rounded-full bg-oro px-7 py-4 arq-body text-[15px] font-medium text-obra transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oro";
