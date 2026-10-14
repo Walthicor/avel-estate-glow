@@ -14,7 +14,7 @@ export function FilterPills({ items, active, onChange, className = "" }: Props) 
             aria-pressed={on}
             onClick={() => onChange(it.id)}
             className={`rounded-full border px-4 py-2 text-sm transition-colors ${
-              on ? "border-foreground bg-foreground text-background" : "border-foreground/30 hover:border-foreground"
+              on ? "border-abyss bg-abyss text-paper" : "border-abyss/30 hover:border-abyss"
             }`}
           >
             {it.label}{" "}

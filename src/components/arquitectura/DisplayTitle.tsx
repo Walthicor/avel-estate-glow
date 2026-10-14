@@ -16,6 +16,12 @@ export function DisplayTitle({ text, count, as = "h2", className = "" }: Props) 
   const c = count === undefined ? null : typeof count === "number" ? String(count).padStart(2, "0") : count;
 
   return (
+    <motion.span
+      className="block"
+      initial={reduce ? false : "hidden"}
+      whileInView="shown"
+      viewport={{ once: true, amount: 0.3 }}
+    >
     <Tag
       className={`font-display leading-[0.88] tracking-tight ${className}`}
       style={{ fontSize: "clamp(56px, 11vw, 160px)" }}
@@ -24,9 +30,7 @@ export function DisplayTitle({ text, count, as = "h2", className = "" }: Props) 
         <span key={i} className="block overflow-hidden pb-[0.06em]">
           <motion.span
             className="inline-block"
-            initial={reduce ? false : { y: "105%" }}
-            whileInView={reduce ? {} : { y: "0%" }}
-            viewport={{ once: true, amount: 0.4 }}
+            variants={{ hidden: { y: "105%" }, shown: { y: "0%" } }}
             transition={{ duration: 0.8, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
             {line}
@@ -39,5 +43,6 @@ export function DisplayTitle({ text, count, as = "h2", className = "" }: Props) 
         </span>
       ))}
     </Tag>
+    </motion.span>
   );
 }
