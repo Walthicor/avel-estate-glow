@@ -6,7 +6,7 @@ export const es: Record<UIKey, string> = {
   "nav.properties": "Propiedades",
   "nav.cities": "Ciudades",
   "nav.collections": "Colecciones",
-  "nav.guides": "Guías",
+  "nav.guides": "Blog",
   "nav.about": "Nosotros",
   "nav.contact": "Contacto",
   "nav.buyingFromAbroad": "Comprar desde el exterior",

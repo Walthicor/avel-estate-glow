@@ -3,6 +3,8 @@ import { GUIDES, GUIDES_INDEX } from "../../content/guides";
 import { HOME } from "../../content/home";
 import { useLocale } from "../../i18n/LocaleProvider";
 import { Reveal } from "../Reveal";
+import { AvelImage } from "../AvelImage";
+import { BLOG_PHOTOS } from "../../content/photos";
 import { LeadCapture } from "../home/LeadCapture";
 
 export function GuidesIndexPage() {
@@ -25,13 +27,25 @@ export function GuidesIndexPage() {
             const g = guide[locale as Locale];
             return (
               <Reveal as="li" key={guide.slug} className="border-b border-sage/20">
-                <a href={localePath(`/guides/${guide.slug}`)} className="group block py-10">
+                <a href={localePath(`/guides/${guide.slug}`)} className="group grid gap-6 py-10 md:grid-cols-[280px_1fr] md:gap-10">
+                  {BLOG_PHOTOS[guide.slug] ? (
+                    <AvelImage
+                      src={BLOG_PHOTOS[guide.slug]!}
+                      alt={g.title}
+                      preset="card"
+                      ratio="3/2"
+                      sizes="(max-width: 768px) 100vw, 280px"
+                      className="w-full"
+                    />
+                  ) : null}
+                  <div>
                   <p className="type-label text-gold">{g.category}</p>
                   <h2 className="type-h2 mt-4 max-w-[26ch] text-bone transition-transform duration-200 ease-out group-hover:translate-x-2">
                     {g.title}
                   </h2>
                   <p className="type-body mt-4 max-w-[64ch] text-sage">{g.excerpt}</p>
                   <p className="type-label mt-5 text-sage">{g.readTime}</p>
+                  </div>
                 </a>
               </Reveal>
             );

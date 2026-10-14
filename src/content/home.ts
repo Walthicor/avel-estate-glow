@@ -2,27 +2,23 @@ import type { Locale } from "../config/site";
 
 import heroPoster from "../assets/avel-estates-bienes-raices-lujo-colombia.webp";
 import heroVideo from "../assets/hero.mp4.asset.json";
-import property1 from "../assets/apartamento-lujo-medellin-el-poblado.webp";
-import property2 from "../assets/propiedad-lujo-cartagena-colombia.webp";
-import property3 from "../assets/apartamento-lujo-bogota-colombia.webp";
-import cRental from "../assets/inversion-renta-corta-medellin.webp";
-import cRelocation from "../assets/vivienda-reubicacion-envigado.webp";
-import cPre from "../assets/proyecto-sobre-planos-colombia.webp";
-import cRetirement from "../assets/casa-retiro-colombia.webp";
-import cSecond from "../assets/segunda-vivienda-playa-santa-marta.webp";
-import cDiversification from "../assets/lote-inversion-colombia.webp";
+import { propertyCover, COLLECTION_PHOTOS, CITY_PHOTOS } from "./photos";
 
 export const HERO_MEDIA = { poster: heroPoster, video: heroVideo.url };
 
-export const PROPERTY_IMAGES = [property1, property2, property3];
+export const PROPERTY_IMAGES = [
+  propertyCover("casa-verde-medellin"),
+  propertyCover("torre-lumen-cartagena"),
+  propertyCover("mirador-del-r-o-bogota"),
+];
 
 export const COLLECTION_IMAGES = [
-  cRental,
-  cRelocation,
-  cPre,
-  cRetirement,
-  cSecond,
-  cDiversification,
+  COLLECTION_PHOTOS.str,
+  CITY_PHOTOS.envigado,
+  COLLECTION_PHOTOS.pre,
+  CITY_PHOTOS.rionegro,
+  COLLECTION_PHOTOS.beach,
+  COLLECTION_PHOTOS.land,
 ];
 
 export type Step = {

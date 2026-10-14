@@ -23,7 +23,7 @@ export type AbroadContent = {
 };
 
 const en: AbroadContent = {
-  seoTitle: "How a foreigner actually buys property in Colombia",
+  seoTitle: "How to Buy Property in Colombia from Abroad",
   seoDescription:
     "Every step of buying Colombian property as a foreigner: what it costs, how long it takes, what you sign, and what can go wrong.",
   hero: {
@@ -145,7 +145,7 @@ const en: AbroadContent = {
 };
 
 const es: AbroadContent = {
-  seoTitle: "Cómo compra realmente un extranjero una propiedad en Colombia",
+  seoTitle: "Cómo comprar vivienda en Colombia desde el exterior",
   seoDescription:
     "Cada paso para comprar propiedad en Colombia siendo extranjero: cuánto cuesta, cuánto tarda, qué firmas y qué puede salir mal.",
   hero: {
