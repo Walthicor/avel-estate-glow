@@ -25,6 +25,7 @@ function buildEntries(): Entry[] {
     { path: "/properties", changefreq: "daily", priority: "0.9" },
     { path: "/buying-from-abroad", changefreq: "monthly", priority: "0.9" },
     { path: "/quote", changefreq: "monthly", priority: "0.9" },
+    { path: "/developers", changefreq: "monthly", priority: "0.8" },
     { path: "/about", changefreq: "yearly", priority: "0.5" },
     { path: "/collections", changefreq: "weekly", priority: "0.7" },
     { path: "/guides", changefreq: "weekly", priority: "0.7" },

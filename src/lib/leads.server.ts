@@ -17,6 +17,10 @@ export function validateLead(input: LeadPayload) {
     }
     if (!input.country?.trim()) errors["country"] = "required";
   }
+  if (input.form_type === "desarrollador") {
+    if (!input.phone?.trim()) errors["phone"] = "required";
+    if (!input.message?.trim()) errors["company"] = "required";
+  }
   if (input.form_type === "quote") {
     if (!input.phone?.trim()) errors["phone"] = "required";
     if (!input.habeas_consent) errors["habeas_consent"] = "required";

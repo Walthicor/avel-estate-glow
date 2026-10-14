@@ -13,6 +13,7 @@ export const ROUTE_SEGMENTS = {
   architecture: "arquitectura",
   projects: "proyectos",
   quote: "cotiza",
+  developers: "desarrolladores",
 } as const;
 
 export type EnSegment = keyof typeof ROUTE_SEGMENTS;
