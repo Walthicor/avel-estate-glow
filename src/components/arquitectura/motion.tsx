@@ -52,10 +52,10 @@ export function RiseIn({ children, delay = 0, className = "" }: { children: Reac
   );
 }
 
-const fmt = (n: number, plain?: boolean) => (plain ? String(Math.round(n)) : Math.round(n).toLocaleString("es-CO"));
+const fmt = (n: number, plain?: boolean | undefined) => (plain ? String(Math.round(n)) : Math.round(n).toLocaleString("es-CO"));
 
 /** Counts from 0 to `to` when it enters the screen, Colombian format. */
-export function CountUp({ to, prefix = "", suffix = "", plain }: { to: number; prefix?: string; suffix?: string; plain?: boolean }) {
+export function CountUp({ to, prefix = "", suffix = "", plain }: { to: number; prefix?: string | undefined; suffix?: string | undefined; plain?: boolean | undefined }) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });

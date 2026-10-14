@@ -43,8 +43,8 @@ export function Mascot({ goQuote }: { goQuote: GoQuote }) {
           </span>
           <motion.span
             className="relative mr-2 grid h-16 w-16 place-items-center rounded-full bg-oro shadow-lg"
-            animate={reduce ? undefined : { y: [0, -6, 0] }}
-            transition={reduce ? undefined : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            animate={reduce ? { y: 0 } : { y: [0, -6, 0] }}
+            transition={reduce ? { duration: 0 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
             aria-hidden="true"
           >
             <span className="flex gap-3">

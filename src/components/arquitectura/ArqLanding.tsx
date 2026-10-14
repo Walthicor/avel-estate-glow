@@ -399,11 +399,11 @@ function Steps() {
       <span className="absolute left-0 top-0 h-full w-px bg-hueso/15 md:h-px md:w-full" aria-hidden="true" />
       <motion.span
         className="absolute left-0 top-0 hidden h-px w-full origin-left bg-oro md:block"
-        style={reduce ? undefined : { scaleX: progress }} aria-hidden="true"
+        style={reduce ? {} : { scaleX: progress }} aria-hidden="true"
       />
       <motion.span
         className="absolute left-0 top-0 h-full w-px origin-top bg-oro md:hidden"
-        style={reduce ? undefined : { scaleY: progress }} aria-hidden="true"
+        style={reduce ? {} : { scaleY: progress }} aria-hidden="true"
       />
       {STEPS.map((s, i) => (
         <li key={s.t} className="relative pb-10 pl-6 md:pb-0 md:pl-0 md:pr-6 md:pt-8">
