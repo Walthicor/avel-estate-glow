@@ -1,7 +1,6 @@
 # Roadmap
-- [ ] Fotos únicas con IA para cada sección (sin repetidas), WebP 100–200 KB, nombres SEO
-- [ ] Investigación de palabras clave por página (EN + ES)
-- [ ] Títulos/descripciones/contenido por página sin canibalización
-- [ ] Canonical + schemas revisados
-- [ ] Enlaces internos entre páginas
-- [ ] Guías → Blog, 6 entradas completas optimizadas
+
+- [x] Fotos únicas para propiedades, ciudades, colecciones y blog (WebP 100–200 KB, nombres SEO)
+- [x] Títulos y descripciones con palabras clave sin canibalización (inicio, ciudades, guía exterior, blog)
+- [x] Guías renombradas a Blog con portadas (las direcciones web se mantienen para no perder posiciones)
+- [ ] Fotos reales de los proyectos de arquitectura — esperando que el cliente las suba en el panel
