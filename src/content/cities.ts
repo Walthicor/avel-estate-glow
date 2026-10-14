@@ -1,11 +1,7 @@
 import type { Locale } from "../config/site";
 
-import medellinImg from "../assets/apartamento-lujo-medellin-el-poblado.webp";
-import cartagenaImg from "../assets/propiedad-lujo-cartagena-colombia.webp";
-import santaMartaImg from "../assets/segunda-vivienda-playa-santa-marta.webp";
-import bogotaImg from "../assets/apartamento-lujo-bogota-colombia.webp";
-import envigadoImg from "../assets/vivienda-reubicacion-envigado.webp";
-import rionegroImg from "../assets/casa-retiro-colombia.webp";
+import { CITY_PHOTOS } from "./photos";
+const { medellin: medellinImg, cartagena: cartagenaImg, santaMarta: santaMartaImg, bogota: bogotaImg, envigado: envigadoImg, rionegro: rionegroImg } = CITY_PHOTOS;
 
 export type CityCopy = {
   name: string;

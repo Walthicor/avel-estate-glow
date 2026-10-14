@@ -4,7 +4,7 @@ import {
   imageFor,
   type PropertyRecord,
 } from "./properties";
-import { PROPERTY_IMAGES, COLLECTION_IMAGES } from "./home";
+import { interiorsFor } from "./photos";
 
 /** Deterministic pseudo-random from a slug so SSR and client agree. */
 function hash(slug: string) {
@@ -13,7 +13,6 @@ function hash(slug: string) {
   return h;
 }
 
-const GALLERY_POOL = [...PROPERTY_IMAGES, ...COLLECTION_IMAGES];
 
 const CITY_COORDS: Record<string, { lat: number; lng: number }> = {
   medellin: { lat: 6.2088, lng: -75.5674 },
@@ -46,16 +45,15 @@ export function getPropertyDetail(slug: string): PropertyDetail | null {
   const record = PROPERTIES.find((p) => p.slug === slug);
   if (!record) return null;
   const h = hash(slug);
-  const start = h % GALLERY_POOL.length;
-  const gallery = Array.from({ length: 6 }, (_, i) => GALLERY_POOL[(start + i) % GALLERY_POOL.length]!);
+  const interiors = interiorsFor(record.type);
   const coords = CITY_COORDS[record.city] ?? null;
 
   return {
     record,
     slug,
     heroImage: imageFor(record),
-    gallery: [imageFor(record), ...gallery.filter((g) => g !== imageFor(record)).slice(0, 5)],
-    floorplans: [GALLERY_POOL[(start + 7) % GALLERY_POOL.length]!, GALLERY_POOL[(start + 8) % GALLERY_POOL.length]!],
+    gallery: [imageFor(record), ...interiors],
+    floorplans: [],
     videoYoutubeId: null,
     bathroomsMin: Math.max(1, record.bedroomsMin),
     bathroomsMax: Math.max(1, record.bedroomsMax),
