@@ -205,7 +205,7 @@ function AdminProyectos() {
             <div className="flex flex-wrap gap-3 md:col-span-2">
               <button disabled={busy} className="btn-gold">{busy ? "Guardando…" : "Guardar"}</button>
               <button type="button" onClick={() => setD(null)} className="btn-ghost">Cancelar</button>
-              {d.id && <button type="button" onClick={remove} className="ml-auto text-sm text-red-700 underline">Borrar proyecto</button>}
+              {d.id && <button type="button" onClick={remove} className="ml-auto text-sm text-destructive underline">Borrar proyecto</button>}
             </div>
           </form>
         )}
