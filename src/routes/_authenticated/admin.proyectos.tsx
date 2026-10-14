@@ -29,11 +29,14 @@ const EMPTY: Draft = {
 const slugify = (s: string) =>
   s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-/** Uploads to the private bucket and returns a long-lived signed URL (10 years) usable in <img>. */
-async function upload(file: File): Promise<string> {
-  const ext = file.name.split(".").pop() || "jpg";
-  const path = `${crypto.randomUUID()}.${ext}`;
-  const { error } = await supabase.storage.from("project-media").upload(path, file, { contentType: file.type });
+/**
+ * Compresses to WebP (≤200 KB), names it with SEO words (proyecto-ciudad-tipo)
+ * and uploads to the private bucket; returns a long-lived signed URL (10 years).
+ */
+async function upload(file: File, seoName: string): Promise<string> {
+  const blob = await compressImage(file);
+  const path = `${seoSlug(seoName) || "avel-arquitectura"}-${crypto.randomUUID().slice(0, 6)}.webp`;
+  const { error } = await supabase.storage.from("project-media").upload(path, blob, { contentType: "image/webp" });
   if (error) throw error;
   const { data, error: e2 } = await supabase.storage.from("project-media").createSignedUrl(path, 60 * 60 * 24 * 365 * 10);
   if (e2 || !data) throw e2 ?? new Error("URL");
