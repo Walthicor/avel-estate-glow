@@ -36,6 +36,37 @@
   --font-display: "Bodoni Moda", serif;
   --font-sans: "Source Sans 3", system-ui, sans-serif;
   --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* AVEL Arquitectura landing only (/es/arquitectura) */
+  --color-obra: #0e0e0e;
+  --color-carbon: #181818;
+  --color-hueso: #f3f1ec;
+  --color-oro: #c8a465;
+  /* Oro legible sobre hueso (AA, ~5.7:1). */
+  --color-oro-ink: #75591f;
+  --font-arq-display: "Archivo", system-ui, sans-serif;
+  --font-arq-body: "Instrument Sans", system-ui, sans-serif;
+  --font-arq-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@utility arq-display {
+  font-family: var(--font-arq-display);
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+}
+
+@utility arq-mono {
+  font-family: var(--font-arq-mono);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+@utility arq-body {
+  font-family: var(--font-arq-body);
 }
 
 @theme inline {

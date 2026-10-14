@@ -4,6 +4,7 @@ import {
   Outlet,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -149,19 +150,26 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  // The architecture landing is an ad destination with its own minimal chrome.
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const bare = pathname.replace(/\/$/, "") === "/es/arquitectura";
 
   return (
     <QueryClientProvider client={queryClient}>
       <LocaleProvider>
         <SkipLink />
-        <Header />
+        {bare ? null : <Header />}
         <main id="main-content" tabIndex={-1} className="focus:outline-none">
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <Footer />
-        <TowerContactButton />
-        <BackToTopButton />
+        {bare ? null : (
+          <>
+            <Footer />
+            <TowerContactButton />
+            <BackToTopButton />
+          </>
+        )}
         <CookieBanner />
       </LocaleProvider>
     </QueryClientProvider>

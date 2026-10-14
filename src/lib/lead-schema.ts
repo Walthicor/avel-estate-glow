@@ -5,6 +5,7 @@ export type QuoteData = {
   project_type: string;
   has_lot: string;
   services: string[];
+  packages?: string[] | undefined;
   stage: string;
   place: string;
   lot_area_m2: number | null;
