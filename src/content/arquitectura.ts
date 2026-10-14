@@ -7,14 +7,37 @@ import casaJardin from "../assets/arquitectura/casa-del-jardin.webp";
 import jds from "../assets/arquitectura/jds-factory-popayan.webp";
 import cordillera from "../assets/arquitectura/casa-cordillera.webp";
 import exterior from "../assets/arquitectura/construir-en-colombia-desde-el-exterior.webp";
+import heroSm from "../assets/arquitectura/obra-construccion-avel-arquitectura-640.webp";
+import ptcFotoSm from "../assets/arquitectura/popayan-trade-center-obra-entregada-640.webp";
+import ptcBocetoSm from "../assets/arquitectura/popayan-trade-center-boceto-640.webp";
+import casaPiedraSm from "../assets/arquitectura/casa-piedra-y-madera-640.webp";
+import torreSm from "../assets/arquitectura/torre-residencial-640.webp";
+import casaJardinSm from "../assets/arquitectura/casa-del-jardin-640.webp";
+import jdsSm from "../assets/arquitectura/jds-factory-popayan-640.webp";
+import cordilleraSm from "../assets/arquitectura/casa-cordillera-640.webp";
+import exteriorSm from "../assets/arquitectura/construir-en-colombia-desde-el-exterior-640.webp";
 
 export const ARQ_IMAGES = { hero, ptcFoto, ptcBoceto, exterior };
 
+/** srcset por imagen: versión de 640 px para celular y la grande para escritorio. */
+export const ARQ_SRCSET: Record<string, string> = {
+  [hero]: `${heroSm} 640w, ${hero} 1440w`,
+  [ptcFoto]: `${ptcFotoSm} 640w, ${ptcFoto} 1440w`,
+  [ptcBoceto]: `${ptcBocetoSm} 640w, ${ptcBoceto} 1440w`,
+  [casaPiedra]: `${casaPiedraSm} 640w, ${casaPiedra} 1280w`,
+  [torre]: `${torreSm} 640w, ${torre} 1280w`,
+  [casaJardin]: `${casaJardinSm} 640w, ${casaJardin} 1280w`,
+  [jds]: `${jdsSm} 640w, ${jds} 1280w`,
+  [cordillera]: `${cordilleraSm} 640w, ${cordillera} 1280w`,
+  [exterior]: `${exteriorSm} 640w, ${exterior} 1440w`,
+};
+export const srcSetFor = (src: string) => ARQ_SRCSET[src];
+
 export const STATS = [
-  { value: "12", label: "Obras entregadas" },
-  { value: "13.063 m²", label: "Construidos" },
-  { value: "17", label: "Diseños arquitectónicos" },
-  { value: "Desde 2014", label: "Diseñando y construyendo" },
+  { num: 12, label: "Obras entregadas" },
+  { num: 13063, suffix: " m²", label: "Construidos" },
+  { num: 17, label: "Diseños arquitectónicos" },
+  { num: 2014, prefix: "Desde ", plain: true, label: "Diseñando y construyendo" },
 ];
 export const CITIES_LINE = "POPAYÁN · CALI · EJE CAFETERO · MEDELLÍN";
 
@@ -96,8 +119,25 @@ export const FAQS = [
   { q: "¿Y si vivo fuera de Colombia?", a: "Hacemos todo por videollamada, te enviamos avances en video y firmas digitalmente." },
 ];
 
-export const PROJECT_TYPES = ["Casa o finca", "Edificio de vivienda", "Local o edificio comercial", "Oficinas", "Remodelación", "Otro"];
+export const PROJECT_TYPES = ["Casa o finca", "Edificio de vivienda", "Local o edificio comercial", "Oficinas", "Remodelación", "Desarrollador", "Otro"];
 export const HAS_LOT = ["Sí", "No", "Lo estoy comprando"];
 export const STAGES = ["Solo tengo la idea", "Tengo planos", "Ya tengo licencia"];
 export const BUDGETS = ["Menos de $200 millones", "$200 a $500 millones", "$500 a $1.000 millones", "Más de $1.000 millones", "Aún no lo sé"];
 export const RESIDENCE = ["Vivo en Colombia", "Vivo en el exterior"];
+
+/** Mensaje del héroe según el anuncio (?servicio=). */
+export type HeroMsg = { h1: string; gold: string; sub: string };
+export const HERO_DEFAULT: HeroMsg = {
+  h1: "Construye sin sorpresas.", gold: "sorpresas.",
+  sub: "Diseño arquitectónico, ingenierías, licencia en curaduría, presupuesto exacto y cronograma de obra. Un solo equipo, de tu lote a tus llaves.",
+};
+export const HERO_BY_SERVICE: Record<string, HeroMsg & { prefill: { services?: string[]; packages?: string[]; projectType?: string; residence?: string } }> = {
+  licencia: { h1: "Planos listos para la curaduría, sin vueltas.", gold: "sin vueltas.", sub: "Diseño arquitectónico e ingenierías hasta la licencia aprobada.", prefill: { packages: ["licencia"] } },
+  campestre: { h1: "La casa de campo que imaginas, con el costo exacto.", gold: "costo exacto.", sub: "Diseño, licencia y presupuesto antes de poner un ladrillo.", prefill: { projectType: "Casa o finca", services: ["arquitectonico"] } },
+  estructural: { h1: "Diseño estructural NSR-10 con simulación de sismos.", gold: "NSR-10", sub: "Cálculos, despieces y modelo 3D hasta la aprobación en curaduría.", prefill: { services: ["estructural"] } },
+  electrico: { h1: "Diseño eléctrico hasta tu certificado RETIE.", gold: "RETIE.", sub: "Diseño y cantidades listos para conectar tu proyecto.", prefill: { services: ["electrico"] } },
+  presupuesto: { h1: "Sabe cuánto cuesta tu obra antes de empezar.", gold: "antes de empezar.", sub: "Presupuesto WBS, cronograma con ruta crítica y flujo de caja mes a mes.", prefill: { services: ["presupuesto"] } },
+  exterior: { h1: "Construye en Colombia sin estar allá.", gold: "sin estar allá.", sub: "Diseño, licencia y obra con reuniones por videollamada y avances en video.", prefill: { residence: "Vivo en el exterior" } },
+  desarrolladores: { h1: "Proyectos que no se salen del presupuesto.", gold: "presupuesto.", sub: "Diseño, ingenierías y planeación para vivienda en altura, comercio y oficinas.", prefill: { packages: ["desarrolladores"], projectType: "Desarrollador" } },
+};
+export const heroFor = (servicio?: string) => (servicio && HERO_BY_SERVICE[servicio]) || HERO_DEFAULT;
