@@ -41,7 +41,7 @@ export const CITIES: CityRecord[] = [
     en: {
       name: "Medellín",
       region: "Antioquia",
-      seoTitle: "Buying property in Medellín as a foreigner — AVEL Estates",
+      seoTitle: "Medellín Real Estate for Foreign Buyers | AVEL Estates",
       seoDescription: "Zones, altitude, rental rules and how foreign buyers purchase in Medellín remotely. Price on request.",
       intro: [
         "Medellín sits at 1,495 metres in a narrow valley, which is the single fact that explains most of the property market here. The climate does not change through the year — days sit around 22–28°C, nights are cool, and nothing needs heating or air conditioning. Buildings are therefore cheap to run, balconies are used year-round, and the ones with a valley view command a premium that never really softens.",
@@ -63,7 +63,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Medellín",
       region: "Antioquia",
-      seoTitle: "Comprar propiedad en Medellín | AVEL Estates",
+      seoTitle: "Apartamentos en venta en Medellín | AVEL Estates",
       seoDescription: "Zonas, clima, reglas de renta y cómo compran los extranjeros en Medellín a distancia.",
       intro: [
         "Medellín está a 1.495 metros en un valle estrecho, y ese dato explica casi todo el mercado inmobiliario local. El clima no cambia durante el año: entre 22 y 28°C de día, noches frescas, y nada necesita calefacción ni aire acondicionado. Los edificios son baratos de operar, los balcones se usan todo el año y los que tienen vista al valle mantienen un sobreprecio que casi nunca cede.",
@@ -90,7 +90,7 @@ export const CITIES: CityRecord[] = [
     en: {
       name: "Cartagena",
       region: "Bolívar",
-      seoTitle: "Buying property in Cartagena as a foreigner — AVEL Estates",
+      seoTitle: "Cartagena Real Estate for Foreign Buyers | AVEL Estates",
       seoDescription: "Walled city, Bocagrande or the northern beaches: what Cartagena means for a remote foreign buyer.",
       intro: [
         "Cartagena is a Caribbean port with a UNESCO-listed walled city attached to a modern beach strip, and those two halves behave like different markets. Inside the walls you are buying a restored colonial house or a converted apartment, usually with a heritage restriction on what you can change and an owners' community that is small and opinionated. Outside, in Bocagrande and Castillogrande, you are buying a tower: newer, easier to maintain, and far more liquid when you sell.",
@@ -112,7 +112,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Cartagena",
       region: "Bolívar",
-      seoTitle: "Comprar propiedad en Cartagena | AVEL Estates",
+      seoTitle: "Apartamentos en venta en Cartagena | AVEL Estates",
       seoDescription: "Ciudad amurallada, Bocagrande o playas del norte: qué significa Cartagena para un comprador remoto.",
       intro: [
         "Cartagena es un puerto caribeño con una ciudad amurallada declarada por la UNESCO pegada a una franja de playa moderna, y esas dos mitades se comportan como mercados distintos. Dentro de las murallas usted compra una casa colonial restaurada o un apartamento adaptado, casi siempre con restricción patrimonial sobre lo que puede modificar y una copropiedad pequeña y muy opinada. Afuera, en Bocagrande y Castillogrande, compra una torre: más nueva, más fácil de mantener y mucho más líquida al vender.",
@@ -139,7 +139,7 @@ export const CITIES: CityRecord[] = [
     en: {
       name: "Santa Marta",
       region: "Magdalena",
-      seoTitle: "Buying property in Santa Marta as a foreigner — AVEL Estates",
+      seoTitle: "Santa Marta Real Estate & Beach Homes | AVEL Estates",
       seoDescription: "Rodadero, Pozos Colorados and Bello Horizonte compared for foreign buyers in Santa Marta.",
       intro: [
         "Santa Marta is the oldest surviving city in Colombia and, for a buyer, the cheapest way into the Caribbean coast. Entry prices per square metre sit well below Cartagena for comparable sea-view stock, which is the main reason foreign interest has moved here. The trade-off is a smaller, less international rental market and a shorter list of buildings that are genuinely well run.",
@@ -161,7 +161,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Santa Marta",
       region: "Magdalena",
-      seoTitle: "Comprar propiedad en Santa Marta | AVEL Estates",
+      seoTitle: "Apartamentos en venta en Santa Marta | AVEL Estates",
       seoDescription: "Rodadero, Pozos Colorados y Bello Horizonte comparados para el comprador extranjero.",
       intro: [
         "Santa Marta es la ciudad más antigua del país que sigue en pie y, para un comprador, la entrada más económica al Caribe colombiano. El precio por metro cuadrado está bastante por debajo de Cartagena para producto comparable con vista al mar, y esa es la razón principal del interés extranjero. El costo: un mercado de renta más pequeño y menos internacional, y una lista corta de edificios realmente bien administrados.",
@@ -188,7 +188,7 @@ export const CITIES: CityRecord[] = [
     en: {
       name: "Bogotá",
       region: "Cundinamarca",
-      seoTitle: "Buying property in Bogotá as a foreigner — AVEL Estates",
+      seoTitle: "Bogotá Real Estate for Foreign Buyers | AVEL Estates",
       seoDescription: "Bogotá for foreign buyers: the northern corridor, long-term tenants and what the market rewards.",
       intro: [
         "Bogotá is the country's economic centre and behaves like one: nine million people, corporate tenants, and a property market driven by long-term leases rather than tourism. If your plan is nightly rental income, this is the wrong city. If your plan is a stable tenant on a one- or two-year contract, indexed annually, this is the most predictable market in Colombia.",
@@ -210,7 +210,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Bogotá",
       region: "Cundinamarca",
-      seoTitle: "Comprar propiedad en Bogotá siendo extranjero — AVEL Estates",
+      seoTitle: "Apartamentos y casas en venta en Bogotá | AVEL Estates",
       seoDescription: "Bogotá para compradores extranjeros: corredor norte, arriendo largo y qué premia el mercado.",
       intro: [
         "Bogotá es el centro económico del país y se comporta como tal: nueve millones de habitantes, arrendatarios corporativos y un mercado movido por contratos de largo plazo, no por turismo. Si su plan es renta por noches, esta es la ciudad equivocada. Si su plan es un arrendatario estable con contrato a uno o dos años, indexado cada año, este es el mercado más predecible de Colombia.",
@@ -259,7 +259,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Envigado",
       region: "Antioquia",
-      seoTitle: "Comprar propiedad en Envigado | AVEL Estates",
+      seoTitle: "Apartamentos en venta en Envigado | AVEL Estates",
       seoDescription: "Envigado: municipio aparte al sur de Medellín, más tranquilo y con reglas propias de renta.",
       intro: [
         "Envigado no es un barrio de Medellín. Es un municipio aparte, con alcalde propio, normativa urbana propia e impuesto predial propio, y esa diferencia pesa más que los diez minutos que separan a uno del otro. Las decisiones sobre densidad, licencias y renta corta se toman en Envigado, no en Medellín, así que una regla que leyó sobre El Poblado puede sencillamente no aplicar aquí.",
@@ -308,7 +308,7 @@ export const CITIES: CityRecord[] = [
     es: {
       name: "Rionegro",
       region: "Antioquia",
-      seoTitle: "Comprar propiedad en Rionegro y Llanogrande — AVEL Estates",
+      seoTitle: "Casas campestres en venta en Llanogrande, Rionegro",
       seoDescription: "Rionegro y Llanogrande: casas campestres, lotes y condominios cerca del aeropuerto.",
       intro: [
         "Rionegro queda cuarenta y cinco minutos al oriente de Medellín, en el altiplano, a unos 2.100 metros, y es a donde va el valle cuando quiere espacio. Este es el mercado campestre: casas con lote, condominios cerrados y lotes urbanizados para construir. El aeropuerto internacional está aquí, así que un comprador que aterriza desde Miami o Madrid ya está en Rionegro antes de estar en Medellín, un hecho que impulsó una década de construcción sobre el corredor del aeropuerto.",
