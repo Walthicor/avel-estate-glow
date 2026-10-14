@@ -1,11 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-import { ProjectsIndexPage } from "../../components/arquitectura/ProjectsIndexPage";
-import { listProjects } from "../../lib/projects.functions";
-import { projectsIndexHead } from "../../lib/project-head";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/es/arquitectura/proyectos/")({
-  loader: () => listProjects(),
-  head: () => projectsIndexHead("es"),
-  component: () => <ProjectsIndexPage projects={Route.useLoaderData()} locale="es" />,
+  beforeLoad: () => {
+    throw redirect({ to: "/es/arquitectura", statusCode: 301 });
+  },
 });
