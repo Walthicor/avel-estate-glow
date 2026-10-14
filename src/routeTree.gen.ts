@@ -10,23 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DesignAndBuildRouteImport } from './routes/design-and-build'
 import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AdminProyectosRouteImport } from './routes/admin.proyectos'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
-import { Route as DevComponentesRouteImport } from './routes/dev/componentes'
+import { Route as DevComponentesRouteImport } from './routes/dev.componentes'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsContactoRouteImport } from './routes/es/contacto'
 import { Route as EsCotizaRouteImport } from './routes/es/cotiza'
 import { Route as EsDesarrolladoresRouteImport } from './routes/es/desarrolladores'
+import { Route as EsDisenoYConstruccionRouteImport } from './routes/es/diseno-y-construccion'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -36,7 +39,6 @@ import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
-import { Route as AuthenticatedAdminProyectosRouteImport } from './routes/_authenticated/admin.proyectos'
 import { Route as ArchitectureProjectsIndexRouteImport } from './routes/architecture.projects.index'
 import { Route as ArchitectureProjectsSlugRouteImport } from './routes/architecture.projects.$slug'
 import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
@@ -59,13 +61,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectureRoute = ArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -83,6 +86,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DesignAndBuildRoute = DesignAndBuildRouteImport.update({
+  id: '/design-and-build',
+  path: '/design-and-build',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevelopersRoute = DevelopersRouteImport.update({
   id: '/developers',
   path: '/developers',
@@ -96,6 +104,11 @@ const QuoteRoute = QuoteRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProyectosRoute = AdminProyectosRouteImport.update({
+  id: '/admin/proyectos',
+  path: '/admin/proyectos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CitiesSlugRoute = CitiesSlugRouteImport.update({
@@ -144,6 +157,11 @@ const EsDesarrolladoresRoute = EsDesarrolladoresRouteImport.update({
   path: '/es/desarrolladores',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsDisenoYConstruccionRoute = EsDisenoYConstruccionRouteImport.update({
+  id: '/es/diseno-y-construccion',
+  path: '/es/diseno-y-construccion',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
   id: '/es/nosotros',
   path: '/es/nosotros',
@@ -189,23 +207,17 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminProyectosRoute =
-  AuthenticatedAdminProyectosRouteImport.update({
-    id: '/admin/proyectos',
-    path: '/admin/proyectos',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 const ArchitectureProjectsIndexRoute =
   ArchitectureProjectsIndexRouteImport.update({
-    id: '/architecture/projects/',
-    path: '/architecture/projects/',
-    getParentRoute: () => rootRouteImport,
+    id: '/projects/',
+    path: '/projects/',
+    getParentRoute: () => ArchitectureRoute,
   } as any)
 const ArchitectureProjectsSlugRoute =
   ArchitectureProjectsSlugRouteImport.update({
-    id: '/architecture/projects/$slug',
-    path: '/architecture/projects/$slug',
-    getParentRoute: () => rootRouteImport,
+    id: '/projects/$slug',
+    path: '/projects/$slug',
+    getParentRoute: () => ArchitectureRoute,
   } as any)
 const EsCiudadesSlugRoute = EsCiudadesSlugRouteImport.update({
   id: '/es/ciudades/$slug',
@@ -284,12 +296,15 @@ const LovableEmailTransactionalPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/architecture': typeof ArchitectureRouteWithChildren
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/design-and-build': typeof DesignAndBuildRoute
   '/developers': typeof DevelopersRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/proyectos': typeof AdminProyectosRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
@@ -297,6 +312,7 @@ export interface FileRoutesByFullPath {
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
   '/es/desarrolladores': typeof EsDesarrolladoresRoute
+  '/es/diseno-y-construccion': typeof EsDisenoYConstruccionRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -308,7 +324,6 @@ export interface FileRoutesByFullPath {
   '/es/': typeof EsIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
-  '/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
   '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
@@ -329,12 +344,15 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/architecture': typeof ArchitectureRouteWithChildren
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/design-and-build': typeof DesignAndBuildRoute
   '/developers': typeof DevelopersRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/proyectos': typeof AdminProyectosRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
@@ -342,6 +360,7 @@ export interface FileRoutesByTo {
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
   '/es/desarrolladores': typeof EsDesarrolladoresRoute
+  '/es/diseno-y-construccion': typeof EsDisenoYConstruccionRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -353,7 +372,6 @@ export interface FileRoutesByTo {
   '/es': typeof EsIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
-  '/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
   '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
@@ -374,14 +392,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/architecture': typeof ArchitectureRouteWithChildren
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/design-and-build': typeof DesignAndBuildRoute
   '/developers': typeof DevelopersRoute
   '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/admin/proyectos': typeof AdminProyectosRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
@@ -389,6 +409,7 @@ export interface FileRoutesById {
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
   '/es/desarrolladores': typeof EsDesarrolladoresRoute
+  '/es/diseno-y-construccion': typeof EsDisenoYConstruccionRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -400,7 +421,6 @@ export interface FileRoutesById {
   '/es/': typeof EsIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
-  '/_authenticated/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
   '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
@@ -423,12 +443,15 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/architecture'
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/design-and-build'
     | '/developers'
     | '/quote'
     | '/sitemap.xml'
+    | '/admin/proyectos'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
@@ -436,6 +459,7 @@ export interface FileRouteTypes {
     | '/es/contacto'
     | '/es/cotiza'
     | '/es/desarrolladores'
+    | '/es/diseno-y-construccion'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -447,7 +471,6 @@ export interface FileRouteTypes {
     | '/es/'
     | '/guides/'
     | '/properties/'
-    | '/admin/proyectos'
     | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
@@ -468,12 +491,15 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/architecture'
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/design-and-build'
     | '/developers'
     | '/quote'
     | '/sitemap.xml'
+    | '/admin/proyectos'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
@@ -481,6 +507,7 @@ export interface FileRouteTypes {
     | '/es/contacto'
     | '/es/cotiza'
     | '/es/desarrolladores'
+    | '/es/diseno-y-construccion'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -492,7 +519,6 @@ export interface FileRouteTypes {
     | '/es'
     | '/guides'
     | '/properties'
-    | '/admin/proyectos'
     | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
@@ -512,14 +538,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/_authenticated'
     | '/about'
+    | '/architecture'
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/design-and-build'
     | '/developers'
     | '/quote'
     | '/sitemap.xml'
+    | '/admin/proyectos'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
@@ -527,6 +555,7 @@ export interface FileRouteTypes {
     | '/es/contacto'
     | '/es/cotiza'
     | '/es/desarrolladores'
+    | '/es/diseno-y-construccion'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -538,7 +567,6 @@ export interface FileRouteTypes {
     | '/es/'
     | '/guides/'
     | '/properties/'
-    | '/_authenticated/admin/proyectos'
     | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
@@ -559,14 +587,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  ArchitectureRoute: typeof ArchitectureRouteWithChildren
   AuthRoute: typeof AuthRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   ContactRoute: typeof ContactRoute
+  DesignAndBuildRoute: typeof DesignAndBuildRoute
   DevelopersRoute: typeof DevelopersRoute
   QuoteRoute: typeof QuoteRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  AdminProyectosRoute: typeof AdminProyectosRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   DevComponentesRoute: typeof DevComponentesRoute
@@ -574,6 +604,7 @@ export interface RootRouteChildren {
   EsContactoRoute: typeof EsContactoRoute
   EsCotizaRoute: typeof EsCotizaRoute
   EsDesarrolladoresRoute: typeof EsDesarrolladoresRoute
+  EsDisenoYConstruccionRoute: typeof EsDisenoYConstruccionRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -585,7 +616,6 @@ export interface RootRouteChildren {
   EsIndexRoute: typeof EsIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
-  ArchitectureProjectsSlugRoute: typeof ArchitectureProjectsSlugRoute
   EsCiudadesSlugRoute: typeof EsCiudadesSlugRoute
   EsColeccionesSlugRoute: typeof EsColeccionesSlugRoute
   EsGuiasSlugRoute: typeof EsGuiasSlugRoute
@@ -594,7 +624,6 @@ export interface RootRouteChildren {
   EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
   EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
-  ArchitectureProjectsIndexRoute: typeof ArchitectureProjectsIndexRoute
   EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
   EsGuiasIndexRoute: typeof EsGuiasIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
@@ -612,18 +641,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture': {
+      id: '/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof ArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -647,6 +676,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/design-and-build': {
+      id: '/design-and-build'
+      path: '/design-and-build'
+      fullPath: '/design-and-build'
+      preLoaderRoute: typeof DesignAndBuildRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/developers': {
       id: '/developers'
       path: '/developers'
@@ -666,6 +702,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/proyectos': {
+      id: '/admin/proyectos'
+      path: '/admin/proyectos'
+      fullPath: '/admin/proyectos'
+      preLoaderRoute: typeof AdminProyectosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cities/$slug': {
@@ -731,6 +774,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsDesarrolladoresRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/diseno-y-construccion': {
+      id: '/es/diseno-y-construccion'
+      path: '/es/diseno-y-construccion'
+      fullPath: '/es/diseno-y-construccion'
+      preLoaderRoute: typeof EsDisenoYConstruccionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/nosotros': {
       id: '/es/nosotros'
       path: '/es/nosotros'
@@ -794,26 +844,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin/proyectos': {
-      id: '/_authenticated/admin/proyectos'
-      path: '/admin/proyectos'
-      fullPath: '/admin/proyectos'
-      preLoaderRoute: typeof AuthenticatedAdminProyectosRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/architecture/projects/': {
       id: '/architecture/projects/'
-      path: '/architecture/projects'
+      path: '/projects'
       fullPath: '/architecture/projects/'
       preLoaderRoute: typeof ArchitectureProjectsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ArchitectureRoute
     }
     '/architecture/projects/$slug': {
       id: '/architecture/projects/$slug'
-      path: '/architecture/projects/$slug'
+      path: '/projects/$slug'
       fullPath: '/architecture/projects/$slug'
       preLoaderRoute: typeof ArchitectureProjectsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ArchitectureRoute
     }
     '/es/ciudades/$slug': {
       id: '/es/ciudades/$slug'
@@ -916,27 +959,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAdminProyectosRoute: typeof AuthenticatedAdminProyectosRoute
+interface ArchitectureRouteChildren {
+  ArchitectureProjectsSlugRoute: typeof ArchitectureProjectsSlugRoute
+  ArchitectureProjectsIndexRoute: typeof ArchitectureProjectsIndexRoute
 }
 
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAdminProyectosRoute: AuthenticatedAdminProyectosRoute,
+const ArchitectureRouteChildren: ArchitectureRouteChildren = {
+  ArchitectureProjectsSlugRoute: ArchitectureProjectsSlugRoute,
+  ArchitectureProjectsIndexRoute: ArchitectureProjectsIndexRoute,
 }
 
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+const ArchitectureRouteWithChildren = ArchitectureRoute._addFileChildren(
+  ArchitectureRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  ArchitectureRoute: ArchitectureRouteWithChildren,
   AuthRoute: AuthRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   ContactRoute: ContactRoute,
+  DesignAndBuildRoute: DesignAndBuildRoute,
   DevelopersRoute: DevelopersRoute,
   QuoteRoute: QuoteRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  AdminProyectosRoute: AdminProyectosRoute,
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   DevComponentesRoute: DevComponentesRoute,
@@ -944,6 +992,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsContactoRoute: EsContactoRoute,
   EsCotizaRoute: EsCotizaRoute,
   EsDesarrolladoresRoute: EsDesarrolladoresRoute,
+  EsDisenoYConstruccionRoute: EsDisenoYConstruccionRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,
@@ -955,7 +1004,6 @@ const rootRouteChildren: RootRouteChildren = {
   EsIndexRoute: EsIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
-  ArchitectureProjectsSlugRoute: ArchitectureProjectsSlugRoute,
   EsCiudadesSlugRoute: EsCiudadesSlugRoute,
   EsColeccionesSlugRoute: EsColeccionesSlugRoute,
   EsGuiasSlugRoute: EsGuiasSlugRoute,
@@ -964,7 +1012,6 @@ const rootRouteChildren: RootRouteChildren = {
   EsLegalPrivacyRoute: EsLegalPrivacyRoute,
   EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
-  ArchitectureProjectsIndexRoute: ArchitectureProjectsIndexRoute,
   EsColeccionesIndexRoute: EsColeccionesIndexRoute,
   EsGuiasIndexRoute: EsGuiasIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
