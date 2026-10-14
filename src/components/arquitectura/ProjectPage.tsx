@@ -43,7 +43,7 @@ export function ProjectPage({ project: p, prev, next, locale }: Props) {
           alt={p.name}
           className="h-full"
           frameClassName="h-full"
-          controlsClassName="right-4 top-28 md:right-8"
+          controlsClassName="right-4 top-44 md:right-8 md:top-28"
         />
         <a
           href={listHref}
