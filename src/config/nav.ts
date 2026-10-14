@@ -10,11 +10,14 @@ export const MAIN_NAV: NavItem[] = [
   { key: "nav.about", path: "/about" },
 ];
 
-export const FOOTER_CITIES: { label: string; path: string }[] = [
+export const FOOTER_CITIES: { label: string; path: string; key?: string }[] = [
   { label: "Medellín", path: "/cities/medellin" },
   { label: "Cartagena", path: "/cities/cartagena" },
   { label: "Bogotá", path: "/cities/bogota" },
   { label: "Santa Marta", path: "/cities/santa-marta" },
+  { label: "Cali", path: "/contact", key: "cali" },
+  { label: "Popayán", path: "/contact", key: "popayan" },
+  { label: "Eje Cafetero", path: "/contact", key: "eje-cafetero" },
 ];
 
 export const FOOTER_COMPANY: NavItem[] = [

@@ -1,19 +1,23 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 import { SITE } from "../../config/site";
+import { useLocale } from "../../i18n/LocaleProvider";
 
 /** Burbuja fija "¡Cotiza aquí!" con personaje que parpadea y flota. */
 export function QuoteMascot() {
   const reduce = useReducedMotion();
+  const { locale } = useLocale();
   const wa = SITE.whatsapp;
+  const href = locale === "es" ? "/es/cotiza" : "/quote";
+  const bubble = locale === "es" ? "¡Cotiza aquí!" : "Get a quote";
   return (
     <div
       className="fixed right-4 z-[95] flex flex-col items-end gap-2"
       style={{ bottom: "calc(16px + env(safe-area-inset-bottom))" }}
     >
-      <a href="/es/cotiza" aria-label="Cotiza tu proyecto" className="group flex flex-col items-end gap-2">
+      <a href={href} aria-label={bubble} className="group flex flex-col items-end gap-2">
         <span className="relative rounded-2xl bg-paper px-3 py-1.5 text-sm font-semibold text-abyss shadow-lg">
-          ¡Cotiza aquí!
+          {bubble}
           <span className="absolute -bottom-1 right-6 h-2 w-2 rotate-45 bg-paper" aria-hidden="true" />
         </span>
         <motion.span

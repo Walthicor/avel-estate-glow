@@ -32,8 +32,10 @@ export type Database = {
           phone: string | null
           property_id: string | null
           purpose: string | null
+          quote: Json | null
           referrer: string | null
           source_page: string | null
+          status: string
           timeline: string | null
           utm_campaign: string | null
           utm_content: string | null
@@ -58,8 +60,10 @@ export type Database = {
           phone?: string | null
           property_id?: string | null
           purpose?: string | null
+          quote?: Json | null
           referrer?: string | null
           source_page?: string | null
+          status?: string
           timeline?: string | null
           utm_campaign?: string | null
           utm_content?: string | null
@@ -84,8 +88,10 @@ export type Database = {
           phone?: string | null
           property_id?: string | null
           purpose?: string | null
+          quote?: Json | null
           referrer?: string | null
           source_page?: string | null
+          status?: string
           timeline?: string | null
           utm_campaign?: string | null
           utm_content?: string | null

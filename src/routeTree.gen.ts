@@ -15,6 +15,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as CitiesSlugRouteImport } from './routes/cities.$slug'
 import { Route as CollectionsIndexRouteImport } from './routes/collections.index'
@@ -23,6 +24,7 @@ import { Route as DevComponentesRouteImport } from './routes/dev/componentes'
 import { Route as EsIndexRouteImport } from './routes/es/index'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsContactoRouteImport } from './routes/es/contacto'
+import { Route as EsCotizaRouteImport } from './routes/es/cotiza'
 import { Route as EsNosotrosRouteImport } from './routes/es/nosotros'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -79,6 +81,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -118,6 +125,11 @@ const EsComprarDesdeElExteriorRoute =
 const EsContactoRoute = EsContactoRouteImport.update({
   id: '/es/contacto',
   path: '/es/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsCotizaRoute = EsCotizaRouteImport.update({
+  id: '/es/cotiza',
+  path: '/es/cotiza',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsNosotrosRoute = EsNosotrosRouteImport.update({
@@ -263,12 +275,14 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
+  '/es/cotiza': typeof EsCotizaRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -304,12 +318,14 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
+  '/es/cotiza': typeof EsCotizaRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -347,12 +363,14 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
+  '/quote': typeof QuoteRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
+  '/es/cotiza': typeof EsCotizaRoute
   '/es/nosotros': typeof EsNosotrosRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/legal/cookies': typeof LegalCookiesRoute
@@ -390,12 +408,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/quote'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
+    | '/es/cotiza'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -431,12 +451,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/quote'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
+    | '/es/cotiza'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -473,12 +495,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buying-from-abroad'
     | '/contact'
+    | '/quote'
     | '/sitemap.xml'
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
+    | '/es/cotiza'
     | '/es/nosotros'
     | '/guides/$slug'
     | '/legal/cookies'
@@ -516,12 +540,14 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   ContactRoute: typeof ContactRoute
+  QuoteRoute: typeof QuoteRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   DevComponentesRoute: typeof DevComponentesRoute
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsContactoRoute: typeof EsContactoRoute
+  EsCotizaRoute: typeof EsCotizaRoute
   EsNosotrosRoute: typeof EsNosotrosRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   LegalCookiesRoute: typeof LegalCookiesRoute
@@ -595,6 +621,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -649,6 +682,13 @@ declare module '@tanstack/react-router' {
       path: '/es/contacto'
       fullPath: '/es/contacto'
       preLoaderRoute: typeof EsContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/cotiza': {
+      id: '/es/cotiza'
+      path: '/es/cotiza'
+      fullPath: '/es/cotiza'
+      preLoaderRoute: typeof EsCotizaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/nosotros': {
@@ -854,12 +894,14 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   ContactRoute: ContactRoute,
+  QuoteRoute: QuoteRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   DevComponentesRoute: DevComponentesRoute,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsContactoRoute: EsContactoRoute,
+  EsCotizaRoute: EsCotizaRoute,
   EsNosotrosRoute: EsNosotrosRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   LegalCookiesRoute: LegalCookiesRoute,

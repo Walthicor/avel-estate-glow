@@ -1,6 +1,7 @@
 import { SITE } from "../config/site";
 import { getPropertyDetail } from "../content/property-detail";
 import { sendTemplateEmail } from "./email-templates/send-email";
+import { formatCOP } from "./quote-math";
 import type { LeadPayload } from "./lead-schema";
 import { EMAIL_RE } from "./lead-schema";
 
@@ -15,6 +16,11 @@ export function validateLead(input: LeadPayload) {
       if (!input[key]) errors[key] = "required";
     }
     if (!input.country?.trim()) errors["country"] = "required";
+  }
+  if (input.form_type === "quote") {
+    if (!input.phone?.trim()) errors["phone"] = "required";
+    if (!input.habeas_consent) errors["habeas_consent"] = "required";
+    if (!input.quote?.place?.trim()) errors["place"] = "required";
   }
   return errors;
 }
@@ -60,6 +66,30 @@ function notificationRows(payload: LeadPayload, property: PropertyInfo): [string
     ["Marketing consent", payload.marketing_consent ? "Yes" : "No"],
   ];
 
+  if (payload.quote) {
+    const q = payload.quote;
+    rows.push(
+      ["Project type", q.project_type],
+      ["Has lot", q.has_lot],
+      ["Services", q.services.join(", ") || "—"],
+      ["Stage", q.stage],
+      ["Place", q.place],
+      ["Lot area (m²)", q.lot_area_m2 ? String(q.lot_area_m2) : "—"],
+      ["Lot type", q.predio],
+      ["Floors", q.floors ? String(q.floors) : "—"],
+      ["Build area (m²)", q.build_area_m2 ? String(q.build_area_m2) : "—"],
+      ["Terrain", q.terrain],
+      ["Finishes", q.finishes],
+      ["Possible total area", `${q.estimate.total_m2} m²`],
+      [
+        "Estimated build cost",
+        `${formatCOP(q.estimate.min_cop)} – ${formatCOP(q.estimate.max_cop)}`,
+      ],
+      ["Google click id", q.gclid ?? "—"],
+      ["Meta click id", q.fbclid ?? "—"],
+    );
+  }
+
   if (property) {
     rows.splice(9, 0, ["Property", property.title], ["Reference", property.reference]);
   }
@@ -73,6 +103,8 @@ export async function saveLead(payload: LeadPayload) {
 
   const { data: inserted, error } = await supabaseAdmin.from("leads").insert({
     form_type: payload.form_type,
+    status: "nuevo",
+    quote: payload.quote ?? null,
     buyer_type: payload.buyer_type ?? null,
     purpose: payload.purpose ?? null,
     budget: payload.budget ?? null,

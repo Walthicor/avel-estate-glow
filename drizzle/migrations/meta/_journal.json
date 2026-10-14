@@ -8,6 +8,13 @@
       "when": 1792010351954,
       "tag": "0000_projects_and_roles",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792011084553,
+      "tag": "0001_add_lead_status_and_quote_details",
+      "breakpoints": true
     }
   ]
 }

@@ -25,7 +25,7 @@ export function Footer() {
           <h2 className={headingClass}>{t("nav.cities")}</h2>
           <ul className="mt-5 space-y-3">
             {FOOTER_CITIES.map((city) => (
-              <li key={city.path}>
+              <li key={city.key ?? city.path}>
                 <a href={localePath(city.path)} className={linkClass}>
                   {city.label}
                 </a>

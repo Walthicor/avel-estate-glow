@@ -20,7 +20,7 @@ export function ProjectPage({ project: p, prev, next, locale }: Props) {
   const photo = p.main_photo ?? p.gallery[0] ?? "";
   const sketch = p.sketch ?? photo;
   const listHref = locale === "es" ? "/es/arquitectura/proyectos" : "/architecture/projects";
-  const quoteHref = locale === "es" ? "/es/contacto" : "/contact";
+  const quoteHref = locale === "es" ? "/es/cotiza" : "/quote";
   const fade = reduce
     ? {}
     : { initial: { opacity: 0, y: 12 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.15 }, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } };
