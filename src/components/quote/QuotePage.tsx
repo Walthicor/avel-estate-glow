@@ -70,6 +70,22 @@ const num = (value: string) => {
   return Number.isFinite(parsed) && parsed > 0 ? parsed : 0;
 };
 
+type Errors = {
+  projectType?: string | undefined;
+  hasLot?: string | undefined;
+  services?: string | undefined;
+  stage?: string | undefined;
+  place?: string | undefined;
+  lotArea?: string | undefined;
+  terrain?: string | undefined;
+  budget?: string | undefined;
+  name?: string | undefined;
+  phone?: string | undefined;
+  email?: string | undefined;
+  residence?: string | undefined;
+  consent?: string | undefined;
+};
+
 export function QuotePage() {
   const { locale, localePath } = useLocale();
   const c = QUOTE[locale];
@@ -81,7 +97,7 @@ export function QuotePage() {
   const [step, setStep] = useState(1);
   const [dir, setDir] = useState(1);
   const [form, setForm] = useState<Form>(EMPTY);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [restored, setRestored] = useState(false);
 
@@ -142,7 +158,7 @@ export function QuotePage() {
     }));
 
   const validate = (target: number) => {
-    const next: Record<string, string> = {};
+    const next: Errors = {};
     if (target > 1 && !form.projectType) next.projectType = c.selectOne;
     if (target > 1 && !form.hasLot) next.hasLot = c.selectOne;
     if (target > 2 && form.services.length === 0) next.services = c.selectOneOrMore;
@@ -181,7 +197,7 @@ export function QuotePage() {
   };
 
   const summaryRows = (): [string, string][] => [
-    [c.steps[0].name, labelOf(o.projectType, form.projectType)],
+    [c.step1.typeLegend, labelOf(o.projectType, form.projectType)],
     [c.step1.lotLegend, labelOf(o.hasLot, form.hasLot)],
     [c.step2.servicesLegend, form.services.map((s) => labelOf(o.services, s)).join(", ")],
     [c.step2.stageLegend, labelOf(o.stage, form.stage)],
