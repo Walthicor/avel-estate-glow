@@ -7,6 +7,8 @@ export const SITE = {
   notifyEmail: "avelinmobiliaria@gmail.com",
   fromEmail: "noreply@avelestates.com",
   phone: "",
+  /** Número de WhatsApp en formato internacional sin "+" (ej. 573001234567). Vacío = botón oculto. */
+  whatsapp: "",
   advisor: {
     name: "Valentina Restrepo",
     titleEn: "Client Advisor",
