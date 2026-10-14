@@ -32,6 +32,9 @@ export function organizationJsonLd(locale: Locale) {
         { "@type": "City", name: "Cartagena" },
         { "@type": "City", name: "Bogotá" },
         { "@type": "City", name: "Santa Marta" },
+        { "@type": "City", name: "Cali" },
+        { "@type": "City", name: "Popayán" },
+        { "@type": "AdministrativeArea", name: "Eje Cafetero" },
       ],
       address: {
         "@type": "PostalAddress",

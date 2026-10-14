@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
       path: "/",
       title: `${SITE.name} — Buy Property in Colombia from Abroad`,
       description:
-        "Luxury homes and investment property in Medellín, Cartagena, Santa Marta and Bogotá — title verification, funding and management handled for remote buyers.",
+        "Luxury property in Medellín, Cartagena, Santa Marta, Bogotá, Cali, Popayán and the Eje Cafetero — handled for remote buyers.",
     }),
     scripts: [organizationJsonLd("en")],
   }),

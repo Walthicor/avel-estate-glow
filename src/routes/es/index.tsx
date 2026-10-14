@@ -12,7 +12,7 @@ export const Route = createFileRoute("/es/")({
       path: "/",
       title: `${SITE.name} — Compra propiedad en Colombia desde el exterior`,
       description:
-        "Vivienda de lujo e inversión en Medellín, Cartagena, Santa Marta y Bogotá: estudio de títulos, fondeo y administración para compradores remotos.",
+        "Propiedad de lujo en Medellín, Cartagena, Santa Marta, Bogotá, Cali, Popayán y el Eje Cafetero: gestión para compradores remotos.",
     }),
     scripts: [organizationJsonLd("es")],
   }),
