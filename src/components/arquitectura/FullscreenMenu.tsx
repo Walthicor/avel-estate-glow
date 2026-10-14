@@ -45,7 +45,7 @@ export function FullscreenMenu({ links, className = "" }: { links: LinkItem[]; c
             className="fixed inset-0 z-[100] flex flex-col justify-center bg-abyss px-6 text-paper md:px-16"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={reduce ? undefined : { opacity: 0 }}
+            exit={reduce ? {} : { opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
             <ul className="space-y-2">

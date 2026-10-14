@@ -18,7 +18,7 @@ export function QuoteMascot() {
         </span>
         <motion.span
           className="mr-2 flex h-14 w-14 items-center justify-center gap-2 rounded-full bg-gold shadow-lg"
-          animate={reduce ? undefined : { y: [0, -6, 0] }}
+          animate={reduce ? {} : { y: [0, -6, 0] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           aria-hidden="true"
         >
@@ -26,7 +26,7 @@ export function QuoteMascot() {
             <motion.span
               key={i}
               className="block h-3 w-2 rounded-full bg-abyss"
-              animate={reduce ? undefined : { scaleY: [1, 1, 0.1, 1] }}
+              animate={reduce ? {} : { scaleY: [1, 1, 0.1, 1] }}
               transition={{ duration: 4, times: [0, 0.94, 0.97, 1], repeat: Infinity }}
             />
           ))}

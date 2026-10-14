@@ -42,7 +42,7 @@ export function ProjectIndexList({ items }: { items: Item[] }) {
             className="pointer-events-none fixed left-0 top-0 z-50 hidden h-48 w-64 object-cover md:block"
             initial={reduce ? false : { opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1, x: pt.x + 24, y: pt.y - 96 }}
-            exit={reduce ? undefined : { opacity: 0, scale: 0.9 }}
+            exit={reduce ? {} : { opacity: 0, scale: 0.9 }}
             transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 300, damping: 30, opacity: { duration: 0.2 } }}
           />
         )}
