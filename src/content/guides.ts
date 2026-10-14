@@ -604,19 +604,19 @@ export const GUIDES_INDEX: Record<
   { title: string; description: string; heading: string; intro: string; related: string; back: string }
 > = {
   en: {
-    title: "Guides — buying property in Colombia from abroad",
+    title: "Colombia Real Estate Blog — Buying Property from Abroad",
     description:
       "Plain, specific guides for foreign buyers: legal requirements, moving money, fiducia, Medellín zones, short-term rental rules and due diligence.",
-    heading: "Guides",
+    heading: "Blog",
     intro: "Written for buyers who are not in Colombia. No sales language, no generalities.",
     related: "Related properties",
     back: "All guides",
   },
   es: {
-    title: "Guías — comprar propiedad en Colombia desde el exterior",
+    title: "Blog de bienes raíces en Colombia | AVEL Estates",
     description:
       "Guías claras y concretas para compradores extranjeros: requisitos legales, mover el dinero, fiducia, zonas de Medellín, renta corta y debida diligencia.",
-    heading: "Guías",
+    heading: "Blog",
     intro: "Escritas para compradores que no están en Colombia. Sin lenguaje comercial ni generalidades.",
     related: "Propiedades relacionadas",
     back: "Todas las guías",
