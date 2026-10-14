@@ -1,12 +1,12 @@
 import type { Locale } from "../config/site";
 import type { PropertySearch } from "../lib/property-search";
 
-import strImg from "../assets/collection-rental.jpg";
-import preImg from "../assets/collection-preconstruction.jpg";
-import pobladoImg from "../assets/property-1.jpg";
-import beachImg from "../assets/collection-second-home.jpg";
-import readyImg from "../assets/property-3.jpg";
-import landImg from "../assets/collection-diversification.jpg";
+import strImg from "../assets/inversion-renta-corta-medellin.webp";
+import preImg from "../assets/proyecto-sobre-planos-colombia.webp";
+import pobladoImg from "../assets/apartamento-lujo-medellin-el-poblado.webp";
+import beachImg from "../assets/segunda-vivienda-playa-santa-marta.webp";
+import readyImg from "../assets/apartamento-lujo-bogota-colombia.webp";
+import landImg from "../assets/lote-inversion-colombia.webp";
 
 export type CollectionCopy = {
   name: string;

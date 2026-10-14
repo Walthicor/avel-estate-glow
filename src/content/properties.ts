@@ -1,14 +1,14 @@
 import type { Locale } from "../config/site";
 
-import p1 from "../assets/property-1.jpg";
-import p2 from "../assets/property-2.jpg";
-import p3 from "../assets/property-3.jpg";
-import c1 from "../assets/collection-rental.jpg";
-import c2 from "../assets/collection-relocation.jpg";
-import c3 from "../assets/collection-preconstruction.jpg";
-import c4 from "../assets/collection-retirement.jpg";
-import c5 from "../assets/collection-second-home.jpg";
-import c6 from "../assets/collection-diversification.jpg";
+import p1 from "../assets/apartamento-lujo-medellin-el-poblado.webp";
+import p2 from "../assets/propiedad-lujo-cartagena-colombia.webp";
+import p3 from "../assets/apartamento-lujo-bogota-colombia.webp";
+import c1 from "../assets/inversion-renta-corta-medellin.webp";
+import c2 from "../assets/vivienda-reubicacion-envigado.webp";
+import c3 from "../assets/proyecto-sobre-planos-colombia.webp";
+import c4 from "../assets/casa-retiro-colombia.webp";
+import c5 from "../assets/segunda-vivienda-playa-santa-marta.webp";
+import c6 from "../assets/lote-inversion-colombia.webp";
 
 const IMAGES = [p1, p2, p3, c1, c2, c3, c4, c5, c6];
 

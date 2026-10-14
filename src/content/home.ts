@@ -1,16 +1,16 @@
 import type { Locale } from "../config/site";
 
-import heroPoster from "../assets/hero-poster.jpg";
+import heroPoster from "../assets/avel-estates-bienes-raices-lujo-colombia.webp";
 import heroVideo from "../assets/hero.mp4.asset.json";
-import property1 from "../assets/property-1.jpg";
-import property2 from "../assets/property-2.jpg";
-import property3 from "../assets/property-3.jpg";
-import cRental from "../assets/collection-rental.jpg";
-import cRelocation from "../assets/collection-relocation.jpg";
-import cPre from "../assets/collection-preconstruction.jpg";
-import cRetirement from "../assets/collection-retirement.jpg";
-import cSecond from "../assets/collection-second-home.jpg";
-import cDiversification from "../assets/collection-diversification.jpg";
+import property1 from "../assets/apartamento-lujo-medellin-el-poblado.webp";
+import property2 from "../assets/propiedad-lujo-cartagena-colombia.webp";
+import property3 from "../assets/apartamento-lujo-bogota-colombia.webp";
+import cRental from "../assets/inversion-renta-corta-medellin.webp";
+import cRelocation from "../assets/vivienda-reubicacion-envigado.webp";
+import cPre from "../assets/proyecto-sobre-planos-colombia.webp";
+import cRetirement from "../assets/casa-retiro-colombia.webp";
+import cSecond from "../assets/segunda-vivienda-playa-santa-marta.webp";
+import cDiversification from "../assets/lote-inversion-colombia.webp";
 
 export const HERO_MEDIA = { poster: heroPoster, video: heroVideo.url };
 
