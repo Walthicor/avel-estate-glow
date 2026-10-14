@@ -26,7 +26,7 @@ export type QuoteData = {
 };
 
 export type LeadPayload = {
-  form_type: "short" | "full" | "quote";
+  form_type: "short" | "full" | "quote" | "desarrollador";
   buyer_type?: string | undefined;
   purpose?: string | undefined;
   budget?: string | undefined;
