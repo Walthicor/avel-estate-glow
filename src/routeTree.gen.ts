@@ -25,6 +25,7 @@ import { Route as CollectionsIndexRouteImport } from './routes/collections.index
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
 import { Route as DevComponentesRouteImport } from './routes/dev.componentes'
 import { Route as EsIndexRouteImport } from './routes/es/index'
+import { Route as EsArquitecturaRouteImport } from './routes/es/arquitectura'
 import { Route as EsComprarDesdeElExteriorRouteImport } from './routes/es/comprar-desde-el-exterior'
 import { Route as EsContactoRouteImport } from './routes/es/contacto'
 import { Route as EsCotizaRouteImport } from './routes/es/cotiza'
@@ -134,6 +135,11 @@ const DevComponentesRoute = DevComponentesRouteImport.update({
 const EsIndexRoute = EsIndexRouteImport.update({
   id: '/es/',
   path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsArquitecturaRoute = EsArquitecturaRouteImport.update({
+  id: '/es/arquitectura',
+  path: '/es/arquitectura',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsComprarDesdeElExteriorRoute =
@@ -276,15 +282,15 @@ const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
 } as any)
 const EsArquitecturaProyectosIndexRoute =
   EsArquitecturaProyectosIndexRouteImport.update({
-    id: '/es/arquitectura/proyectos/',
-    path: '/es/arquitectura/proyectos/',
-    getParentRoute: () => rootRouteImport,
+    id: '/proyectos/',
+    path: '/proyectos/',
+    getParentRoute: () => EsArquitecturaRoute,
   } as any)
 const EsArquitecturaProyectosSlugRoute =
   EsArquitecturaProyectosSlugRouteImport.update({
-    id: '/es/arquitectura/proyectos/$slug',
-    path: '/es/arquitectura/proyectos/$slug',
-    getParentRoute: () => rootRouteImport,
+    id: '/proyectos/$slug',
+    path: '/proyectos/$slug',
+    getParentRoute: () => EsArquitecturaRoute,
   } as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
@@ -308,6 +314,7 @@ export interface FileRoutesByFullPath {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
+  '/es/arquitectura': typeof EsArquitecturaRouteWithChildren
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
@@ -356,6 +363,7 @@ export interface FileRoutesByTo {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
+  '/es/arquitectura': typeof EsArquitecturaRouteWithChildren
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
@@ -405,6 +413,7 @@ export interface FileRoutesById {
   '/cities/$slug': typeof CitiesSlugRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/dev/componentes': typeof DevComponentesRoute
+  '/es/arquitectura': typeof EsArquitecturaRouteWithChildren
   '/es/comprar-desde-el-exterior': typeof EsComprarDesdeElExteriorRoute
   '/es/contacto': typeof EsContactoRoute
   '/es/cotiza': typeof EsCotizaRoute
@@ -455,6 +464,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
+    | '/es/arquitectura'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/cotiza'
@@ -503,6 +513,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
+    | '/es/arquitectura'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/cotiza'
@@ -551,6 +562,7 @@ export interface FileRouteTypes {
     | '/cities/$slug'
     | '/collections/$slug'
     | '/dev/componentes'
+    | '/es/arquitectura'
     | '/es/comprar-desde-el-exterior'
     | '/es/contacto'
     | '/es/cotiza'
@@ -600,6 +612,7 @@ export interface RootRouteChildren {
   CitiesSlugRoute: typeof CitiesSlugRoute
   CollectionsSlugRoute: typeof CollectionsSlugRoute
   DevComponentesRoute: typeof DevComponentesRoute
+  EsArquitecturaRoute: typeof EsArquitecturaRouteWithChildren
   EsComprarDesdeElExteriorRoute: typeof EsComprarDesdeElExteriorRoute
   EsContactoRoute: typeof EsContactoRoute
   EsCotizaRoute: typeof EsCotizaRoute
@@ -627,9 +640,7 @@ export interface RootRouteChildren {
   EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
   EsGuiasIndexRoute: typeof EsGuiasIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
-  EsArquitecturaProyectosSlugRoute: typeof EsArquitecturaProyectosSlugRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
-  EsArquitecturaProyectosIndexRoute: typeof EsArquitecturaProyectosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -744,6 +755,13 @@ declare module '@tanstack/react-router' {
       path: '/es'
       fullPath: '/es/'
       preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/arquitectura': {
+      id: '/es/arquitectura'
+      path: '/es/arquitectura'
+      fullPath: '/es/arquitectura'
+      preLoaderRoute: typeof EsArquitecturaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/comprar-desde-el-exterior': {
@@ -937,17 +955,17 @@ declare module '@tanstack/react-router' {
     }
     '/es/arquitectura/proyectos/': {
       id: '/es/arquitectura/proyectos/'
-      path: '/es/arquitectura/proyectos'
+      path: '/proyectos'
       fullPath: '/es/arquitectura/proyectos/'
       preLoaderRoute: typeof EsArquitecturaProyectosIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EsArquitecturaRoute
     }
     '/es/arquitectura/proyectos/$slug': {
       id: '/es/arquitectura/proyectos/$slug'
-      path: '/es/arquitectura/proyectos/$slug'
+      path: '/proyectos/$slug'
       fullPath: '/es/arquitectura/proyectos/$slug'
       preLoaderRoute: typeof EsArquitecturaProyectosSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EsArquitecturaRoute
     }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
@@ -973,6 +991,20 @@ const ArchitectureRouteWithChildren = ArchitectureRoute._addFileChildren(
   ArchitectureRouteChildren,
 )
 
+interface EsArquitecturaRouteChildren {
+  EsArquitecturaProyectosSlugRoute: typeof EsArquitecturaProyectosSlugRoute
+  EsArquitecturaProyectosIndexRoute: typeof EsArquitecturaProyectosIndexRoute
+}
+
+const EsArquitecturaRouteChildren: EsArquitecturaRouteChildren = {
+  EsArquitecturaProyectosSlugRoute: EsArquitecturaProyectosSlugRoute,
+  EsArquitecturaProyectosIndexRoute: EsArquitecturaProyectosIndexRoute,
+}
+
+const EsArquitecturaRouteWithChildren = EsArquitecturaRoute._addFileChildren(
+  EsArquitecturaRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -988,6 +1020,7 @@ const rootRouteChildren: RootRouteChildren = {
   CitiesSlugRoute: CitiesSlugRoute,
   CollectionsSlugRoute: CollectionsSlugRoute,
   DevComponentesRoute: DevComponentesRoute,
+  EsArquitecturaRoute: EsArquitecturaRouteWithChildren,
   EsComprarDesdeElExteriorRoute: EsComprarDesdeElExteriorRoute,
   EsContactoRoute: EsContactoRoute,
   EsCotizaRoute: EsCotizaRoute,
@@ -1015,9 +1048,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsColeccionesIndexRoute: EsColeccionesIndexRoute,
   EsGuiasIndexRoute: EsGuiasIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
-  EsArquitecturaProyectosSlugRoute: EsArquitecturaProyectosSlugRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
-  EsArquitecturaProyectosIndexRoute: EsArquitecturaProyectosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
