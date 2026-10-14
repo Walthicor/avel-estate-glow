@@ -1,0 +1,1 @@
+COMMENT ON TABLE public.projects IS 'DEPRECATED: old architecture section removed; table emptied, pending drop.';

@@ -15,6 +15,13 @@
       "when": 1792011084553,
       "tag": "0001_add_lead_status_and_quote_details",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792018187670,
+      "tag": "0002_deprecate_projects_table",
+      "breakpoints": true
     }
   ]
 }
