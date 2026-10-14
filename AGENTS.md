@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - AVEL Arquitectura reusable UI lives in src/components/arquitectura/ and animates with framer-motion, always gated by useReducedMotion — keeps the section consistent and accessible.
+- Architecture projects live in the public.projects table (public read, admin-only write via has_role); public pages read through server functions in src/lib/projects.functions.ts, the /admin/proyectos panel writes from the browser under RLS. Images go to the private project-media bucket as long-lived signed URLs because public buckets are blocked.
