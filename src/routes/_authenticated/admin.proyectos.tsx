@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { compressImage, seoSlug } from "@/lib/image-compress";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { supabase } from "@/integrations/supabase/client";
 import { PROJECT_SERVICES, PROJECT_STATUSES, PROJECT_TYPES, projectPath, type Project } from "../../lib/projects";
@@ -75,14 +76,14 @@ function AdminProyectos() {
   async function onFile(k: "main_photo" | "sketch", f?: File) {
     if (!f) return;
     setBusy(true);
-    try { set(k, await upload(f)); } catch { setMsg("No se pudo subir la imagen."); }
+    try { set(k, await upload(f, `${d?.name ?? ""} ${d?.city ?? ""} ${k === "sketch" ? "boceto" : "arquitectura"}`)); } catch { setMsg("No se pudo subir la imagen."); }
     setBusy(false);
   }
   async function onGallery(files: FileList | null) {
     if (!files?.length || !d) return;
     setBusy(true);
     try {
-      const urls = await Promise.all(Array.from(files).map(upload));
+      const urls = await Promise.all(Array.from(files).map((f, i) => upload(f, `${d.name} ${d.city} galeria ${d.gallery.length + i + 1}`)));
       set("gallery", [...d.gallery, ...urls]);
     } catch { setMsg("No se pudo subir alguna imagen."); }
     setBusy(false);
