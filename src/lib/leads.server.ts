@@ -76,6 +76,9 @@ function notificationRows(payload: LeadPayload, property: PropertyInfo): [string
       ["Project type", q.project_type],
       ["Has lot", q.has_lot],
       ["Services", q.services.join(", ") || "—"],
+      ["Packages", q.packages?.join(", ") || "—"],
+      ["Budget range", q.budget || "—"],
+      ["Lives in", q.residence || "—"],
       ["Stage", q.stage],
       ["Place", q.place],
       ["Lot area (m²)", q.lot_area_m2 ? String(q.lot_area_m2) : "—"],
@@ -138,7 +141,15 @@ export async function saveLead(payload: LeadPayload) {
   const leadId = inserted?.id ?? crypto.randomUUID();
   const firstName = payload.name.trim().split(" ")[0] ?? payload.name.trim();
 
+  const webhook = process.env["LEAD_WEBHOOK_URL"];
   const results = await Promise.allSettled([
+    webhook
+      ? fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: leadId, created_at: new Date().toISOString(), status: "nuevo", ...payload }),
+        })
+      : Promise.resolve(null),
     sendTemplateEmail("lead-notification", SITE.notifyEmail, {
       idempotencyKey: `lead-notification-${leadId}`,
       replyTo: payload.email,
