@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyingFromAbroadRouteImport } from './routes/buying-from-abroad'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -30,6 +32,9 @@ import { Route as LegalPrivacyRouteImport } from './routes/legal.privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal.terms'
 import { Route as PropertiesIndexRouteImport } from './routes/properties.index'
 import { Route as PropertiesSlugRouteImport } from './routes/properties.$slug'
+import { Route as AuthenticatedAdminProyectosRouteImport } from './routes/_authenticated/admin.proyectos'
+import { Route as ArchitectureProjectsIndexRouteImport } from './routes/architecture.projects.index'
+import { Route as ArchitectureProjectsSlugRouteImport } from './routes/architecture.projects.$slug'
 import { Route as EsCiudadesSlugRouteImport } from './routes/es/ciudades.$slug'
 import { Route as EsColeccionesIndexRouteImport } from './routes/es/colecciones.index'
 import { Route as EsColeccionesSlugRouteImport } from './routes/es/colecciones.$slug'
@@ -41,6 +46,8 @@ import { Route as EsLegalPrivacyRouteImport } from './routes/es/legal.privacy'
 import { Route as EsLegalTermsRouteImport } from './routes/es/legal.terms'
 import { Route as EsPropiedadesIndexRouteImport } from './routes/es/propiedades.index'
 import { Route as EsPropiedadesSlugRouteImport } from './routes/es/propiedades.$slug'
+import { Route as EsArquitecturaProyectosIndexRouteImport } from './routes/es/arquitectura.proyectos.index'
+import { Route as EsArquitecturaProyectosSlugRouteImport } from './routes/es/arquitectura.proyectos.$slug'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 
 const IndexRoute = IndexRouteImport.update({
@@ -48,9 +55,18 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyingFromAbroadRoute = BuyingFromAbroadRouteImport.update({
@@ -149,6 +165,24 @@ const PropertiesSlugRoute = PropertiesSlugRouteImport.update({
   path: '/properties/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminProyectosRoute =
+  AuthenticatedAdminProyectosRouteImport.update({
+    id: '/admin/proyectos',
+    path: '/admin/proyectos',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const ArchitectureProjectsIndexRoute =
+  ArchitectureProjectsIndexRouteImport.update({
+    id: '/architecture/projects/',
+    path: '/architecture/projects/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ArchitectureProjectsSlugRoute =
+  ArchitectureProjectsSlugRouteImport.update({
+    id: '/architecture/projects/$slug',
+    path: '/architecture/projects/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const EsCiudadesSlugRoute = EsCiudadesSlugRouteImport.update({
   id: '/es/ciudades/$slug',
   path: '/es/ciudades/$slug',
@@ -204,6 +238,18 @@ const EsPropiedadesSlugRoute = EsPropiedadesSlugRouteImport.update({
   path: '/es/propiedades/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsArquitecturaProyectosIndexRoute =
+  EsArquitecturaProyectosIndexRouteImport.update({
+    id: '/es/arquitectura/proyectos/',
+    path: '/es/arquitectura/proyectos/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const EsArquitecturaProyectosSlugRoute =
+  EsArquitecturaProyectosSlugRouteImport.update({
+    id: '/es/arquitectura/proyectos/$slug',
+    path: '/es/arquitectura/proyectos/$slug',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const LovableEmailTransactionalPreviewRoute =
   LovableEmailTransactionalPreviewRouteImport.update({
     id: '/lovable/email/transactional/preview',
@@ -214,6 +260,7 @@ const LovableEmailTransactionalPreviewRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -233,6 +280,8 @@ export interface FileRoutesByFullPath {
   '/es/': typeof EsIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
+  '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
   '/es/guias/$slug': typeof EsGuiasSlugRoute
@@ -241,14 +290,18 @@ export interface FileRoutesByFullPath {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/architecture/projects/': typeof ArchitectureProjectsIndexRoute
   '/es/colecciones/': typeof EsColeccionesIndexRoute
   '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
+  '/es/arquitectura/proyectos/$slug': typeof EsArquitecturaProyectosSlugRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/es/arquitectura/proyectos/': typeof EsArquitecturaProyectosIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -268,6 +321,8 @@ export interface FileRoutesByTo {
   '/es': typeof EsIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/properties': typeof PropertiesIndexRoute
+  '/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
+  '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
   '/es/guias/$slug': typeof EsGuiasSlugRoute
@@ -276,15 +331,20 @@ export interface FileRoutesByTo {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/architecture/projects': typeof ArchitectureProjectsIndexRoute
   '/es/colecciones': typeof EsColeccionesIndexRoute
   '/es/guias': typeof EsGuiasIndexRoute
   '/es/propiedades': typeof EsPropiedadesIndexRoute
+  '/es/arquitectura/proyectos/$slug': typeof EsArquitecturaProyectosSlugRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/es/arquitectura/proyectos': typeof EsArquitecturaProyectosIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
+  '/auth': typeof AuthRoute
   '/buying-from-abroad': typeof BuyingFromAbroadRoute
   '/contact': typeof ContactRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -304,6 +364,8 @@ export interface FileRoutesById {
   '/es/': typeof EsIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/properties/': typeof PropertiesIndexRoute
+  '/_authenticated/admin/proyectos': typeof AuthenticatedAdminProyectosRoute
+  '/architecture/projects/$slug': typeof ArchitectureProjectsSlugRoute
   '/es/ciudades/$slug': typeof EsCiudadesSlugRoute
   '/es/colecciones/$slug': typeof EsColeccionesSlugRoute
   '/es/guias/$slug': typeof EsGuiasSlugRoute
@@ -312,16 +374,20 @@ export interface FileRoutesById {
   '/es/legal/privacy': typeof EsLegalPrivacyRoute
   '/es/legal/terms': typeof EsLegalTermsRoute
   '/es/propiedades/$slug': typeof EsPropiedadesSlugRoute
+  '/architecture/projects/': typeof ArchitectureProjectsIndexRoute
   '/es/colecciones/': typeof EsColeccionesIndexRoute
   '/es/guias/': typeof EsGuiasIndexRoute
   '/es/propiedades/': typeof EsPropiedadesIndexRoute
+  '/es/arquitectura/proyectos/$slug': typeof EsArquitecturaProyectosSlugRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
+  '/es/arquitectura/proyectos/': typeof EsArquitecturaProyectosIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/auth'
     | '/buying-from-abroad'
     | '/contact'
     | '/sitemap.xml'
@@ -341,6 +407,8 @@ export interface FileRouteTypes {
     | '/es/'
     | '/guides/'
     | '/properties/'
+    | '/admin/proyectos'
+    | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
     | '/es/guias/$slug'
@@ -349,14 +417,18 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/architecture/projects/'
     | '/es/colecciones/'
     | '/es/guias/'
     | '/es/propiedades/'
+    | '/es/arquitectura/proyectos/$slug'
     | '/lovable/email/transactional/preview'
+    | '/es/arquitectura/proyectos/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/auth'
     | '/buying-from-abroad'
     | '/contact'
     | '/sitemap.xml'
@@ -376,6 +448,8 @@ export interface FileRouteTypes {
     | '/es'
     | '/guides'
     | '/properties'
+    | '/admin/proyectos'
+    | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
     | '/es/guias/$slug'
@@ -384,14 +458,19 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/architecture/projects'
     | '/es/colecciones'
     | '/es/guias'
     | '/es/propiedades'
+    | '/es/arquitectura/proyectos/$slug'
     | '/lovable/email/transactional/preview'
+    | '/es/arquitectura/proyectos'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/about'
+    | '/auth'
     | '/buying-from-abroad'
     | '/contact'
     | '/sitemap.xml'
@@ -411,6 +490,8 @@ export interface FileRouteTypes {
     | '/es/'
     | '/guides/'
     | '/properties/'
+    | '/_authenticated/admin/proyectos'
+    | '/architecture/projects/$slug'
     | '/es/ciudades/$slug'
     | '/es/colecciones/$slug'
     | '/es/guias/$slug'
@@ -419,15 +500,20 @@ export interface FileRouteTypes {
     | '/es/legal/privacy'
     | '/es/legal/terms'
     | '/es/propiedades/$slug'
+    | '/architecture/projects/'
     | '/es/colecciones/'
     | '/es/guias/'
     | '/es/propiedades/'
+    | '/es/arquitectura/proyectos/$slug'
     | '/lovable/email/transactional/preview'
+    | '/es/arquitectura/proyectos/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
+  AuthRoute: typeof AuthRoute
   BuyingFromAbroadRoute: typeof BuyingFromAbroadRoute
   ContactRoute: typeof ContactRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -447,6 +533,7 @@ export interface RootRouteChildren {
   EsIndexRoute: typeof EsIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   PropertiesIndexRoute: typeof PropertiesIndexRoute
+  ArchitectureProjectsSlugRoute: typeof ArchitectureProjectsSlugRoute
   EsCiudadesSlugRoute: typeof EsCiudadesSlugRoute
   EsColeccionesSlugRoute: typeof EsColeccionesSlugRoute
   EsGuiasSlugRoute: typeof EsGuiasSlugRoute
@@ -455,10 +542,13 @@ export interface RootRouteChildren {
   EsLegalPrivacyRoute: typeof EsLegalPrivacyRoute
   EsLegalTermsRoute: typeof EsLegalTermsRoute
   EsPropiedadesSlugRoute: typeof EsPropiedadesSlugRoute
+  ArchitectureProjectsIndexRoute: typeof ArchitectureProjectsIndexRoute
   EsColeccionesIndexRoute: typeof EsColeccionesIndexRoute
   EsGuiasIndexRoute: typeof EsGuiasIndexRoute
   EsPropiedadesIndexRoute: typeof EsPropiedadesIndexRoute
+  EsArquitecturaProyectosSlugRoute: typeof EsArquitecturaProyectosSlugRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
+  EsArquitecturaProyectosIndexRoute: typeof EsArquitecturaProyectosIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -470,11 +560,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buying-from-abroad': {
@@ -610,6 +714,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropertiesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/proyectos': {
+      id: '/_authenticated/admin/proyectos'
+      path: '/admin/proyectos'
+      fullPath: '/admin/proyectos'
+      preLoaderRoute: typeof AuthenticatedAdminProyectosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/architecture/projects/': {
+      id: '/architecture/projects/'
+      path: '/architecture/projects'
+      fullPath: '/architecture/projects/'
+      preLoaderRoute: typeof ArchitectureProjectsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture/projects/$slug': {
+      id: '/architecture/projects/$slug'
+      path: '/architecture/projects/$slug'
+      fullPath: '/architecture/projects/$slug'
+      preLoaderRoute: typeof ArchitectureProjectsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/ciudades/$slug': {
       id: '/es/ciudades/$slug'
       path: '/es/ciudades/$slug'
@@ -687,6 +812,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsPropiedadesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/arquitectura/proyectos/': {
+      id: '/es/arquitectura/proyectos/'
+      path: '/es/arquitectura/proyectos'
+      fullPath: '/es/arquitectura/proyectos/'
+      preLoaderRoute: typeof EsArquitecturaProyectosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/arquitectura/proyectos/$slug': {
+      id: '/es/arquitectura/proyectos/$slug'
+      path: '/es/arquitectura/proyectos/$slug'
+      fullPath: '/es/arquitectura/proyectos/$slug'
+      preLoaderRoute: typeof EsArquitecturaProyectosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/preview': {
       id: '/lovable/email/transactional/preview'
       path: '/lovable/email/transactional/preview'
@@ -697,9 +836,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminProyectosRoute: typeof AuthenticatedAdminProyectosRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminProyectosRoute: AuthenticatedAdminProyectosRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
+  AuthRoute: AuthRoute,
   BuyingFromAbroadRoute: BuyingFromAbroadRoute,
   ContactRoute: ContactRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
@@ -719,6 +871,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsIndexRoute: EsIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   PropertiesIndexRoute: PropertiesIndexRoute,
+  ArchitectureProjectsSlugRoute: ArchitectureProjectsSlugRoute,
   EsCiudadesSlugRoute: EsCiudadesSlugRoute,
   EsColeccionesSlugRoute: EsColeccionesSlugRoute,
   EsGuiasSlugRoute: EsGuiasSlugRoute,
@@ -727,10 +880,13 @@ const rootRouteChildren: RootRouteChildren = {
   EsLegalPrivacyRoute: EsLegalPrivacyRoute,
   EsLegalTermsRoute: EsLegalTermsRoute,
   EsPropiedadesSlugRoute: EsPropiedadesSlugRoute,
+  ArchitectureProjectsIndexRoute: ArchitectureProjectsIndexRoute,
   EsColeccionesIndexRoute: EsColeccionesIndexRoute,
   EsGuiasIndexRoute: EsGuiasIndexRoute,
   EsPropiedadesIndexRoute: EsPropiedadesIndexRoute,
+  EsArquitecturaProyectosSlugRoute: EsArquitecturaProyectosSlugRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
+  EsArquitecturaProyectosIndexRoute: EsArquitecturaProyectosIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

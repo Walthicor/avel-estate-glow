@@ -10,6 +10,8 @@ export const ROUTE_SEGMENTS = {
   contact: "contacto",
   "buying-from-abroad": "comprar-desde-el-exterior",
   legal: "legal",
+  architecture: "arquitectura",
+  projects: "proyectos",
 } as const;
 
 export type EnSegment = keyof typeof ROUTE_SEGMENTS;
