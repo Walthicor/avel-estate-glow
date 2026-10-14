@@ -27,7 +27,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
   const send = useServerFn(submitLead);
   const [step, setStep] = useState(0);
   const [f, setF] = useState<Form>(EMPTY);
-  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof Form, string>>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [loaded, setLoaded] = useState(false);
 
@@ -65,7 +65,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
     setF((c) => ({ ...c, [k]: c[k].includes(v) ? c[k].filter((x) => x !== v) : [...c[k], v] }));
 
   const validate = (s: number) => {
-    const e: Record<string, string> = {};
+    const e: Partial<Record<keyof Form, string>> = {};
     const req = "Este dato es necesario";
     if (s === 0) { if (!f.projectType) e.projectType = req; if (!f.hasLot) e.hasLot = req; }
     if (s === 1) { if (!f.services.length && !f.packages.length) e.services = "Elige al menos un servicio o paquete"; if (!f.stage) e.stage = req; }

@@ -141,7 +141,7 @@ export async function saveLead(payload: LeadPayload) {
   const leadId = inserted?.id ?? crypto.randomUUID();
   const firstName = payload.name.trim().split(" ")[0] ?? payload.name.trim();
 
-  const webhook = process.env.LEAD_WEBHOOK_URL;
+  const webhook = process.env["LEAD_WEBHOOK_URL"];
   const results = await Promise.allSettled([
     webhook
       ? fetch(webhook, {
