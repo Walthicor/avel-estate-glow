@@ -73,7 +73,7 @@ export type HomeContent = {
 
 const en: HomeContent = {
   hero: {
-    label: "MEDELLÍN · CARTAGENA · SANTA MARTA · BOGOTÁ",
+    label: "MEDELLÍN · CARTAGENA · SANTA MARTA · BOGOTÁ · POPAYÁN · CALI · EJE CAFETERO",
     headline: "Own property in Colombia. Without being there.",
     body: "We handle the due diligence, the paperwork, and the part nobody explains — getting your money back out.",
     primary: "View properties",
@@ -225,7 +225,7 @@ const en: HomeContent = {
 
 const es: HomeContent = {
   hero: {
-    label: "MEDELLÍN · CARTAGENA · SANTA MARTA · BOGOTÁ",
+    label: "MEDELLÍN · CARTAGENA · SANTA MARTA · BOGOTÁ · POPAYÁN · CALI · EJE CAFETERO",
     headline: "Compra propiedad en Colombia. Sin estar aquí.",
     body: "Nos encargamos de la debida diligencia, los trámites y la parte que nadie explica: cómo sacar tu dinero después.",
     primary: "Ver propiedades",
