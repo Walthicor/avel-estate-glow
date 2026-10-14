@@ -1,4 +1,7 @@
-import { useRef, useState } from "react";
+import { animate, useInView, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+import { srcSetFor } from "../../content/arquitectura";
 
 export function CompareSlider({
   before,
@@ -14,8 +17,20 @@ export function CompareSlider({
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
+  const reduce = useReducedMotion();
+  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const touched = useRef(false);
+
+  // Primera vez en pantalla: la manija va sola del boceto a la foto, luego queda manual.
+  useEffect(() => {
+    if (!inView || reduce || touched.current) return;
+    const c = animate(100, 0, { duration: 1.5, ease: [0.65, 0, 0.35, 1], onUpdate: (v) => !touched.current && setPos(v) });
+    return () => c.stop();
+  }, [inView, reduce]);
+  const manual = (v: number) => { touched.current = true; setPos(v); };
 
   const move = (clientX: number) => {
+    touched.current = true;
     const r = ref.current?.getBoundingClientRect();
     if (!r) return;
     setPos(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)));
@@ -31,7 +46,7 @@ export function CompareSlider({
             key={label}
             type="button"
             aria-pressed={Math.round(pos) === v}
-            onClick={() => setPos(v)}
+            onClick={() => manual(v)}
             className={`arq-mono rounded-full border px-4 py-2 text-[11px] transition ${
               Math.round(pos) === v ? "border-oro bg-oro text-obra" : "border-hueso/25 text-hueso/80 hover:border-oro"
             }`}
@@ -52,9 +67,11 @@ export function CompareSlider({
         onPointerUp={() => (dragging.current = false)}
         onPointerCancel={() => (dragging.current = false)}
       >
-        <img src={after} alt={afterAlt} loading="lazy" width={1440} height={960} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+        <img src={after} srcSet={srcSetFor(after)} sizes="(min-width: 1280px) 1240px, 100vw" alt={afterAlt} loading="lazy" width={1440} height={960} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
         <img
           src={before}
+          srcSet={srcSetFor(before)}
+          sizes="(min-width: 1280px) 1240px, 100vw"
           alt={beforeAlt}
           loading="lazy"
           width={1440}
@@ -76,7 +93,7 @@ export function CompareSlider({
           min={0}
           max={100}
           value={Math.round(pos)}
-          onChange={(e) => setPos(Number(e.target.value))}
+          onChange={(e) => manual(Number(e.target.value))}
           aria-label="Desliza para comparar boceto y obra entregada"
           className="absolute inset-x-0 bottom-0 h-full w-full cursor-ew-resize opacity-0"
         />

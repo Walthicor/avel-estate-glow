@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+
+import { trackEvent } from "../../lib/analytics";
+import { useRolling } from "./motion";
 
 import { firstFloorMax, formatCOP, formatM2, investmentRange, totalPossibleArea, type Acabados, type Predio } from "../../lib/quote-math";
 import { ArqTitle, Rotulo, btnGold, type GoQuote } from "./shared";
@@ -33,10 +36,19 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
   const [build, setBuild] = useState("");
   const [finishes, setFinishes] = useState<Acabados>("medios");
 
+  const used = useRef(false);
+  const mark = <T,>(fn: (v: T) => void) => (v: T) => {
+    if (!used.current) { used.current = true; trackEvent("calculadora_usada"); }
+    fn(v);
+  };
   const lotN = Number(lot) || 0;
   const first = firstFloorMax(lotN, predio);
   const total = totalPossibleArea({ lotAreaM2: lotN, predio, floors: Number(floors) || 1, buildAreaM2: Number(build) || undefined });
   const range = investmentRange(total, finishes);
+  const rFirst = useRolling(first);
+  const rTotal = useRolling(total);
+  const rMin = useRolling(range.min);
+  const rMax = useRolling(range.max);
 
   return (
     <section id="calculadora" className="scroll-mt-16 bg-carbon px-5 py-20 md:px-10 md:py-28">
@@ -47,31 +59,31 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
           <div className="grid gap-5">
             <div>
               <label htmlFor="calc-lot" className={labelCls}>Área del lote (m²)</label>
-              <input id="calc-lot" type="number" inputMode="decimal" min={0} value={lot} onChange={(e) => setLot(e.target.value)} className={inputCls} />
+              <input id="calc-lot" type="number" inputMode="decimal" min={0} value={lot} onChange={(e) => mark(setLot)(e.target.value)} className={inputCls} />
             </div>
             <div>
               <span className={labelCls}>Tipo de predio</span>
-              <Seg label="Tipo de predio" value={predio} onChange={setPredio} options={[["urbano", "Urbano"], ["rural", "Rural"]]} />
+              <Seg label="Tipo de predio" value={predio} onChange={mark(setPredio)} options={[["urbano", "Urbano"], ["rural", "Rural"]]} />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label htmlFor="calc-floors" className={labelCls}>Número de pisos</label>
-                <input id="calc-floors" type="number" inputMode="numeric" min={1} max={30} value={floors} onChange={(e) => setFloors(e.target.value)} className={inputCls} />
+                <input id="calc-floors" type="number" inputMode="numeric" min={1} max={30} value={floors} onChange={(e) => mark(setFloors)(e.target.value)} className={inputCls} />
               </div>
               <div>
                 <label htmlFor="calc-build" className={labelCls}>m² a construir (opcional)</label>
-                <input id="calc-build" type="number" inputMode="decimal" min={0} value={build} onChange={(e) => setBuild(e.target.value)} className={inputCls} />
+                <input id="calc-build" type="number" inputMode="decimal" min={0} value={build} onChange={(e) => mark(setBuild)(e.target.value)} className={inputCls} />
               </div>
             </div>
             <div>
               <span className={labelCls}>Nivel de acabados</span>
-              <Seg label="Nivel de acabados" value={finishes} onChange={setFinishes} options={[["medios", "Medios"], ["alta", "Alta gama"]]} />
+              <Seg label="Nivel de acabados" value={finishes} onChange={mark(setFinishes)} options={[["medios", "Medios"], ["alta", "Alta gama"]]} />
             </div>
           </div>
           <div className="grid content-start gap-6" aria-live="polite">
-            <Result label="Máximo en primer piso" value={formatM2(first)} />
-            <Result label="Área total posible" value={formatM2(total)} />
-            <Result label="Inversión estimada en obra" value={total > 0 ? `${formatCOP(range.min)} – ${formatCOP(range.max)}` : "—"} small />
+            <Result label="Máximo en primer piso" value={formatM2(rFirst)} />
+            <Result label="Área total posible" value={formatM2(rTotal)} />
+            <Result label="Inversión estimada en obra" value={total > 0 ? `${formatCOP(rMin)} – ${formatCOP(rMax)}` : "—"} small />
             <p className="arq-body text-[13px] leading-relaxed text-hueso/60">
               Estimado de referencia. El dato exacto depende del POT de tu municipio, del terreno y del diseño. No incluye lote, licencias ni IVA.
             </p>

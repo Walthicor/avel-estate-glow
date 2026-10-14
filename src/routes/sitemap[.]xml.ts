@@ -16,6 +16,9 @@ type Entry = {
   priority?: string;
 };
 
+/** Última actualización de la landing de arquitectura (actualízala al cambiarla). */
+const ARQ_LASTMOD = "2026-10-14";
+
 const escapeXml = (value: string) =>
   value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -92,6 +95,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           `<?xml version="1.0" encoding="UTF-8"?>`,
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`,
           ...urls,
+          // Landing solo en español, sin versión en inglés.
+          [`  <url>`, `    <loc>${SITE.url}/es/arquitectura</loc>`, `    <lastmod>${ARQ_LASTMOD}</lastmod>`, `    <changefreq>monthly</changefreq>`, `    <priority>0.9</priority>`, `  </url>`].join("\n"),
           `</urlset>`,
         ].join("\n");
 

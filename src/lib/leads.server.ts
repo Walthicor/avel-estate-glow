@@ -94,6 +94,8 @@ function notificationRows(payload: LeadPayload, property: PropertyInfo): [string
       ],
       ["Google click id", q.gclid ?? "—"],
       ["Meta click id", q.fbclid ?? "—"],
+      ["Ad service (?servicio=)", q.servicio ?? "—"],
+      ["Landing URL", q.landing_url ?? "—"],
     );
   }
 

@@ -69,6 +69,16 @@
   font-family: var(--font-arq-body);
 }
 
+@utility arq-blink {
+  animation: arq-blink 4s infinite;
+  transform-origin: center;
+}
+
+@keyframes arq-blink {
+  0%, 94%, 100% { transform: scaleY(1); }
+  97% { transform: scaleY(0.1); }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

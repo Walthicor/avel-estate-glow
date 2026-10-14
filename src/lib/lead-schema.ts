@@ -24,6 +24,8 @@ export type QuoteData = {
   };
   gclid?: string | undefined;
   fbclid?: string | undefined;
+  servicio?: string | undefined;
+  landing_url?: string | undefined;
 };
 
 export type LeadPayload = {
