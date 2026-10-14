@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 
 import type { Locale } from "../../config/site";
@@ -154,10 +153,10 @@ export function ProjectPage({ project: p, prev, next, locale }: Props) {
 
       {/* 7. CTA */}
       <section className="bg-abyss px-4 py-28 text-center text-paper md:px-8">
-        <DisplayTitle text={c.cta} className="mx-auto max-w-6xl text-paper !text-[clamp(40px,7vw,104px)]" />
-        <Link to={quoteHref} className="btn-gold mt-12 inline-flex">
+        <DisplayTitle text={c.cta} className="mx-auto max-w-6xl text-paper" />
+        <a href={quoteHref} className="btn-gold mt-12 inline-flex">
           {c.ctaBtn}
-        </Link>
+        </a>
       </section>
 
       {lb !== null && (
