@@ -48,7 +48,7 @@ export function ArqLanding() {
             <span className="arq-mono text-[10px] text-gold sm:text-[11px]">Arquitectura</span>
           </a>
           <div className="flex items-center gap-3">
-            <button type="button" onClick={() => goQuote()} className="rounded-full bg-oro px-5 py-2.5 text-[14px] font-medium text-obra hover:brightness-110">Cotizar</button>
+            <button type="button" onClick={() => goQuote()} className="avel-pulse rounded-full bg-oro px-5 py-2.5 text-[14px] font-medium text-obra hover:brightness-110">Cotizar</button>
             {wa ? (
               <a href={wa} target="_blank" rel="noreferrer" onClick={onWaClick} aria-label="Escribir por WhatsApp" className="grid h-10 w-10 place-items-center rounded-full border border-hueso/20 text-gold hover:border-gold"><WaIcon /></a>
             ) : null}
@@ -306,7 +306,7 @@ export function ArqLanding() {
 
       {/* Barra fija en celular */}
       <div className="fixed inset-x-0 bottom-0 z-[100] flex gap-2 border-t border-hueso/10 bg-obra/95 p-3 backdrop-blur md:hidden">
-        <button type="button" onClick={() => goQuote()} className="flex-1 rounded-full bg-oro py-3.5 text-[15px] font-medium text-obra">Cotizar gratis</button>
+        <button type="button" onClick={() => goQuote()} className="avel-pulse flex-1 rounded-full bg-oro py-3.5 text-[15px] font-medium text-obra">Cotizar gratis</button>
         {wa ? <a href={wa} target="_blank" rel="noreferrer" onClick={onWaClick} className="flex flex-1 items-center justify-center gap-2 rounded-full border border-hueso/30 py-3.5 text-[15px] text-hueso"><WaIcon /> WhatsApp</a> : null}
       </div>
     </div>
@@ -351,7 +351,7 @@ function Services({ goQuote }: { goQuote: GoQuote }) {
                 <span className="text-gold"><DrawIcon key={`${tab}-${s.id}`} d={s.icon} /></span>
                 <h3 className="arq-display mt-5 text-[22px]">{s.name}</h3>
                 <ServiceBody s={s} />
-                <button type="button" onClick={() => pick(s)} className="mt-6 self-start rounded-full border border-oro px-5 py-2.5 text-[14px] text-oro hover:bg-oro hover:text-obra">Lo necesito</button>
+                <button type="button" onClick={() => pick(s)} className="avel-pulse mt-6 self-start rounded-full border border-oro px-5 py-2.5 text-[14px] text-oro hover:bg-oro hover:text-obra">Lo necesito</button>
               </motion.article>
             ))}
           </AnimatePresence>
@@ -366,7 +366,7 @@ function Services({ goQuote }: { goQuote: GoQuote }) {
                 <span className="arq-mono text-oro transition group-open:rotate-45" aria-hidden="true">+</span>
               </summary>
               <ServiceBody s={s} />
-              <button type="button" onClick={() => pick(s)} className="mt-5 rounded-full border border-oro px-5 py-2.5 text-[14px] text-oro">Lo necesito</button>
+              <button type="button" onClick={() => pick(s)} className="avel-pulse mt-5 rounded-full border border-oro px-5 py-2.5 text-[14px] text-oro">Lo necesito</button>
             </details>
           ))}
         </div>

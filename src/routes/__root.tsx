@@ -167,9 +167,9 @@ function RootComponent() {
           <>
             <Footer />
             <TowerContactButton />
-            <BackToTopButton />
           </>
         )}
+        <BackToTopButton />
         <CookieBanner />
       </LocaleProvider>
     </QueryClientProvider>
