@@ -1025,3 +1025,24 @@ body[data-cookiebar="open"][data-stickybar="open"] {
   background: var(--color-gold);
   border-radius: 50%;
 }
+
+/* ============================================================
+   4.4 — Soft pulse for quote CTAs and back-to-top
+   ============================================================ */
+
+@keyframes avel-pulse-soft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgb(247 167 62 / 40%);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgb(247 167 62 / 0%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .avel-pulse,
+  .avel-drop[data-visible="true"] {
+    animation: avel-pulse-soft 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}

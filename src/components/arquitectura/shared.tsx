@@ -55,7 +55,7 @@ export function ArqTitle({
 export const onWaClick = () => trackEvent("Contact", { canal: "whatsapp" });
 
 export const btnGold =
-  "inline-flex items-center justify-center gap-2 rounded-full bg-oro px-7 py-4 arq-body text-[15px] font-medium text-obra transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oro";
+  "avel-pulse inline-flex items-center justify-center gap-2 rounded-full bg-oro px-7 py-4 arq-body text-[15px] font-medium text-obra transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oro";
 export const btnLine =
   "inline-flex items-center justify-center gap-2 rounded-full border border-hueso/40 px-7 py-4 arq-body text-[15px] font-medium text-hueso transition hover:border-oro hover:text-oro focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-oro";
 
