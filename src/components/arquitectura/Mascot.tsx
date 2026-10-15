@@ -42,7 +42,7 @@ export function Mascot({ goQuote }: { goQuote: GoQuote }) {
             <span className="absolute -bottom-1.5 right-7 h-3 w-3 rotate-45 bg-hueso" aria-hidden="true" />
           </span>
           <motion.span
-            className="relative mr-2 grid h-16 w-16 place-items-center rounded-full bg-oro shadow-lg"
+            className="avel-pulse relative mr-2 grid h-16 w-16 place-items-center rounded-full bg-oro shadow-lg"
             animate={reduce ? { y: 0 } : { y: [0, -6, 0] }}
             transition={reduce ? { duration: 0 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
             aria-hidden="true"
