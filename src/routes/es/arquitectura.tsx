@@ -26,7 +26,7 @@ export const Route = createFileRoute("/es/arquitectura")({
         { property: "og:title", content: TITLE },
         { property: "og:description", content: DESCRIPTION },
         { property: "og:url", content: url },
-        { property: "og:image:alt", content: "Obra en construcción de AVEL Arquitectura" },
+        { property: "og:image:alt", content: "Casa Rengifo en Popayán, obra entregada por AVEL Arquitectura" },
         ...meta,
       ],
       // Página solo en español: sin versiones alternas en inglés.

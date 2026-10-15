@@ -54,7 +54,8 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
     <section id="calculadora" className="scroll-mt-16 bg-carbon px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[1240px] rounded-[4px] border border-oro/60 p-6 md:p-12">
         <Rotulo>(04) — Calculadora</Rotulo>
-        <ArqTitle text="¿Cuánto puedes construir en tu lote?" gold="construir" className="mt-4 text-[clamp(32px,5vw,64px)] text-hueso" />
+        <ArqTitle text="¿Cuánto puedes construir en tu lote… y cuánto te costaría?" gold="y cuánto te costaría?" className="mt-4 max-w-[22ch] text-[clamp(32px,5vw,64px)] text-hueso" />
+        <p className="arq-body mt-5 max-w-[56ch] text-[17px] leading-relaxed text-hueso/75">Descúbrelo en 60 segundos. Es la misma lógica con la que nuestro equipo arranca cada proyecto.</p>
         <div className="mt-10 grid gap-10 lg:grid-cols-2">
           <div className="grid gap-5">
             <div>
@@ -88,8 +89,9 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
               Estimado de referencia. El dato exacto depende del POT de tu municipio, del terreno y del diseño. No incluye lote, licencias ni IVA.
             </p>
             <button type="button" className={`${btnGold} justify-self-start`} onClick={() => goQuote({ calc: { lot, predio, floors, build, finishes } })}>
-              Recibe el análisis completo de tu lote
+              Quiero el análisis completo de mi lote (gratis)
             </button>
+            <p className="arq-body -mt-3 text-[13px] text-hueso/60">Nuestro equipo revisa tu caso y te responde por WhatsApp.</p>
           </div>
         </div>
       </div>

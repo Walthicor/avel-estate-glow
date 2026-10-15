@@ -5,7 +5,7 @@ import { ARQ_PROJECTS, srcSetFor, type ArqProject, type ProjectType } from "../.
 import { ArqTitle, Rotulo, type GoQuote } from "./shared";
 
 const pad = (n: number) => String(n).padStart(2, "0");
-const FILTERS: ("Todos" | ProjectType)[] = ["Todos", "Residencial", "Corporativo", "Comercial"];
+const FILTERS: ("Todos" | ProjectType)[] = ["Todos", "Residencial", "Corporativo", "Comercial", "Remodelación"];
 
 export function Projects({ goQuote }: { goQuote: GoQuote }) {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("Todos");
@@ -21,9 +21,10 @@ export function Projects({ goQuote }: { goQuote: GoQuote }) {
       <div className="mx-auto max-w-[1240px]">
         <Rotulo light>(05) — Proyectos</Rotulo>
         <div className="mt-4 flex items-start justify-between gap-4">
-          <h2 className="arq-display text-[clamp(48px,10vw,140px)]">Proyectos</h2>
+          <h2 className="arq-display text-[clamp(40px,8vw,120px)] leading-[0.95]">Obras entregadas, <span className="text-oro-ink">no promesas</span></h2>
           <span className="arq-mono text-[13px] text-oro-ink">({pad(ARQ_PROJECTS.length)})</span>
         </div>
+        <p className="mt-6 max-w-[60ch] text-[17px] leading-relaxed text-obra/75">No te mostramos solo renders bonitos. Estos son proyectos que diseñamos y llevamos hasta el final. Los que están en diseño u obra se marcan así.</p>
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-y border-obra/15 py-4">
           <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar proyectos">
             {FILTERS.map((f) => (
@@ -57,7 +58,8 @@ export function Projects({ goQuote }: { goQuote: GoQuote }) {
                 transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
                 <button type="button" onClick={() => setOpen(p)} className="group block w-full text-left">
-                  <span className="block overflow-hidden rounded-[4px]">
+                  <span className="relative block overflow-hidden rounded-[4px]">
+                    {p.status !== "Entregado" ? <span className="arq-mono absolute left-3 top-3 z-10 rounded-full bg-obra/85 px-3 py-1 text-[10px] text-hueso">{p.status === "Diseño" ? "Render · en diseño" : "En obra"}</span> : null}
                     <img src={p.photos[0]?.src} srcSet={p.photos[0] ? srcSetFor(p.photos[0].src) : undefined} sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw" alt={p.photos[0]?.alt ?? p.name} loading="lazy" width={1280} height={960} className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-[1.03] motion-reduce:transition-none" />
                   </span>
                   <span className="mt-4 block arq-display text-[22px]">{p.name}</span>
@@ -130,14 +132,15 @@ function ProjectModal({ project, onClose }: { project: ArqProject; onClose: () =
     ["Tipo", project.label],
     ["Ciudad", project.city ?? "—"],
     ["Área", project.m2 ? `${project.m2.toLocaleString("es-CO")} m²` : "—"],
-    ["Año", project.year ? String(project.year) : "—"],
+    ["Año", project.year ?? "—"],
+    ["Estado", project.status === "Diseño" ? "En diseño (render)" : project.status],
   ];
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center bg-obra/90 p-4" onClick={onClose}>
       <div ref={ref} tabIndex={-1} role="dialog" aria-modal="true" aria-label={project.name} onClick={(e) => e.stopPropagation()}
         className="max-h-[92dvh] w-full max-w-[1100px] overflow-auto rounded-[4px] bg-carbon text-hueso outline-none">
         <div className="relative">
-          {photo ? <img src={photo.src} alt={photo.alt} className="aspect-[3/2] w-full object-cover" /> : null}
+          {photo ? <img src={photo.src} alt={photo.alt} className="aspect-[3/2] w-full bg-obra object-contain" /> : null}
           {n > 1 ? (
             <>
               <button type="button" aria-label="Foto anterior" onClick={() => setI((x) => (x - 1 + n) % n)} className="absolute left-3 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-obra/80 text-oro">‹</button>
@@ -149,7 +152,7 @@ function ProjectModal({ project, onClose }: { project: ArqProject; onClose: () =
         </div>
         <div className="p-6 md:p-8">
           <h3 className="arq-display text-[clamp(26px,4vw,44px)]">{project.name}</h3>
-          <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-hueso/10 pt-6 md:grid-cols-4">
+          <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-hueso/10 pt-6 md:grid-cols-5">
             {facts.map(([k, v]) => (
               <div key={k}>
                 <dt className="arq-mono text-[10px] text-hueso/60">{k}</dt>

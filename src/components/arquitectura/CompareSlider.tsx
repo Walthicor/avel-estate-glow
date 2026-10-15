@@ -8,11 +8,15 @@ export function CompareSlider({
   after,
   beforeAlt,
   afterAlt,
+  beforeLabel = "Boceto",
+  afterLabel = "Obra entregada",
 }: {
   before: string;
   after: string;
   beforeAlt: string;
   afterAlt: string;
+  beforeLabel?: string;
+  afterLabel?: string;
 }) {
   const [pos, setPos] = useState(50);
   const ref = useRef<HTMLDivElement>(null);
@@ -21,7 +25,7 @@ export function CompareSlider({
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const touched = useRef(false);
 
-  // Primera vez en pantalla: la manija va sola del boceto a la foto, luego queda manual.
+  // Primera vez en pantalla: la manija va sola de la imagen "antes" a la "después", luego queda manual.
   useEffect(() => {
     if (!inView || reduce || touched.current) return;
     const c = animate(100, 0, { duration: 1.5, ease: [0.65, 0, 0.35, 1], onUpdate: (v) => !touched.current && setPos(v) });
@@ -36,7 +40,7 @@ export function CompareSlider({
     setPos(Math.min(100, Math.max(0, ((clientX - r.left) / r.width) * 100)));
   };
 
-  const modes: [string, number][] = [["Boceto", 100], ["Mitad", 50], ["Foto", 0]];
+  const modes: [string, number][] = [[beforeLabel, 100], ["Mitad", 50], [afterLabel, 0]];
 
   return (
     <div>
@@ -67,7 +71,7 @@ export function CompareSlider({
         onPointerUp={() => (dragging.current = false)}
         onPointerCancel={() => (dragging.current = false)}
       >
-        <img src={after} srcSet={srcSetFor(after)} sizes="(min-width: 1280px) 1240px, 100vw" alt={afterAlt} loading="lazy" width={1440} height={960} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+        <img src={after} srcSet={srcSetFor(after)} sizes="(min-width: 1280px) 1240px, 100vw" alt={afterAlt} loading="lazy" width={1280} height={853} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
         <img
           src={before}
           srcSet={srcSetFor(before)}
@@ -80,8 +84,8 @@ export function CompareSlider({
           className="absolute inset-0 h-full w-full object-cover"
           style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         />
-        <span className="arq-mono absolute left-3 top-3 rounded-full bg-obra/80 px-3 py-1 text-[10px] text-hueso">Boceto</span>
-        <span className="arq-mono absolute right-3 top-3 rounded-full bg-obra/80 px-3 py-1 text-[10px] text-hueso">Obra entregada</span>
+        <span className="arq-mono absolute left-3 top-3 rounded-full bg-obra/80 px-3 py-1 text-[10px] text-hueso">{beforeLabel}</span>
+        <span className="arq-mono absolute right-3 top-3 rounded-full bg-obra/80 px-3 py-1 text-[10px] text-hueso">{afterLabel}</span>
         <div className="pointer-events-none absolute inset-y-0" style={{ left: `${pos}%` }}>
           <div className="absolute inset-y-0 -left-px w-[2px] bg-oro" />
           <div className="absolute top-1/2 left-0 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-oro bg-obra text-oro">
@@ -94,7 +98,7 @@ export function CompareSlider({
           max={100}
           value={Math.round(pos)}
           onChange={(e) => manual(Number(e.target.value))}
-          aria-label="Desliza para comparar boceto y obra entregada"
+          aria-label={`Desliza para comparar ${beforeLabel.toLowerCase()} y ${afterLabel.toLowerCase()}`}
           className="absolute inset-x-0 bottom-0 h-full w-full cursor-ew-resize opacity-0"
         />
       </div>

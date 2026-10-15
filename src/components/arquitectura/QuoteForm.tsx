@@ -161,10 +161,10 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
     <section ref={sectionRef} id="cotizar" className="scroll-mt-16 bg-obra px-5 py-20 md:px-10 md:py-28">
       <div className="mx-auto grid max-w-[1240px] gap-12 lg:grid-cols-[1fr_1.3fr]">
         <div>
-          <p className="arq-mono text-[12px] text-oro">(11) — Cotización · Paso {step + 1} de 4</p>
+          <p className="arq-mono text-[12px] text-oro">(13) — Cotización · Paso {step + 1} de 4</p>
           <h2 className="arq-display mt-4 text-[clamp(40px,7vw,96px)] text-hueso">Cotiza tu <span className="text-oro">proyecto</span></h2>
           <p className="arq-body mt-6 max-w-[42ch] text-[17px] leading-relaxed text-hueso/75">
-            Cuatro pasos, unos tres minutos. Con esta información preparamos una propuesta con alcance, tiempos y honorarios.
+            Cuatro pasos, unos tres minutos. Con tus respuestas preparamos una propuesta con alcance, tiempos y valor. Sin compromiso.
           </p>
           <div className="mt-8 h-[2px] w-full bg-hueso/10" aria-hidden="true">
             <div className="h-full origin-left bg-oro transition-transform duration-500 motion-reduce:transition-none" style={{ transform: `scaleX(${status === "sent" ? 1 : (step + 1) / 4})` }} />
@@ -179,8 +179,8 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
         <div className="rounded-[4px] border border-hueso/10 bg-carbon p-6 md:p-10">
           {status === "sent" ? (
             <div role="status" aria-live="polite">
-              <p className="arq-display text-[clamp(26px,3.5vw,40px)] text-hueso">Recibimos tu información.</p>
-              <p className="arq-body mt-4 text-[17px] text-hueso/80">Te escribimos por WhatsApp en menos de 24 horas hábiles.</p>
+              <p className="arq-display text-[clamp(26px,3.5vw,40px)] text-hueso">¡Listo! Tu proyecto ya está en manos de nuestro equipo.</p>
+              <p className="arq-body mt-4 text-[17px] text-hueso/80">Te escribimos por WhatsApp en menos de 24 horas hábiles. Mientras tanto, ten a mano la ubicación y el área de tu lote.</p>
               {waLink() ? (
                 <a href={waLink(summary)} target="_blank" rel="noreferrer" onClick={onWaClick} className={`${btnGold} mt-8`}><WaIcon /> Escribir por WhatsApp</a>
               ) : null}
@@ -285,7 +285,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
                   </div>
                   <div className="border-t border-hueso/10 pt-5 arq-body text-[14px] leading-relaxed text-hueso/70">
                     <p className="text-oro">Tu primer análisis del lote no tiene costo.</p>
-                    <p className="mt-1">Cada mes tomamos un número limitado de proyectos nuevos para cumplir los tiempos que prometemos.</p>
+                    <p className="mt-1">Cada mes tomamos un número limitado de proyectos nuevos para cumplir lo que prometemos.</p>
                   </div>
                 </div>
               ) : null}
@@ -299,7 +299,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
                   <button type="button" className={btnGold} onClick={() => validate(step) && go(step + 1)}>Continuar</button>
                 ) : (
                   <button type="button" className={btnGold} disabled={status === "sending"} onClick={submit}>
-                    {status === "sending" ? "Enviando…" : "Recibir mi cotización"}
+                    {status === "sending" ? "Enviando…" : "Quiero mi propuesta"}
                   </button>
                 )}
                 {step > 0 ? <button type="button" className={btnLine} onClick={() => go(step - 1)}>Atrás</button> : null}

@@ -38,7 +38,7 @@ export function QuoteTower({ goQuote }: { goQuote: GoQuote }) {
           exit={reduce ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0, y: 16 }}
           transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="arq-quote-tower__bubble">Cotizar</span>
+          <span className="arq-quote-tower__bubble">¿Cuánto cuesta?</span>
           <span className="arq-quote-tower__body avel-pulse">
             <span className="arq-quote-tower__sheen" aria-hidden="true" />
             <span className="arq-quote-tower__win" aria-hidden="true" />
