@@ -1046,3 +1046,129 @@ body[data-cookiebar="open"][data-stickybar="open"] {
     animation: avel-pulse-soft 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 }
+
+/* ============================================================
+   4.5 — Quote tower: fixed bottom-right CTA (architecture landing)
+   ============================================================ */
+
+.arq-quote-tower {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: calc(20px + var(--avel-bottom-inset, 0px) + env(safe-area-inset-bottom, 0px));
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: bottom 260ms ease;
+}
+
+.arq-quote-tower__bubble {
+  position: relative;
+  margin-right: 3px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: var(--color-oro);
+  color: var(--color-obra);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 35%);
+}
+
+.arq-quote-tower__bubble::after {
+  content: "";
+  position: absolute;
+  right: 13px;
+  bottom: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  background: var(--color-oro);
+  transform: rotate(45deg);
+}
+
+.arq-quote-tower__body {
+  position: relative;
+  display: grid;
+  place-items: center;
+  align-content: end;
+  gap: 5px;
+  width: 46px;
+  height: 68px;
+  overflow: hidden;
+  border-radius: 10px 10px 4px 4px;
+  background: linear-gradient(160deg, var(--color-oro) 0%, #b08d4e 100%);
+  filter: drop-shadow(0 10px 20px rgb(0 0 0 / 40%));
+}
+
+.arq-quote-tower__win {
+  display: block;
+  width: 8px;
+  height: 3px;
+  border-radius: 1px;
+  background: rgb(14 14 14 / 55%);
+}
+
+.arq-quote-tower__sheen {
+  position: absolute;
+  top: -30%;
+  left: -60%;
+  width: 45%;
+  height: 160%;
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 35%), transparent);
+  transform: rotate(12deg);
+}
+
+@media (max-width: 767px) {
+  .arq-quote-tower__body {
+    width: 40px;
+    height: 58px;
+    gap: 4px;
+  }
+
+  .arq-quote-tower__win {
+    width: 7px;
+  }
+
+  .arq-quote-tower__bubble {
+    font-size: 12px;
+    padding: 6px 13px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .arq-quote-tower__body {
+    animation: arq-tower-breathe 4s ease-in-out infinite;
+  }
+
+  .arq-quote-tower__sheen {
+    animation: arq-tower-sheen 5.5s ease-in-out infinite;
+  }
+}
+
+@keyframes arq-tower-breathe {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes arq-tower-sheen {
+  0%,
+  55% {
+    left: -60%;
+  }
+  90%,
+  100% {
+    left: 130%;
+  }
+}
