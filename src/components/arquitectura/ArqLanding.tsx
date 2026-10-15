@@ -15,7 +15,7 @@ import { QuoteForm } from "./QuoteForm";
 import { captureAttribution } from "../../lib/attribution";
 import { trackEvent } from "../../lib/analytics";
 import { CountUp, DrawIcon, MaskWords, RiseIn } from "./motion";
-import { QuoteTower } from "./QuoteTower";
+import { QuoteBuddy } from "../landing/QuoteBuddy";
 import { ArqTitle, Rotulo, WaIcon, btnGold, btnLine, onWaClick, waLink, type GoQuote, type Prefill } from "./shared";
 
 const wrap = "mx-auto max-w-[1240px]";
@@ -392,7 +392,7 @@ export function ArqLanding() {
         </div>
       </footer>
 
-      <QuoteTower goQuote={goQuote} />
+      <QuoteBuddy onClick={() => goQuote()} />
     </div>
   );
 }

@@ -11,3 +11,4 @@
 
 - The AVEL Arquitectura landing (/es/arquitectura) lives in src/components/arquitectura/ with copy in src/content/arquitectura.ts and its own tokens/utilities (arq-*) in styles.css; __root hides the site chrome on that path — it is an ad destination with a single goal.
 - The architecture quote form (src/components/arquitectura/QuoteForm.tsx) and calculator take their figures from the pure, tested module src/lib/quote-math.ts and measurement events from src/lib/analytics.ts. A submitted quote is stored as a lead with form_type "quote" — keep the calculator free of UI so its numbers stay testable and its factors stay in one place.
+- Ad landing pages (not the official site pages) use the floating "¡Cotiza aquí!" button from src/components/landing/QuoteBuddy.tsx (styles: .lp-buddy* in styles.css). Point its onClick at the page's quote section.
