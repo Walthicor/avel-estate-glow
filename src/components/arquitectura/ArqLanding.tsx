@@ -15,7 +15,7 @@ import { QuoteForm } from "./QuoteForm";
 import { captureAttribution } from "../../lib/attribution";
 import { trackEvent } from "../../lib/analytics";
 import { CountUp, DrawIcon, MaskWords, RiseIn } from "./motion";
-import { Mascot } from "./Mascot";
+import { QuoteTower } from "./QuoteTower";
 import { ArqTitle, Rotulo, WaIcon, btnGold, btnLine, onWaClick, waLink, type GoQuote, type Prefill } from "./shared";
 
 const wrap = "mx-auto max-w-[1240px]";
@@ -302,13 +302,7 @@ export function ArqLanding() {
         </div>
       </footer>
 
-      <Mascot goQuote={goQuote} />
-
-      {/* Barra fija en celular */}
-      <div className="fixed inset-x-0 bottom-0 z-[100] flex gap-2 border-t border-hueso/10 bg-obra/95 p-3 backdrop-blur md:hidden">
-        <button type="button" onClick={() => goQuote()} className="avel-pulse flex-1 rounded-full bg-oro py-3.5 text-[15px] font-medium text-obra">Cotizar gratis</button>
-        {wa ? <a href={wa} target="_blank" rel="noreferrer" onClick={onWaClick} className="flex flex-1 items-center justify-center gap-2 rounded-full border border-hueso/30 py-3.5 text-[15px] text-hueso"><WaIcon /> WhatsApp</a> : null}
-      </div>
+      <QuoteTower goQuote={goQuote} />
     </div>
   );
 }
