@@ -35,7 +35,7 @@ const Email = ({
   locale = "en",
   propertyTitle,
   propertyReference,
-  advisorName = "Valentina Restrepo",
+  advisorName = "Equipo AVEL Inmobiliaria",
   advisorTitle,
   variant = "inmobiliaria",
 }: LeadConfirmationProps) => {
@@ -81,7 +81,7 @@ const Email = ({
           <Text style={sign}>
             {advisorName}
             <br />
-            {advisorTitle ?? (es ? "Asesora de clientes" : "Client Advisor")} · AVEL Estates
+            {advisorTitle ?? "AVEL Estates"}
           </Text>
         </Container>
       </Body>

@@ -10,9 +10,9 @@ export const SITE = {
   /** Número de WhatsApp en formato internacional sin "+" (ej. 573001234567). Vacío = botón oculto. */
   whatsapp: "",
   advisor: {
-    name: "Valentina Restrepo",
-    titleEn: "Client Advisor",
-    titleEs: "Asesora de clientes",
+    name: "Equipo AVEL Inmobiliaria",
+    titleEn: "AVEL Estates",
+    titleEs: "AVEL Estates",
   },
   social: {
     instagram: "https://www.instagram.com/avelestates",
