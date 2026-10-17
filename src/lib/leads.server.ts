@@ -47,60 +47,67 @@ function propertyInfo(payload: LeadPayload): PropertyInfo {
 }
 
 function notificationRows(payload: LeadPayload, property: PropertyInfo): [string, string][] {
-  const rows: [string, string][] = [
-    ["Name", payload.name],
-    ["Email", payload.email],
-    ["Phone", payload.phone ?? "—"],
-    ["Country", payload.country ?? "—"],
-    ["Buyer type", payload.buyer_type ?? "—"],
-    ["Purpose", payload.purpose ?? "—"],
-    ["Budget", payload.budget ?? "—"],
-    ["Timeline", payload.timeline ?? "—"],
-    ["Cities", payload.cities?.length ? payload.cities.join(", ") : "—"],
-    ["Message", payload.message ?? "—"],
-    ["Language", payload.locale === "es" ? "Spanish" : "English"],
-    ["Form", payload.form_type],
-    ["Source page", payload.source_page ?? "—"],
-    ["UTM source", payload.utm_source ?? "—"],
-    ["UTM medium", payload.utm_medium ?? "—"],
-    ["UTM campaign", payload.utm_campaign ?? "—"],
-    ["UTM term", payload.utm_term ?? "—"],
-    ["UTM content", payload.utm_content ?? "—"],
-    ["Referrer", payload.referrer ?? "—"],
-    ["Marketing consent", payload.marketing_consent ? "Yes" : "No"],
-  ];
-
+  const yesNo = (v: boolean | undefined) => (v ? "Sí" : "No");
   if (payload.quote) {
     const q = payload.quote;
-    rows.push(
-      ["Project type", q.project_type],
-      ["Has lot", q.has_lot],
-      ["Services", q.services.join(", ") || "—"],
-      ["Packages", q.packages?.join(", ") || "—"],
-      ["Budget range", q.budget || "—"],
-      ["Lives in", q.residence || "—"],
-      ["Stage", q.stage],
-      ["Place", q.place],
-      ["Lot area (m²)", q.lot_area_m2 ? String(q.lot_area_m2) : "—"],
-      ["Lot type", q.predio],
-      ["Floors", q.floors ? String(q.floors) : "—"],
-      ["Build area (m²)", q.build_area_m2 ? String(q.build_area_m2) : "—"],
-      ["Terrain", q.terrain],
-      ["Finishes", q.finishes],
-      ["Possible total area", `${q.estimate.total_m2} m²`],
-      [
-        "Estimated build cost",
-        `${formatCOP(q.estimate.min_cop)} – ${formatCOP(q.estimate.max_cop)}`,
-      ],
-      ["Google click id", q.gclid ?? "—"],
-      ["Meta click id", q.fbclid ?? "—"],
-      ["Ad service (?servicio=)", q.servicio ?? "—"],
-      ["Landing URL", q.landing_url ?? "—"],
-    );
+    // Cotización de AVEL Arquitectura: primero lo que sirve para llamar al cliente.
+    return [
+      ["Nombre", payload.name],
+      ["Celular", payload.phone ?? "—"],
+      ["Correo", payload.email],
+      ["Ciudad del lote", q.place],
+      ["Vive en", q.residence || "—"],
+      ["Tipo de proyecto", q.project_type],
+      ["¿Tiene lote?", q.has_lot],
+      ["Etapa", q.stage],
+      ["Paquetes", q.packages?.join(", ") || "—"],
+      ["Servicios", q.services.join(", ") || "—"],
+      ["Presupuesto aproximado", q.budget || "—"],
+      ["Área del lote (m²)", q.lot_area_m2 ? String(q.lot_area_m2) : "—"],
+      ["Tipo de predio", q.predio],
+      ["Pisos", q.floors ? String(q.floors) : "—"],
+      ["Área a construir (m²)", q.build_area_m2 ? String(q.build_area_m2) : "—"],
+      ["Terreno", q.terrain],
+      ["Acabados", q.finishes],
+      ["Área total posible", `${q.estimate.total_m2} m²`],
+      ["Inversión estimada en obra", `${formatCOP(q.estimate.min_cop)} – ${formatCOP(q.estimate.max_cop)}`],
+      ["Mensaje", payload.message ?? "—"],
+      ["Anuncio (?servicio=)", q.servicio ?? "—"],
+      ["Fuente (utm_source)", payload.utm_source ?? "—"],
+      ["Campaña (utm_campaign)", payload.utm_campaign ?? "—"],
+      ["Palabra clave (utm_term)", payload.utm_term ?? "—"],
+      ["Clic de Google (gclid)", q.gclid ?? "—"],
+      ["Clic de Meta (fbclid)", q.fbclid ?? "—"],
+      ["Página de llegada", q.landing_url ?? "—"],
+      ["Acepta mensajes comerciales", yesNo(payload.marketing_consent)],
+    ];
   }
 
+  const rows: [string, string][] = [
+    ["Nombre", payload.name],
+    ["Correo", payload.email],
+    ["Teléfono", payload.phone ?? "—"],
+    ["País", payload.country ?? "—"],
+    ["Tipo de comprador", payload.buyer_type ?? "—"],
+    ["Propósito", payload.purpose ?? "—"],
+    ["Presupuesto", payload.budget ?? "—"],
+    ["Plazo", payload.timeline ?? "—"],
+    ["Ciudades", payload.cities?.length ? payload.cities.join(", ") : "—"],
+    ["Mensaje", payload.message ?? "—"],
+    ["Idioma", payload.locale === "es" ? "Español" : "Inglés"],
+    ["Formulario", payload.form_type],
+    ["Página de origen", payload.source_page ?? "—"],
+    ["Fuente (utm_source)", payload.utm_source ?? "—"],
+    ["Medio (utm_medium)", payload.utm_medium ?? "—"],
+    ["Campaña (utm_campaign)", payload.utm_campaign ?? "—"],
+    ["Palabra clave (utm_term)", payload.utm_term ?? "—"],
+    ["Contenido (utm_content)", payload.utm_content ?? "—"],
+    ["Referido desde", payload.referrer ?? "—"],
+    ["Acepta mensajes comerciales", yesNo(payload.marketing_consent)],
+  ];
+
   if (property) {
-    rows.splice(9, 0, ["Property", property.title], ["Reference", property.reference]);
+    rows.splice(9, 0, ["Propiedad", property.title], ["Referencia", property.reference]);
   }
 
   return rows;
@@ -157,16 +164,20 @@ export async function saveLead(payload: LeadPayload) {
       replyTo: payload.email,
       templateData: {
         name: payload.name,
-        budget: payload.budget ?? "No budget given",
-        country: payload.country ?? "Unknown country",
+        budget: payload.budget ?? "Sin presupuesto",
+        country: payload.country ?? "Sin país",
+        ...(payload.quote ? { kind: "arquitectura", place: payload.quote.place } : {}),
         rows: notificationRows(payload, property),
         ...(property ? { propertyUrl: property.url } : {}),
       },
     }),
     sendTemplateEmail("lead-confirmation", payload.email, {
       idempotencyKey: `lead-confirmation-${leadId}`,
+      // Las respuestas del cliente llegan al correo del equipo, no a noreply.
+      replyTo: SITE.notifyEmail,
       templateData: {
         firstName,
+        ...(payload.form_type === "quote" ? { variant: "arquitectura" } : {}),
         locale: payload.locale,
         advisorName: SITE.advisor.name,
         advisorTitle: payload.locale === "es" ? SITE.advisor.titleEs : SITE.advisor.titleEn,

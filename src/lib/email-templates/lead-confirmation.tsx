@@ -19,6 +19,8 @@ export interface LeadConfirmationProps {
   propertyReference?: string;
   advisorName?: string;
   advisorTitle?: string;
+  /** "arquitectura": cotización de la landing AVEL Arquitectura. */
+  variant?: "inmobiliaria" | "arquitectura";
 }
 
 const main = { backgroundColor: "#ffffff", fontFamily: "Helvetica, Arial, sans-serif" };
@@ -35,8 +37,10 @@ const Email = ({
   propertyReference,
   advisorName = "Valentina Restrepo",
   advisorTitle,
+  variant = "inmobiliaria",
 }: LeadConfirmationProps) => {
   const es = locale === "es";
+  if (variant === "arquitectura") return <ArqEmail firstName={firstName} />;
   const greeting = es
     ? `Hola ${firstName ?? ""}`.trim() + ","
     : `Hi ${firstName ?? "there"},`;
@@ -85,10 +89,41 @@ const Email = ({
   );
 };
 
+/** Confirmación para quien pidió cotización en AVEL Arquitectura. */
+const ArqEmail = ({ firstName }: { firstName?: string | undefined }) => (
+  <Html lang="es" dir="ltr">
+    <Head />
+    <Preview>Recibimos tu solicitud de cotización — AVEL Arquitectura</Preview>
+    <Body style={main}>
+      <Container style={container}>
+        <Section style={rule} />
+        <Heading style={heading}>Recibimos tu solicitud de cotización</Heading>
+        <Text style={body}>{`Hola ${firstName ?? ""}`.trim() + ","}</Text>
+        <Text style={body}>
+          Gracias por contarnos de tu proyecto. Nuestro equipo revisa la información que nos enviaste y te contacta por teléfono o correo en menos de 24 horas hábiles.
+        </Text>
+        <Text style={body}>
+          En esa primera conversación revisamos tu lote, lo que la norma te permite construir y te enviamos una propuesta con alcance, tiempos y valor.
+        </Text>
+        <Text style={body}>
+          Para avanzar más rápido, ten a mano la ubicación y el área de tu lote y, si lo tienes, el certificado de tradición. Si quieres agregar algo, responde a este correo.
+        </Text>
+        <Text style={sign}>
+          Equipo AVEL Arquitectura
+          <br />
+          Una división de AVEL Estates
+        </Text>
+      </Container>
+    </Body>
+  </Html>
+);
+
 export const template = {
   component: Email,
   subject: (data: Record<string, any>) =>
-    data["locale"] === "es"
+    data["variant"] === "arquitectura"
+      ? "Recibimos tu solicitud de cotización — AVEL Arquitectura"
+      : data["locale"] === "es"
       ? "Recibimos tu solicitud — AVEL Estates"
       : "We received your request — AVEL Estates",
   displayName: "Lead confirmation (client)",

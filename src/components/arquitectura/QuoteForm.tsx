@@ -180,7 +180,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
           {status === "sent" ? (
             <div role="status" aria-live="polite">
               <p className="arq-display text-[clamp(26px,3.5vw,40px)] text-hueso">¡Listo! Tu proyecto ya está en manos de nuestro equipo.</p>
-              <p className="arq-body mt-4 text-[17px] text-hueso/80">Te escribimos por WhatsApp en menos de 24 horas hábiles. Mientras tanto, ten a mano la ubicación y el área de tu lote.</p>
+              <p className="arq-body mt-4 text-[17px] text-hueso/80">Te contactamos por teléfono o correo en menos de 24 horas hábiles. Mientras tanto, ten a mano la ubicación y el área de tu lote.</p>
               {waLink() ? (
                 <a href={waLink(summary)} target="_blank" rel="noreferrer" onClick={onWaClick} className={`${btnGold} mt-8`}><WaIcon /> Escribir por WhatsApp</a>
               ) : null}
@@ -261,7 +261,7 @@ export function QuoteForm({ prefill }: { prefill: Prefill | null }) {
                     <Err msg={errors.name} />
                   </div>
                   <div>
-                    <label htmlFor="q-phone" className={labelCls}>WhatsApp</label>
+                    <label htmlFor="q-phone" className={labelCls}>Celular</label>
                     <div className="flex gap-2">
                       <select aria-label="Indicativo de país" value={f.dial} onChange={(e) => set("dial", e.target.value)} className={`${inputCls} w-[130px] shrink-0`}>
                         {DIAL_CODES.map((c) => <option key={c.label} value={c.code}>{c.label}</option>)}

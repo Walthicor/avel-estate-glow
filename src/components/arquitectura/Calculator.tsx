@@ -91,7 +91,7 @@ export function Calculator({ goQuote }: { goQuote: GoQuote }) {
             <button type="button" className={`${btnGold} justify-self-start`} onClick={() => goQuote({ calc: { lot, predio, floors, build, finishes } })}>
               Quiero el análisis completo de mi lote (gratis)
             </button>
-            <p className="arq-body -mt-3 text-[13px] text-hueso/60">Nuestro equipo revisa tu caso y te responde por WhatsApp.</p>
+            <p className="arq-body -mt-3 text-[13px] text-hueso/60">Nuestro equipo revisa tu caso y te contacta por teléfono o correo.</p>
           </div>
         </div>
       </div>
